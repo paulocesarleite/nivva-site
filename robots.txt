@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nivva.com.br/sitemap.xml
