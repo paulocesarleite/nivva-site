@@ -153,3 +153,43 @@ article strong{color:var(--text);font-weight:600}
   .wpp-balao-titulo{font-size:.8rem}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto}}
+
+/* ===== Bloco "Leia também" (links internos do cluster) ===== */
+/* Adicionar ao final de assets/nivva-blog.css */
+.leia-tambem {
+  margin: 2.5rem 0;
+  padding: 1.5rem 1.75rem;
+  background: var(--off-white, #f7f5f0);
+  border-left: 3px solid var(--accent, #b79456);
+  border-radius: 8px;
+}
+.leia-tambem h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.9rem;
+  color: var(--text, #1c201f);
+}
+.leia-tambem ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.leia-tambem li {
+  margin: 0.5rem 0;
+  padding-left: 1.1rem;
+  position: relative;
+}
+.leia-tambem li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent, #b79456);
+}
+.leia-tambem a {
+  color: var(--text, #1c201f);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.leia-tambem a:hover {
+  border-bottom-color: var(--accent, #b79456);
+}
