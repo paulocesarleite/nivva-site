@@ -14,6 +14,27 @@
 <meta property="og:locale" content="pt_BR">
 <meta name="theme-color" content="#0e2726">
 <link rel="stylesheet" href="/assets/nivva-blog.css">
+<script>document.documentElement.className+=' js';</script>
+<style>
+/* ---------- Paginação da grade (só visual — todos os cards ficam no HTML) ---------- */
+.grid{padding-bottom:26px}
+.post[hidden]{display:none}
+/* evita o flash dos 131 cards antes do JS assumir; sem JS, tudo continua visível */
+.js .grid:not(.pager-ready) .post:nth-child(n+6){display:none}
+.pager{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;padding:0 0 72px}
+.pager[hidden]{display:none}
+.pager-pages{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px}
+.pager button{font-family:var(--font-sans);font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;min-width:40px;padding:9px 14px;border:1px solid var(--border);border-radius:999px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all .2s}
+.pager button:hover:not(:disabled){border-color:var(--accent);color:var(--text)}
+.pager button[aria-current="page"]{background:var(--text);color:#fff;border-color:var(--text)}
+.pager button:disabled{opacity:.3;cursor:default}
+.pager .gap{color:var(--text-faint);font-size:.72rem;letter-spacing:.1em;padding:0 2px;user-select:none}
+@media(max-width:560px){
+  .pager button{min-width:34px;padding:8px 11px;font-size:.68rem}
+  .pager{gap:6px}
+  .pager-pages{gap:6px}
+}
+</style>
 </head>
 <body>
 
@@ -34,13 +55,13 @@
 
 <div class="wrap">
   <div class="filters">
-    <button class="chip active" data-filter="all">Todos (131)</button>
-    <button class="chip" data-filter="Emagrecimento">Emagrecimento (61)</button>
-    <button class="chip" data-filter="Saúde hormonal">Saúde hormonal (19)</button>
-    <button class="chip" data-filter="Reposição hormonal">Reposição hormonal (16)</button>
-    <button class="chip" data-filter="Menopausa">Menopausa (12)</button>
-    <button class="chip" data-filter="Saúde do homem">Saúde do homem (8)</button>
-    <button class="chip" data-filter="Longevidade">Longevidade (15)</button>
+    <button class="chip active" data-filter="all">Todos</button>
+    <button class="chip" data-filter="Emagrecimento">Emagrecimento</button>
+    <button class="chip" data-filter="Saúde hormonal">Saúde hormonal</button>
+    <button class="chip" data-filter="Reposição hormonal">Reposição hormonal</button>
+    <button class="chip" data-filter="Menopausa">Menopausa</button>
+    <button class="chip" data-filter="Saúde do homem">Saúde do homem</button>
+    <button class="chip" data-filter="Longevidade">Longevidade</button>
   </div>
   <div class="grid">
     <a href="/blog/qual-medico-consultar-para-emagrecer" class="post" data-cat="Emagrecimento">
@@ -830,6 +851,11 @@
       <div class="foot"><span>4 min de leitura</span><span class="read">Ler <span class="arrow">→</span></span></div>
     </a>
   </div>
+  <nav class="pager" id="pager" aria-label="Paginação dos artigos" hidden>
+    <button type="button" id="pagerPrev" aria-label="Página anterior">← Anterior</button>
+    <div class="pager-pages" id="pagerPages"></div>
+    <button type="button" id="pagerNext" aria-label="Próxima página">Próxima →</button>
+  </nav>
 </div>
 
 <footer class="footer">
@@ -855,18 +881,105 @@
 
 <script>
 (function(){
-  var chips = document.querySelectorAll('.chip');
-  var posts = document.querySelectorAll('.post');
+  var PER_PAGE = 5;
+
+  var grid    = document.querySelector('.grid');
+  var chips   = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var posts   = Array.prototype.slice.call(document.querySelectorAll('.post'));
+  var pager   = document.getElementById('pager');
+  var pages   = document.getElementById('pagerPages');
+  var prevBtn = document.getElementById('pagerPrev');
+  var nextBtn = document.getElementById('pagerNext');
+  if (!grid || !pager) return;
+
+  var filter = 'all';
+  var page   = 1;
+
+  function visiveis(){
+    return posts.filter(function(p){
+      return filter === 'all' || p.getAttribute('data-cat') === filter;
+    });
+  }
+
+  // 1, 2, 3 … 27 — janela em volta da página atual quando há muitas páginas
+  function janela(total, atual){
+    if (total <= 7){
+      var todas = [];
+      for (var i = 1; i <= total; i++) todas.push(i);
+      return todas;
+    }
+    var out = [1];
+    var ini = Math.max(2, atual - 1);
+    var fim = Math.min(total - 1, atual + 1);
+    if (ini > 2) out.push('…');
+    for (var j = ini; j <= fim; j++) out.push(j);
+    if (fim < total - 1) out.push('…');
+    out.push(total);
+    return out;
+  }
+
+  function montaControles(total){
+    pager.hidden = total <= 1;
+    prevBtn.disabled = page <= 1;
+    nextBtn.disabled = page >= total;
+
+    pages.textContent = '';
+    janela(total, page).forEach(function(item){
+      if (item === '…'){
+        var gap = document.createElement('span');
+        gap.className = 'gap';
+        gap.setAttribute('aria-hidden', 'true');
+        gap.textContent = '…';
+        pages.appendChild(gap);
+        return;
+      }
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = item;
+      b.setAttribute('aria-label', 'Página ' + item);
+      if (item === page) b.setAttribute('aria-current', 'page');
+      b.addEventListener('click', function(){ irPara(item); });
+      pages.appendChild(b);
+    });
+  }
+
+  function render(){
+    var lista = visiveis();
+    var total = Math.max(1, Math.ceil(lista.length / PER_PAGE));
+    if (page > total) page = total;
+    if (page < 1) page = 1;
+
+    var ini = (page - 1) * PER_PAGE;
+    posts.forEach(function(p){ p.hidden = true; });
+    lista.slice(ini, ini + PER_PAGE).forEach(function(p){ p.hidden = false; });
+
+    montaControles(total);
+    grid.classList.add('pager-ready');
+  }
+
+  function irPara(n){
+    page = n;
+    render();
+    var topo = document.querySelector('.filters');
+    if (topo) topo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   chips.forEach(function(chip){
     chip.addEventListener('click', function(){
       chips.forEach(function(c){ c.classList.remove('active'); });
       chip.classList.add('active');
-      var f = chip.getAttribute('data-filter');
-      posts.forEach(function(p){
-        p.style.display = (f === 'all' || p.getAttribute('data-cat') === f) ? '' : 'none';
-      });
+      filter = chip.getAttribute('data-filter');
+      page = 1;            // trocar de categoria recomeça a paginação
+      render();
     });
   });
+
+  prevBtn.addEventListener('click', function(){ if (page > 1) irPara(page - 1); });
+  nextBtn.addEventListener('click', function(){
+    if (page < Math.max(1, Math.ceil(visiveis().length / PER_PAGE))) irPara(page + 1);
+  });
+
+  render();
 })();
 </script>
 
