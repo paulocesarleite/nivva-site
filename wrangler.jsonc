@@ -4,6 +4,9 @@
   "name": "nivva-com-br",
   "compatibility_date": "2026-10-13",
   "assets": {
-    "directory": "./"
+    "directory": "./",
+    // Endereços sem barra no final (/blog/artigo), iguais ao sitemap e às tags canonical.
+    // Sem isso o Cloudflare redirecionava /artigo para /artigo/ e o Google marcava as páginas como "com redirecionamento".
+    "html_handling": "drop-trailing-slash"
   }
 }
