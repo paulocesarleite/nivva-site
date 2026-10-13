@@ -2,7 +2,7 @@
   // Site estático da Clínica Nivva (nivva.com.br), publicado como Worker com arquivos estáticos.
   // O Cloudflare publica sozinho a cada atualização no ramo main do GitHub.
   "name": "nivva-com-br",
-  "compatibility_date": "2026-10-06",
+  "compatibility_date": "2026-10-13",
   "assets": {
     "directory": "./"
   }
