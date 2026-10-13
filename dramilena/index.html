@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>Dra. Milena Jácome · Clínica Nivva</title>
 <meta name="description" content="Acompanhamento semanal com equipe multidisciplinar. Medicina, nutrição, psicologia e educação física juntas. Clínica Nivva, João Pessoa.">
 <meta name="author" content="Dra. Milena Jácome · Clínica Nivva">
-<meta name="theme-color" content="#0e2726">
+<meta name="theme-color" content="#eef0f2">
 
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
 <meta property="og:title" content="Dra. Milena Jácome · Clínica Nivva">
@@ -284,238 +284,121 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <style>
 :root{
-  --green:#0e2726;
-  --gold:#b79456;
-  --gold-d:#9a7c44;
-  --off:#f7f5f0;
-  --cream:#faf8f4;
-  --ink:#1c201f;
-  --mut:#6a6a62;
-  --line:rgba(14,39,38,.10);
-  --line-gold:rgba(183,148,86,.28);
-  --wa:#25d366;
+  --bg:#eef0f2;
+  --card:#ffffff;
+  --ink:#16181b;
+  --mut:#4b5260;
+  --line:#dde1e6;
   --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --serif:"Georgia","Times New Roman",serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:#fff;color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
-.wrap{max-width:480px;margin:0 auto;position:relative;padding:0 22px 60px}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:480px;margin:0 auto;padding:24px 14px 120px;display:flex;flex-direction:column;gap:16px}
 
-.amb{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.amb .g{position:absolute;border-radius:50%;filter:blur(70px)}
-.amb .g1{width:300px;height:300px;background:radial-gradient(circle,rgba(183,148,86,.10),transparent 70%);top:-60px;right:-100px}
-.amb .g2{width:280px;height:280px;background:radial-gradient(circle,rgba(14,39,38,.05),transparent 70%);top:45%;left:-120px}
-.wrap>*{position:relative;z-index:1}
+/* TOPO */
+.hero{padding:4px 6px 6px;display:flex;flex-direction:column;gap:14px}
+.who{display:flex;align-items:center;gap:14px}
+.avatar{width:76px;height:76px;border-radius:50%;flex-shrink:0;background:#dde1e6 center 20%/cover no-repeat;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.who h1{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.who .crm{font-size:.82rem;color:var(--mut)}
+.tag{font-size:.95rem;color:#33373d}
 
-/* HERO */
-.hero{text-align:center;padding:44px 0 26px}
-.avatar{width:110px;height:110px;border-radius:50%;margin:0 auto 18px;position:relative}
-.avatar .ring{position:absolute;inset:-3px;border-radius:50%;
-  background:conic-gradient(from 0deg,var(--gold),rgba(183,148,86,.2) 45%,var(--gold) 90%);
-  animation:spin 8s linear infinite}
-.avatar .inner{position:absolute;inset:0;border-radius:50%;background:var(--off);border:2px solid #fff;
-  background-size:cover;background-position:center top;
-  display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.2rem;color:var(--gold);z-index:1}
-@keyframes spin{to{transform:rotate(360deg)}}
-.hero h1{font-family:var(--serif);font-size:1.95rem;font-weight:600;letter-spacing:-.01em;margin-bottom:10px;color:var(--green)}
-.hero .tag{font-size:.96rem;color:var(--mut);max-width:300px;margin:0 auto 18px}
-.hero .tag em{color:var(--gold-d);font-style:normal;font-weight:600}
-
-/* SELO GOOGLE (estilo clássico com logo colorida) */
-.google-review{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
-  border-radius:12px;padding:9px 16px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.06);
-  transition:transform .3s,box-shadow .3s}
+/* SELO GOOGLE (mesmo botão da página anterior) */
+.google-review{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(14,39,38,.10);
+  border-radius:12px;padding:9px 16px;box-shadow:0 2px 10px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s}
 .google-review:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.1)}
 .google-review .gicon{width:22px;height:22px;flex-shrink:0}
 .google-review .rating{display:flex;flex-direction:column;align-items:flex-start;line-height:1.1}
 .google-review .rnum{font-weight:700;font-size:.9rem;color:var(--ink);display:flex;align-items:center;gap:5px}
 .google-review .stars{color:#FBBC05;font-size:.82rem;letter-spacing:1px}
-.google-review .rlabel{font-size:.68rem;color:var(--mut)}
+.google-review .rlabel{font-size:.68rem;color:#6a6a62}
 
-.socials{display:flex;justify-content:center;gap:11px;margin-top:20px}
-.socials a{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;
-  background:var(--cream);border:1px solid var(--line);color:var(--green);text-decoration:none;transition:all .3s}
-.socials a:hover{transform:translateY(-3px);background:#fff;border-color:var(--gold);color:var(--gold-d)}
-.socials svg{width:20px;height:20px}
+/* TÍTULOS */
+.sec{display:flex;flex-direction:column;gap:12px}
+.sec-h{margin:0 6px;display:flex;justify-content:space-between;align-items:baseline}
+.sec-h h2{font-size:1.2rem;font-weight:800;letter-spacing:-.02em}
+.sec-h a{font-size:.82rem;font-weight:700;padding:6px 0}
 
-/* CTA */
-.cta{display:flex;align-items:center;justify-content:center;gap:10px;
-  background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;font-weight:700;font-size:1.05rem;
-  text-decoration:none;padding:17px;border-radius:15px;margin:26px 0 6px;
-  box-shadow:0 12px 28px -10px rgba(183,148,86,.55);position:relative;overflow:hidden;transition:transform .3s}
-.cta:hover{transform:translateY(-2px)}
-.cta::after{content:"";position:absolute;top:0;left:-100%;width:55%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:sheen 3.8s infinite}
-@keyframes sheen{0%{left:-100%}55%,100%{left:160%}}
-.cta svg{width:21px;height:21px}
+/* COMO FUNCIONA */
+.steps{background:var(--card);border-radius:22px;padding:20px 18px}
+.step{display:flex;gap:14px}
+.step .rail{display:flex;flex-direction:column;align-items:center}
+.step .n{width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;background:#fff}
+.step:first-child .n{background:var(--ink);color:#fff}
+.step .ln{width:2px;flex:1;background:var(--line);min-height:26px}
+.step .tx{padding-bottom:20px;display:flex;flex-direction:column;gap:2px}
+.step:last-child .tx{padding-bottom:0}
+.step b{font-size:1rem}
+.step span{font-size:.88rem;color:var(--mut)}
+.more{align-self:center;font-size:.88rem;font-weight:700;padding:6px}
 
-.eyebrow{display:flex;align-items:center;gap:12px;margin:40px 0 16px;font-size:.7rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--gold-d);font-weight:600}
-.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line-gold),transparent)}
-.eyebrow.center{justify-content:center}
-.eyebrow.center::after,.eyebrow.center::before{content:"";flex:none;width:30px;height:1px;background:var(--line-gold)}
+/* DEPOIMENTOS — carrossel */
+.marquee{overflow:hidden;margin:0 -14px;padding:2px 14px}
+.track{display:flex;gap:12px;width:max-content;animation:passa 40s linear infinite}
+.marquee:hover .track,.marquee:focus-within .track{animation-play-state:paused}
+@keyframes passa{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.dep{width:200px;flex-shrink:0;border-radius:22px;background:var(--card);padding:8px;display:flex;flex-direction:column;gap:10px}
+.dep .img{position:relative;height:300px;border-radius:16px;background:#dde1e6 center/cover no-repeat}
+.dep .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center}
+.dep .play svg{width:22px;height:22px;color:var(--ink);margin-left:3px}
+.dep .lb{font-size:.82rem;font-weight:700;padding:0 6px 6px}
 
-/* CARDS HORIZONTAL (versão B) */
-.cards-h{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cardh{position:relative;border-radius:14px;overflow:hidden;height:165px;text-decoration:none;color:#fff;display:block;
-  border:1px solid var(--line);box-shadow:0 4px 20px -10px rgba(14,39,38,.3);transition:transform .4s,box-shadow .4s}
-.cardh:hover{transform:translateY(-4px);box-shadow:0 18px 40px -14px rgba(14,39,38,.5)}
-.cardh .slides{position:absolute;inset:0;z-index:0}
-.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.1s}
-.slide.face{background-position:center 22%}
-.slide.active{opacity:1;animation:kb 6s ease-out forwards}
-@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.14)}}
-.veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(14,39,38,.1),rgba(14,39,38,.4) 55%,rgba(14,39,38,.85))}
-.cardh .body{position:absolute;inset:0;z-index:2;padding:12px;display:flex;flex-direction:column;justify-content:flex-end}
-.cardh .k{font-size:.92rem;font-weight:700;font-family:var(--serif);margin-bottom:1px;line-height:1.1}
-.cardh .d{font-size:.7rem;opacity:.85}
-.arrow{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;z-index:3;
-  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(6px);
-  display:flex;align-items:center;justify-content:center;transition:all .3s}
-.cardh:hover .arrow{background:var(--gold);transform:rotate(-45deg);border-color:transparent}
-.arrow svg{width:13px;height:13px;color:#fff;transition:color .3s}
-.cardh:hover .arrow svg{color:var(--green)}
-.dots{position:absolute;bottom:10px;right:11px;z-index:3;display:flex;gap:4px}
-.dots i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);transition:all .3s}
-.dots i.on{background:var(--gold);width:14px;border-radius:3px}
+/* ESTRUTURA */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ph{height:150px;border-radius:18px;background:#dde1e6 center/cover no-repeat}
 
-/* fundo de fallback caso alguma foto não carregue */
-.slide{background-color:#1a332f}
+/* LINHAS */
+.rows{background:var(--card);border-radius:22px;padding:0 18px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0}
+.row+.row{border-top:1px solid var(--bg)}
+.row .tx{display:flex;flex-direction:column;gap:2px}
+.row b{font-size:1rem}
+.row span{font-size:.82rem;color:var(--mut)}
+.free{font-size:.68rem;color:#fff;background:var(--ink);padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:2px;font-weight:700}
 
-/* METHOD */
-.method{position:relative;border-radius:16px;overflow:hidden;height:96px;text-decoration:none;color:#fff;display:block;
-  border:1px solid var(--line);margin-top:12px;box-shadow:0 4px 20px -10px rgba(14,39,38,.3);transition:transform .4s}
-.method:hover{transform:translateY(-3px)}
-.method .body{position:absolute;inset:0;z-index:2;padding:16px;display:flex;flex-direction:column;justify-content:center}
-.method .k{font-size:1.05rem;font-weight:700;font-family:var(--serif)}
-.method .d{font-size:.78rem;opacity:.85}
+/* COMO CHEGAR */
+.place{padding:10px 6px 0;display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.place .addr{font-size:1.05rem;font-weight:600}
+.btns{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.btns a{height:44px;border-radius:12px;border:1px solid #c9ced6;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;transition:background .2s}
+.btns a:hover{background:#fff}
 
+.foot{display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:18px;font-size:.75rem;color:var(--mut);text-align:center}
+.foot .ig{display:flex;gap:16px;font-weight:700;color:var(--ink)}
+.foot .ig a{padding:6px 0}
+.foot img{height:30px;width:auto;margin-bottom:4px;filter:brightness(0);opacity:.8}
 
-.method-logo .veil{background:linear-gradient(180deg,rgba(14,39,38,.15),rgba(14,39,38,.55))}
-.method-logo .slide{background-color:#0e2726!important}
+/* BARRA FIXA */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(238,240,242,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.bar .in{max-width:480px;margin:0 auto;padding:12px 12px calc(14px + env(safe-area-inset-bottom));display:flex;gap:8px}
+.bar .wa{width:58px;height:58px;border-radius:18px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bar .wa svg{width:26px;height:26px;color:#16181b}
+.bar .go{flex:1;height:58px;border-radius:18px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700}
 
-/* EBOOK */
-.ebook{display:flex;align-items:center;gap:13px;background:var(--cream);border:1px solid var(--line-gold);
-  border-radius:15px;padding:15px 17px;text-decoration:none;color:var(--ink);margin-top:12px;transition:all .3s}
-.ebook:hover{transform:translateY(-2px);box-shadow:0 8px 22px -10px rgba(183,148,86,.4)}
-.ebook .ic{width:44px;height:44px;border-radius:12px;background:rgba(183,148,86,.13);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ebook .ic svg{width:23px;height:23px;color:var(--gold-d)}
-.ebook .tx{flex:1}
-.ebook .tx b{display:block;font-size:.95rem;color:var(--green)}
-.ebook .tx span{font-size:.8rem;color:var(--mut)}
-.ebook .free{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-d);border:1px solid var(--line-gold);border-radius:999px;padding:4px 9px}
-
-/* AGENDA */
-.agenda{background:var(--cream);border:1px solid var(--line-gold);border-radius:20px;padding:22px 20px;position:relative;overflow:hidden}
-.agenda .month{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.agenda .month h3{font-family:var(--serif);font-size:1.05rem;color:var(--green)}
-.agenda .month .nav{display:flex;gap:8px}
-.agenda .month .nav button{width:30px;height:30px;border-radius:9px;border:1px solid var(--line);background:#fff;
-  color:var(--green);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .3s}
-.agenda .month .nav button:hover{border-color:var(--gold);color:var(--gold-d)}
-.agenda .month .nav button:disabled{opacity:.3;cursor:not-allowed}
-.days{display:flex;gap:7px;margin-bottom:16px}
-.day{flex:1;text-align:center;padding:11px 3px;border-radius:11px;background:#fff;border:1px solid var(--line);cursor:pointer;transition:all .3s;position:relative}
-.day:hover:not(.full){border-color:var(--gold)}
-.day.sel{background:linear-gradient(135deg,var(--gold),var(--gold-d));border-color:transparent;color:#fff}
-.day.full{opacity:.5;pointer-events:none;background:#f0efec}
-.day .dn{font-size:.64rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;color:var(--mut)}
-.day.sel .dn{color:rgba(255,255,255,.8)}
-.day .dd{font-size:1.1rem;font-weight:700;font-family:var(--serif)}
-.day .dotmark{width:6px;height:6px;border-radius:50%;margin:4px auto 0}
-.day .dotmark.av{background:var(--wa)}
-.day .dotmark.lo{background:#c4c4be}
-.day.sel .dotmark.av{background:#fff}
-.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;min-height:44px}
-.slot{text-align:center;padding:11px 4px;border-radius:10px;background:#fff;border:1px solid var(--line);
-  font-size:.86rem;cursor:pointer;transition:all .3s;font-weight:600;color:var(--green)}
-.slot:hover{border-color:var(--gold);background:rgba(183,148,86,.08)}
-.slots-empty{grid-column:1/-1;text-align:center;color:var(--mut);font-size:.82rem;padding:12px}
-.legend{display:flex;gap:16px;margin-top:14px;font-size:.72rem;color:var(--mut)}
-.legend span{display:flex;align-items:center;gap:6px}
-.legend .dot{width:8px;height:8px;border-radius:50%}
-.legend .av{background:var(--wa)}
-.legend .lo{background:#c4c4be}
-
-/* WHATSAPP DESTAQUE */
-.wa-box{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(37,211,102,.09),rgba(37,211,102,.03));
-  border:1.5px solid rgba(37,211,102,.35);border-radius:16px;padding:17px 18px;text-decoration:none;color:var(--ink);
-  margin-top:14px;transition:all .3s}
-.wa-box:hover{transform:translateY(-2px);box-shadow:0 8px 22px -10px rgba(37,211,102,.4);border-color:var(--wa)}
-.wa-box .ic{width:50px;height:50px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.wa-box .ic svg{width:28px;height:28px;color:#fff}
-.wa-box .tx{flex:1}
-.wa-box .tx b{display:block;font-size:1rem;color:var(--green);margin-bottom:2px}
-.wa-box .tx span{font-size:.85rem;color:var(--mut)}
-.wa-box .go{color:var(--wa);font-size:1.4rem}
-
-/* LINKS */
-.links{display:grid;gap:10px}
-.link{display:flex;align-items:center;gap:13px;background:var(--cream);border:1px solid var(--line);
-  border-radius:14px;padding:15px 16px;text-decoration:none;color:var(--ink);transition:all .3s}
-.link:hover{transform:translateX(4px);border-color:var(--gold);background:#fff}
-.link .ic{width:40px;height:40px;border-radius:11px;background:rgba(183,148,86,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.link .ic svg{width:20px;height:20px;color:var(--gold-d)}
-.link .tx{flex:1}
-.link .tx b{display:block;font-size:.9rem;color:var(--green)}
-.link .tx span{font-size:.77rem;color:var(--mut)}
-.link .go{color:var(--gold);font-size:1.2rem}
-
-/* MAP FOTO FACHADA */
-.map-photo{display:block;border-radius:18px;overflow:hidden;border:1px solid var(--line);height:180px;position:relative;
-  text-decoration:none;box-shadow:0 6px 22px -12px rgba(14,39,38,.4);transition:transform .4s,box-shadow .4s}
-.map-photo:hover{transform:translateY(-3px);box-shadow:0 16px 36px -14px rgba(14,39,38,.5)}
-.map-img{position:absolute;inset:0;background-size:cover;background-position:center;background-color:#1a332f;transition:transform .5s}
-.map-photo:hover .map-img{transform:scale(1.06)}
-.map-overlay{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:15px;background:linear-gradient(180deg,rgba(14,39,38,0) 40%,rgba(14,39,38,.85))}
-.map-info{display:flex;align-items:center;gap:10px;color:#fff}
-.map-info svg{width:26px;height:26px;color:var(--gold);flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
-.map-info b{display:block;font-size:1rem;font-family:var(--serif)}
-.map-info span{font-size:.78rem;opacity:.9}
-.map-cta{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.92);color:var(--green);
-  font-size:.75rem;font-weight:700;padding:7px 13px;border-radius:999px;backdrop-filter:blur(4px)}
-.map-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
-.map-actions a{text-align:center;padding:11px 4px;border-radius:11px;background:var(--cream);border:1px solid var(--line);
-  font-size:.8rem;text-decoration:none;color:var(--green);transition:all .3s;font-weight:600}
-.map-actions a:hover{border-color:var(--gold);background:#fff}
-
-.foot{text-align:center;margin-top:38px;padding-top:24px;border-top:1px solid var(--line)}
-.foot .logo{font-family:var(--serif);font-size:1.3rem;color:var(--gold-d);margin-bottom:8px}
-.foot .doc{font-size:.82rem;margin-bottom:4px;color:var(--green)}
-.foot .cr{font-size:.72rem;color:var(--mut)}
-
-.fab{position:fixed;bottom:20px;right:calc(50% - 240px + 20px);z-index:20;width:54px;height:54px;border-radius:50%;
-  background:linear-gradient(135deg,#25d366,#128c4b);display:flex;align-items:center;justify-content:center;
-  box-shadow:0 8px 24px -4px rgba(37,211,102,.5);text-decoration:none;transition:transform .3s}
-.fab:hover{transform:scale(1.08)}
-.fab svg{width:29px;height:29px;color:#fff}
-@media(max-width:520px){.fab{right:20px}}
-
-.note{max-width:480px;margin:10px auto 0;padding:14px 22px;font-size:.75rem;color:var(--mut);text-align:center;
-  border-top:1px dashed var(--line-gold)}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.marquee{overflow-x:auto}}
 </style>
 </head>
 <body>
 <!-- NIVVA TRACKING noscript -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWV952HD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<div class="amb"><div class="g g1"></div><div class="g g2"></div></div>
 
-<div class="wrap">
+<main class="wrap">
 
-  <!-- HERO -->
+  <!-- TOPO -->
   <header class="hero">
-    <div class="avatar">
-      <div class="ring"></div>
-      <div class="inner" id="avatarPhoto" style="background-image:url('https://nivva.com.br/dramilena/milena.JPG');color:transparent"></div>
+    <div class="who">
+      <div class="avatar" role="img" aria-label="Foto de Dra. Milena Jácome" style="background-image:url('https://nivva.com.br/dramilena/milena.JPG')"></div>
+      <div>
+        <h1>Dra. Milena Jácome</h1>
+        <div class="crm">CRM-PB 10744 · Clínica Nivva, João Pessoa</div>
+      </div>
     </div>
-    <h1>Dra. Milena Jácome</h1>
-    <p class="tag">Acompanhamento semanal com equipe multidisciplinar. <em>Nivva</em>, João Pessoa.</p>
+    <p class="tag">Acompanhamento semanal com medicina, nutrição, psicologia e educação física juntas.</p>
 
-    <!-- SELO GOOGLE clássico -->
     <a href="https://maps.app.goo.gl/PTkbWP9K6vD3EE2o6" class="google-review">
       <svg class="gicon" viewBox="0 0 48 48"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
       <span class="rating">
@@ -523,241 +406,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="rlabel">Avaliações no Google</span>
       </span>
     </a>
-
-    <div class="socials">
-      <a href="https://instagram.com/dramilenajacome_" title="Instagram Dra. Milena"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="https://instagram.com/clinicanivva" title="Instagram Clínica"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-      <a href="https://wa.me/5583999975033?text=Oi%2C%20Dra.%20Milena%21%20Vim%20pela%20bio%20e%20gostaria%20de%20conhecer%20os%20servi%C3%A7os%20da%20Nivva." title="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.2.6 1 1.3 1.6.9.8 1.6 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3z"/></svg></a>
-    </div>
-
-    <a href="https://wa.me/5583999975033?text=Oi%2C%20Dra.%20Milena%21%20Vim%20pela%20bio%20e%20gostaria%20de%20conhecer%20os%20servi%C3%A7os%20da%20Nivva." class="cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      Agendar
-    </a>
   </header>
 
-  <!-- CARDS HORIZONTAL (versão B) -->
-  <div class="eyebrow">Conheça a Nivva</div>
-  <div class="cards-h">
-    <a href="https://nivva.com.br" class="cardh" data-carousel>
-      <div class="slides">
-        <div class="slide active" data-hold="long" style="background-image:url('https://nivva.com.br/assets/img/img-14.webp')"></div><div class="slide" style="background-image:url('https://nivva.com.br/assets/img/estrutura.webp')"></div><div class="slide" style="background-image:url('https://nivva.com.br/assets/img/recepcao.webp')"></div><div class="slide" style="background-image:url('https://nivva.com.br/assets/img/consultorios.webp')"></div>
-      </div>
-      <div class="veil"></div>
-      <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
-      <div class="dots"><i class="on"></i><i></i><i></i><i></i></div>
-      <div class="body"><div class="k">Estrutura</div><div class="d">Conheça o espaço</div></div>
-    </a>
-    <a href="https://nivva.com.br/resultados" class="cardh" data-carousel>
-      <div class="slides">
-        <div class="slide face active" style="background-image:url('https://nivva.com.br/resultados/mirnacapa5.jpeg')"></div><div class="slide face" style="background-image:url('https://nivva.com.br/resultados/cassiacapa2.png')"></div><div class="slide face" style="background-image:url('https://nivva.com.br/resultados/eloisacapa3.png')"></div><div class="slide face" style="background-image:url('https://nivva.com.br/resultados/janecapa6.png')"></div><div class="slide face" style="background-image:url('https://nivva.com.br/resultados/jaelkycapa1.png')"></div><div class="slide face" style="background-image:url('https://nivva.com.br/resultados/tenilledepoimentocapa4.png')"></div>
-      </div>
-      <div class="veil"></div>
-      <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
-      <div class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="body"><div class="k">Quem viveu a Nivva</div><div class="d">Depoimentos</div></div>
-    </a>
-  </div>
-
-  <!-- MÉTODO -->
-  <a href="https://nivva.com.br" class="method method-logo">
-    <div class="slides"><div class="slide active" style="background-image:url('https://nivva.com.br/dramilena/logo-nivva.png');background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#0e2726"></div></div>
-    <div class="veil"></div>
-    <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></div>
-    <div class="body"><div class="k">O Método Nivva</div><div class="d">Como funciona o acompanhamento semanal</div></div>
-  </a>
-
-  <!-- EBOOK -->
-  <a href="https://nivva.com.br/ebooks" class="ebook">
-    <div class="ic" style="background-image:url('https://nivva.com.br/ebooks/capa-ebook.png');background-size:cover;background-position:center"></div>
-    <div class="tx"><b>Cozinha Fit</b><span>Ebook gratuito com a Dra. Milena</span></div>
-    <span class="free">Grátis</span>
-  </a>
-
-  <!-- AGENDA -->
-  <div class="eyebrow center">Agende sua avaliação</div>
-  <div class="agenda">
-    <div class="month">
-      <h3 id="monthLabel">Agosto 2026</h3>
-      <div class="nav"><button id="prevM">‹</button><button id="nextM">›</button></div>
+  <!-- COMO FUNCIONA -->
+  <section class="sec">
+    <div class="sec-h"><h2>Como funciona</h2></div>
+    <div class="steps">
+      <div class="step"><div class="rail"><span class="n">1</span><span class="ln"></span></div><div class="tx"><b>Primeiro contato</b><span>Você fala com a equipe Nivva pelo WhatsApp.</span></div></div>
+      <div class="step"><div class="rail"><span class="n">2</span><span class="ln"></span></div><div class="tx"><b>Avaliação com Dra. Milena</b><span>Sua primeira consulta na Nivva.</span></div></div>
+      <div class="step"><div class="rail"><span class="n">3</span></div><div class="tx"><b>Acompanhamento toda semana</b><span>Medicina, nutrição, psicologia e educação física juntas.</span></div></div>
     </div>
-    <div class="days" id="days"></div>
-    <div class="slots" id="slots"></div>
-    <div class="legend">
-      <span><span class="dot av"></span>Disponível</span>
-      <span><span class="dot lo"></span>Lotado</span>
-    </div>
-  </div>
+    <a href="https://nivva.com.br" class="more">Conhecer o Método Nivva →</a>
+  </section>
 
-  <!-- WHATSAPP DESTAQUE -->
-  <a href="https://wa.me/5583999975033?text=Oi%2C%20vim%20da%20bio%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Cl%C3%ADnica%20Nivva." class="wa-box">
-    <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.2.6 1 1.3 1.6.9.8 1.6 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3z"/></svg></div>
-    <div class="tx"><b>Não encontrou seu horário?</b><span>Fale direto com a gente no WhatsApp</span></div>
-    <span class="go">›</span>
-  </a>
-
-  <!-- LINKS -->
-  <div class="eyebrow">Mais</div>
-  <div class="links">
-    <a href="https://nivva.com.br/blog" class="link">
-      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-      <div class="tx"><b>Conteúdos e dúvidas</b><span>Emagrecimento, hormônios, menopausa</span></div>
-      <span class="go">→</span>
-    </a>
-  </div>
-
-  <!-- MAP -->
-  <div class="eyebrow">Como chegar</div>
-  <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB" class="map-photo">
-    <div class="map-img" style="background-image:url('https://nivva.com.br/assets/img/img-14.webp')"></div>
-    <div class="map-overlay">
-      <div class="map-info">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <div>
-          <b>Clínica Nivva</b>
-          <span>Av. Amazonas, 531 · Bairro dos Estados</span>
-        </div>
+  <!-- DEPOIMENTOS -->
+  <section class="sec">
+    <div class="sec-h"><h2>Quem viveu a Nivva</h2><a href="https://nivva.com.br/resultados">Ver todos</a></div>
+    <div class="marquee">
+      <div class="track">
+        <a class="dep" href="https://nivva.com.br/resultados"><div class="img" style="background-image:url('https://nivva.com.br/resultados/jaelkycapa1.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados"><div class="img" style="background-image:url('https://nivva.com.br/resultados/cassiacapa2.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados"><div class="img" style="background-image:url('https://nivva.com.br/resultados/eloisacapa3.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados"><div class="img" style="background-image:url('https://nivva.com.br/resultados/tenilledepoimentocapa4.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados"><div class="img" style="background-image:url('https://nivva.com.br/resultados/mirnacapa5.jpeg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados"><div class="img" style="background-image:url('https://nivva.com.br/resultados/janecapa6.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <!-- cópia para o loop contínuo -->
+        <a class="dep" href="https://nivva.com.br/resultados" aria-hidden="true" tabindex="-1"><div class="img" style="background-image:url('https://nivva.com.br/resultados/jaelkycapa1.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados" aria-hidden="true" tabindex="-1"><div class="img" style="background-image:url('https://nivva.com.br/resultados/cassiacapa2.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados" aria-hidden="true" tabindex="-1"><div class="img" style="background-image:url('https://nivva.com.br/resultados/eloisacapa3.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados" aria-hidden="true" tabindex="-1"><div class="img" style="background-image:url('https://nivva.com.br/resultados/tenilledepoimentocapa4.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados" aria-hidden="true" tabindex="-1"><div class="img" style="background-image:url('https://nivva.com.br/resultados/mirnacapa5.jpeg')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
+        <a class="dep" href="https://nivva.com.br/resultados" aria-hidden="true" tabindex="-1"><div class="img" style="background-image:url('https://nivva.com.br/resultados/janecapa6.png')"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><span class="lb">Assistir depoimento</span></a>
       </div>
-      <div class="map-cta">Ver no mapa ›</div>
     </div>
-  </a>
-  <div class="map-actions">
-    <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB">Google Maps</a><a href="https://waze.com/ul?q=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB">Waze</a><a href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=Avenida+Amazonas,+531,+Bairro+dos+Estados,+Jo%C3%A3o+Pessoa,+PB">Uber</a>
+  </section>
+
+  <!-- ESTRUTURA -->
+  <section class="sec">
+    <div class="sec-h"><h2>Estrutura</h2><a href="https://nivva.com.br">Conheça o espaço</a></div>
+    <div class="grid2">
+      <a href="https://nivva.com.br" class="ph" role="img" aria-label="Recepção da Clínica Nivva" style="background-image:url('https://nivva.com.br/assets/img/recepcao.webp')"></a>
+      <a href="https://nivva.com.br" class="ph" role="img" aria-label="Consultório da Clínica Nivva" style="background-image:url('https://nivva.com.br/assets/img/consultorios.webp')"></a>
+    </div>
+  </section>
+
+  <!-- CONTEÚDOS E EBOOK -->
+  <div class="rows">
+    <a href="https://nivva.com.br/blog" class="row"><span class="tx"><b>Conteúdos e dúvidas</b><span>Emagrecimento, hormônios, menopausa</span></span><span aria-hidden="true">→</span></a>
+    <a href="https://nivva.com.br/ebooks" class="row"><span class="tx"><b>Ebook Cozinha Fit <span class="free">grátis</span></b><span>Com Dra. Milena</span></span><span aria-hidden="true">→</span></a>
   </div>
+
+  <!-- COMO CHEGAR -->
+  <section class="place">
+    <span class="eyebrow">Como chegar</span>
+    <span class="addr">Av. Amazonas, 531 · Bairro dos Estados</span>
+    <div class="btns">
+      <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB">Google Maps</a>
+      <a href="https://waze.com/ul?q=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB">Waze</a>
+      <a href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=Avenida+Amazonas,+531,+Bairro+dos+Estados,+Jo%C3%A3o+Pessoa,+PB">Uber</a>
+    </div>
+  </section>
 
   <footer class="foot">
-    <img class="logo" src="https://nivva.com.br/dramilena/logo-nivva.png" alt="Nivva" style="height:38px;width:auto;margin:0 auto 10px;display:block">
-    <div class="doc">Dra. Milena Jácome · CRM-PB 10744</div>
-    <div class="cr">© 2026 Clínica Nivva · João Pessoa — PB</div>
+    <img src="https://nivva.com.br/dramilena/logo-nivva.png" alt="Nivva">
+    <div class="ig"><a href="https://instagram.com/dramilenajacome_">@dramilenajacome_</a><a href="https://instagram.com/clinicanivva">@clinicanivva</a></div>
+    <div>Dra. Milena Jácome · CRM-PB 10744</div>
+    <div>© 2026 Clínica Nivva · João Pessoa — PB</div>
   </footer>
+</main>
 
-</div>
-
-<a href="https://wa.me/5583999975033?text=Oi%2C%20Dra.%20Milena%21%20Vim%20pela%20bio%20e%20gostaria%20de%20conhecer%20os%20servi%C3%A7os%20da%20Nivva." class="fab" title="WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.2.6 1 1.3 1.6.9.8 1.6 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3z"/></svg>
-</a>
-
-<div class="note">Protótipo — áreas coloridas nos cards = onde entram as fotos reais da clínica e dos ambientes. Nada publicado.</div>
-
-<script>
-// carrossel (com hold variável: slides marcados data-hold="long" ficam mais tempo)
-document.querySelectorAll('[data-carousel]').forEach(card=>{
-  const slides=card.querySelectorAll('.slide');
-  const dots=card.querySelectorAll('.dots i');
-  if(slides.length<2)return;
-  let i=0;
-  function nextSlide(){
-    slides[i].classList.remove('active'); if(dots[i])dots[i].classList.remove('on');
-    i=(i+1)%slides.length;
-    slides[i].classList.add('active'); if(dots[i])dots[i].classList.add('on');
-    schedule();
-  }
-  function schedule(){
-    // slide de destaque (fachada) fica ~5s; os demais ~2.8s
-    const hold=slides[i].dataset.hold==='long'?5000:2800;
-    clearTimeout(card._t);
-    card._t=setTimeout(nextSlide,hold);
-  }
-  schedule();
-});
-
-// AGENDA — semana atual toda LOTADA; próxima semana abre vagas (qua/qui só)
-const meses=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
-const diasNome=["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
-
-// hoje
-const hoje=new Date();
-// achar a segunda-feira DESTA semana
-function segundaDaSemana(d){
-  const x=new Date(d); const dow=x.getDay(); // 0=dom
-  const diff=(dow===0?-6:1-dow); // volta pra segunda
-  x.setDate(x.getDate()+diff); x.setHours(0,0,0,0); return x;
-}
-let semanaBase=segundaDaSemana(hoje); // semana atual (será mostrada LOTADA)
-const semanaAtualRef=new Date(semanaBase);
-
-// config de disponibilidade por dia-da-semana, SÓ para semanas futuras (não a atual)
-// index: 0=seg,1=ter,2=qua,3=qui,4=sex
-// seg/ter/sex = lotado; qua/qui = 1-2 horários
-const cfgFutura=[
-  {full:true, slots:[]},                       // seg lotado
-  {full:true, slots:[]},                       // ter lotado
-  {full:false, slots:["10:00","15:30"]},       // qua: 2 horários
-  {full:false, slots:["14:00"]},               // qui: 1 horário
-  {full:true, slots:[]},                       // sex lotado
-];
-
-let selIdx=null;
-
-function ehSemanaAtual(base){
-  return base.getTime()===semanaAtualRef.getTime();
-}
-
-function render(){
-  const atual=ehSemanaAtual(semanaBase);
-  document.getElementById('monthLabel').textContent=meses[semanaBase.getMonth()]+' '+semanaBase.getFullYear();
-  const daysEl=document.getElementById('days'); daysEl.innerHTML='';
-  selIdx=null;
-
-  for(let k=0;k<5;k++){
-    const d=new Date(semanaBase); d.setDate(semanaBase.getDate()+k);
-    let full, temSlot;
-    if(atual){ full=true; temSlot=false; }         // semana atual: TUDO lotado
-    else { full=cfgFutura[k].full; temSlot=!full; }
-
-    const el=document.createElement('div');
-    el.className='day'+(full?' full':'');
-    el.innerHTML='<div class="dn">'+diasNome[d.getDay()]+'</div><div class="dd">'+d.getDate()+'</div>'+
-                 '<div class="dotmark '+(full?'lo':'av')+'"></div>';
-    if(!full){
-      el.addEventListener('click',()=>{
-        document.querySelectorAll('.day').forEach(x=>x.classList.remove('sel'));
-        el.classList.add('sel'); selIdx=k; renderSlots();
-      });
-    }
-    daysEl.appendChild(el);
-  }
-  // seleciona automaticamente o primeiro dia com vaga (se houver)
-  if(!atual){
-    for(let k=0;k<5;k++){ if(!cfgFutura[k].full){ selIdx=k; break; } }
-    if(selIdx!==null){ daysEl.children[selIdx].classList.add('sel'); }
-  }
-  renderSlots();
-}
-
-function renderSlots(){
-  const slotsEl=document.getElementById('slots'); slotsEl.innerHTML='';
-  const atual=ehSemanaAtual(semanaBase);
-  if(atual || selIdx===null){
-    slotsEl.innerHTML='<div class="slots-empty">Sem horários nesta semana. Veja a próxima ›</div>';
-    return;
-  }
-  const slots=cfgFutura[selIdx].slots;
-  if(!slots.length){
-    slotsEl.innerHTML='<div class="slots-empty">Sem horários neste dia.</div>';
-    return;
-  }
-  slots.forEach(h=>{
-    const s=document.createElement('a'); s.className='slot'; s.textContent=h;
-    s.href='https://wa.me/5583999975033?text='+encodeURIComponent('Olá! Gostaria de agendar uma avaliação com a Dra. Milena.');
-    s.style.textDecoration='none';
-    slotsEl.appendChild(s);
-  });
-}
-
-document.getElementById('nextM').addEventListener('click',()=>{
-  semanaBase.setDate(semanaBase.getDate()+7); render();
-});
-document.getElementById('prevM').addEventListener('click',()=>{
-  // não deixa voltar antes da semana atual
-  const test=new Date(semanaBase); test.setDate(test.getDate()-7);
-  if(test>=semanaAtualRef){ semanaBase=test; render(); }
-});
-render();
-
-// foto real da milena (quando tiver):
-// document.getElementById('avatarPhoto').style.backgroundImage="url('https://nivva.com.br/dramilena/milena.JPG')";
-// document.getElementById('avatarPhoto').textContent="";
-</script>
+<!-- BARRA FIXA -->
+<nav class="bar" aria-label="Agendar">
+  <div class="in">
+    <a class="wa" href="https://wa.me/5583999975033?text=Oi%2C%20vim%20da%20bio%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20a%20Cl%C3%ADnica%20Nivva." aria-label="Tirar dúvida no WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.5-4.1-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.1.2.6 1 1.3 1.6.9.8 1.6 1 1.8 1.1.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+    </a>
+    <a class="go" href="https://wa.me/5583999975033?text=Oi%2C%20Dra.%20Milena%21%20Vim%20pela%20bio%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Agendar avaliação</a>
+  </div>
+</nav>
 </body>
 </html>
