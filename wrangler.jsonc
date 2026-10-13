@@ -3,8 +3,12 @@
   // O Cloudflare publica sozinho a cada atualização no ramo main do GitHub.
   "name": "nivva-com-br",
   "compatibility_date": "2026-10-13",
+  // worker.js só atende os vídeos (.mp4), para eles tocarem no iPhone. O resto é servido direto.
+  "main": "worker.js",
   "assets": {
     "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": ["/resultados/*.mp4"],
     // Endereços sem barra no final (/blog/artigo), iguais ao sitemap e às tags canonical.
     // Sem isso o Cloudflare redirecionava /artigo para /artigo/ e o Google marcava as páginas como "com redirecionamento".
     "html_handling": "drop-trailing-slash"

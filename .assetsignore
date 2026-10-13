@@ -8,3 +8,4 @@ wrangler.jsonc
 node_modules
 .DS_Store
 .wrangler
+worker.js
