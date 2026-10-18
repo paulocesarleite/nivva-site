@@ -5,6 +5,16 @@
    Eventos publicados:
    - nivva_page_context  (uma vez por pagina, com a origem da visita)
    - whatsapp_click      (todo clique em link wa.me)
+
+   Carimbo de origem no WhatsApp:
+   Quando a visita veio de anuncio, o texto pre-preenchido do WhatsApp ganha
+   um codigo curto no fim, ex: "(ref. NV-M)". E a UNICA forma de o CRM saber
+   que aquele lead veio do trafego pago: o clique no site nao passa adId nem
+   UTM pro WhatsApp. Visita organica nao recebe carimbo nenhum.
+     NV-M          anuncio da Meta (tem fbclid ou utm_source da Meta)
+     NV-G          anuncio do Google (gclid)
+     NV-A<base36>  anuncio da Meta com o ID do criativo em utm_content
+                   (so aparece se o anuncio tiver url_tags com {{ad.id}})
 */
 (function () {
   'use strict';
@@ -112,9 +122,72 @@
     return alternativo.trim().slice(0, 80);
   }
 
+  // ---- Carimbo de origem -------------------------------------------------
+
+  var MARCA = '(ref. NV-';
+  var FONTES_META = /^(facebook|fb|instagram|ig|meta|an|audience_network)$/i;
+
+  // ID de anuncio da Meta tem 15 a 20 digitos: nao cabe em Number sem perder
+  // precisao. Em base36 fica com ~11 caracteres. Sem BigInt, manda os digitos.
+  function compactarId(digitos) {
+    try {
+      return 'A' + BigInt(digitos).toString(36);
+    } catch (e) {
+      return 'D' + digitos;
+    }
+  }
+
+  function codigoDeOrigem(o) {
+    if (!o) return null;
+    var conteudo = String(o.utm_content || '');
+    var fonte = String(o.utm_source || '');
+    var ehMeta = !!o.fbclid || FONTES_META.test(fonte);
+    if (/^\d{10,}$/.test(conteudo) && (ehMeta || !fonte)) return compactarId(conteudo);
+    if (ehMeta) return 'M';
+    if (o.gclid || /^google$/i.test(fonte)) return 'G';
+    return null;
+  }
+
+  // Reescreve so o parametro `text` do link, preservando o resto. Nao usa
+  // URLSearchParams.set porque ele troca espaco por "+", e nem todo WhatsApp
+  // decodifica "+" como espaco.
+  function carimbarLink(link, codigo) {
+    var href = link.getAttribute('href') || '';
+    var partes = href.split('?');
+    var base = partes[0];
+    var pares = partes[1] ? partes[1].split('&') : [];
+    var texto = '';
+    var resto = [];
+
+    pares.forEach(function (par) {
+      var i = par.indexOf('=');
+      var chave = i < 0 ? par : par.slice(0, i);
+      var valor = i < 0 ? '' : par.slice(i + 1);
+      if (chave === 'text') {
+        try { texto = decodeURIComponent(valor.replace(/\+/g, ' ')); } catch (e) { texto = valor; }
+      } else {
+        resto.push(par);
+      }
+    });
+
+    if (texto.indexOf(MARCA) !== -1) return href; // ja carimbado num clique anterior
+
+    var novoTexto = (texto ? texto + '\n\n' : '') + MARCA + codigo + ')';
+    resto.push('text=' + encodeURIComponent(novoTexto));
+    var novoHref = base + '?' + resto.join('&');
+    link.setAttribute('href', novoHref);
+    return novoHref;
+  }
+
+  var codigoSessao = codigoDeOrigem(origem);
+
   document.addEventListener('click', function (evento) {
     var link = evento.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
     if (!link) return;
+
+    // Carimba ANTES de registrar e antes da navegacao: o listener e de captura,
+    // entao roda antes do navegador seguir o link.
+    var destino = codigoSessao ? carimbarLink(link, codigoSessao) : link.getAttribute('href');
 
     window.dataLayer.push({
       event: 'whatsapp_click',
@@ -122,7 +195,8 @@
       titulo_pagina: document.title,
       secao: rotuloDoLink(link),
       texto_botao: textoDoLink(link),
-      destino: link.getAttribute('href'),
+      destino: destino,
+      carimbo: codigoSessao ? 'NV-' + codigoSessao : '',
       origem: origem
     });
   }, true); // captura: registra o clique mesmo se outro handler parar a propagacao
