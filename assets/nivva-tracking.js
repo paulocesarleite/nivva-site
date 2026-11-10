@@ -63,6 +63,15 @@
 
   var origem = capturarOrigem();
 
+  // Formulario antes do WhatsApp: so nos artigos do blog. A landing /dramilena
+  // e as demais paginas seguem abrindo o WhatsApp direto.
+  if (/^\/blog\/[^/]+/.test(window.location.pathname)) {
+    var formScript = document.createElement('script');
+    formScript.src = '/assets/nivva-lead-form.js?v=1';
+    formScript.defer = true;
+    document.head.appendChild(formScript);
+  }
+
   window.dataLayer.push({
     event: 'nivva_page_context',
     pagina: window.location.pathname,
