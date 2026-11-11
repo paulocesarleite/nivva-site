@@ -74,9 +74,22 @@
     /^(cpc|ppc|paid|paid_social|ads?)$/i.test(origem.utm_medium || ''));
   if (/^\/blog\/[^/]+/.test(path) || (/^\/(dramilena|resultados)\/?$/.test(path) && veioDeAnuncio)) {
     var formScript = document.createElement('script');
-    formScript.src = '/assets/nivva-lead-form.js?v=1';
+    formScript.src = '/assets/nivva-lead-form.js?v=2';
     formScript.defer = true;
     document.head.appendChild(formScript);
+  }
+
+  // Tag do Google Ads (AW-11286644766): guarda o gclid em cookie proprio
+  // (vinculador de conversoes) e permite registrar a conversao do formulario.
+  // Fica direto no site porque o GTM do site (GTM-PWV952HD) nao esta acessivel.
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+  if (!document.querySelector('script[src*="gtag/js?id=AW-11286644766"]')) {
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-11286644766';
+    document.head.appendChild(gtagScript);
+    window.gtag('js', new Date());
+    window.gtag('config', 'AW-11286644766');
   }
 
   window.dataLayer.push({

@@ -288,6 +288,14 @@
     });
     marcarEnviado();
 
+    // Conversao do Google Ads (tag carregada pelo nivva-tracking.js).
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-11286644766/Lt8-CNjHqrYdEJ6Q8oUq',
+        transport_type: 'beacon'
+      });
+    }
+
     var texto = 'Oi, Dra. Milena! Sou ' + primeiroNome + ' e quero saber sobre ' +
       dados.assunto.valor.toLowerCase() + '. (' + form.elements.codigo_origem.value + ')';
     if (dados.assunto.codigo === 'OU') {
