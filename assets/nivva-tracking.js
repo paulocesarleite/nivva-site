@@ -65,11 +65,14 @@
 
   // Formulario antes do WhatsApp:
   // - artigos do blog: sempre;
-  // - /dramilena: so para quem chegou por anuncio do Google (gclid ou
-  //   utm_source=google). Quem vem da bio do Instagram segue direto ao WhatsApp.
+  // - /dramilena e /resultados: so para quem chegou por ANUNCIO (gclid do
+  //   Google ou utm_medium pago: cpc/paid/ads). Quem vem da bio do Instagram
+  //   (sem UTM paga) segue direto ao WhatsApp. fbclid sozinho nao conta,
+  //   porque o Instagram poe fbclid ate em link organico da bio.
   var path = window.location.pathname;
-  var veioDoGoogleAds = !!(origem.gclid || /google/i.test(origem.utm_source || ''));
-  if (/^\/blog\/[^/]+/.test(path) || (/^\/dramilena\/?$/.test(path) && veioDoGoogleAds)) {
+  var veioDeAnuncio = !!(origem.gclid || /google/i.test(origem.utm_source || '') ||
+    /^(cpc|ppc|paid|paid_social|ads?)$/i.test(origem.utm_medium || ''));
+  if (/^\/blog\/[^/]+/.test(path) || (/^\/(dramilena|resultados)\/?$/.test(path) && veioDeAnuncio)) {
     var formScript = document.createElement('script');
     formScript.src = '/assets/nivva-lead-form.js?v=1';
     formScript.defer = true;
