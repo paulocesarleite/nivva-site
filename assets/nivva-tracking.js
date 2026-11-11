@@ -63,9 +63,13 @@
 
   var origem = capturarOrigem();
 
-  // Formulario antes do WhatsApp: so nos artigos do blog. A landing /dramilena
-  // e as demais paginas seguem abrindo o WhatsApp direto.
-  if (/^\/blog\/[^/]+/.test(window.location.pathname)) {
+  // Formulario antes do WhatsApp:
+  // - artigos do blog: sempre;
+  // - /dramilena: so para quem chegou por anuncio do Google (gclid ou
+  //   utm_source=google). Quem vem da bio do Instagram segue direto ao WhatsApp.
+  var path = window.location.pathname;
+  var veioDoGoogleAds = !!(origem.gclid || /google/i.test(origem.utm_source || ''));
+  if (/^\/blog\/[^/]+/.test(path) || (/^\/dramilena\/?$/.test(path) && veioDoGoogleAds)) {
     var formScript = document.createElement('script');
     formScript.src = '/assets/nivva-lead-form.js?v=1';
     formScript.defer = true;
