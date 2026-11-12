@@ -253,6 +253,15 @@
     var url = linkOriginal ? linkOriginal.getAttribute('href') : linkWhatsApp('Oi, Dra. Milena! Vim pelo blog.');
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'lead_form_skip', pagina: window.location.pathname });
+    // Conversao separada no Google Ads para quem pula o formulario.
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-11286644766/upffCM-SmbcdEJ6Q8oUq',
+        value: 1.0,
+        currency: 'BRL',
+        transport_type: 'beacon'
+      });
+    }
     fechar();
     abrirWhatsApp(url);
   }

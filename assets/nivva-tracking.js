@@ -74,7 +74,7 @@
     /^(cpc|ppc|paid|paid_social|ads?)$/i.test(origem.utm_medium || ''));
   if (/^\/blog\/[^/]+/.test(path) || (/^\/(dramilena|resultados)\/?$/.test(path) && veioDeAnuncio)) {
     var formScript = document.createElement('script');
-    formScript.src = '/assets/nivva-lead-form.js?v=2';
+    formScript.src = '/assets/nivva-lead-form.js?v=3';
     formScript.defer = true;
     document.head.appendChild(formScript);
   }
