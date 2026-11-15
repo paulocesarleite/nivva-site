@@ -1,4 +1,4 @@
-/* Nivva — formulario antes do WhatsApp (somente paginas do blog)
+/* Nivva — formulario antes do WhatsApp (blog; /dramilena e /resultados so para anuncio)
 
    Quando a pessoa toca em qualquer botao de WhatsApp de um artigo, abre uma
    janela pedindo nome, WhatsApp e assunto. Ao enviar:
@@ -61,6 +61,9 @@
     var fonte = (origem.utm_source || '').toLowerCase();
     if (origem.gclid || fonte.indexOf('google') !== -1) canal = 'G';
     else if (origem.fbclid || /facebook|instagram|meta|^fb$|^ig$/.test(fonte)) canal = 'M';
+    // Campanha de marca do Google (utm_campaign=marca): codigo proprio para
+    // separar quem pesquisou "Nivva" ou "Milena Jacome" das demais campanhas.
+    if (canal === 'G' && /marca/i.test(origem.utm_campaign || '')) return 'G-MARCA';
     return canal + '-' + assunto.codigo;
   }
 
@@ -251,6 +254,20 @@
 
   function irDireto() {
     var url = linkOriginal ? linkOriginal.getAttribute('href') : linkWhatsApp('Oi, Dra. Milena! Vim pelo blog.');
+    // Quem veio de anuncio e pula o formulario tambem leva o codigo de origem,
+    // para a equipe saber de onde veio. Quem chega organico segue sem codigo.
+    var origemDireto = lerOrigem();
+    var codigoDireto = codigoOrigem(origemDireto, assuntoDaPagina());
+    if (codigoDireto.charAt(0) !== 'O') {
+      try {
+        // Monta de novo com encodeURIComponent: URLSearchParams troca espaco
+        // por "+", e o WhatsApp pode mostrar o "+" literal na mensagem.
+        var t = new URL(url).searchParams.get('text') || 'Oi, Dra. Milena!';
+        if (t.indexOf('(' + codigoDireto + ')') === -1) {
+          url = linkWhatsApp(t + ' (' + codigoDireto + ')');
+        }
+      } catch (err) {}
+    }
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'lead_form_skip', pagina: window.location.pathname });
     // Conversao separada no Google Ads para quem pula o formulario.
