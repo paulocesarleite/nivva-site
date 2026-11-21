@@ -72,7 +72,9 @@
   var path = window.location.pathname;
   var veioDeAnuncio = !!(origem.gclid || /google/i.test(origem.utm_source || '') ||
     /^(cpc|ppc|paid|paid_social|ads?)$/i.test(origem.utm_medium || ''));
-  if (/^\/blog\/[^/]+/.test(path) || (/^\/(dramilena|resultados)\/?$/.test(path) && veioDeAnuncio)) {
+  // - landing pages de anuncio (/emagrecimento): sempre.
+  var landingPage = /^\/emagrecimento\/?$/.test(path);
+  if (/^\/blog\/[^/]+/.test(path) || landingPage || (/^\/(dramilena|resultados)\/?$/.test(path) && veioDeAnuncio)) {
     var formScript = document.createElement('script');
     formScript.src = '/assets/nivva-lead-form.js?v=4';
     formScript.defer = true;
