@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-paleta="areia">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Clínica Nivva · Dra. Milena Jácome · João Pessoa</title>
 <meta name="description" content="Clínica médica em João Pessoa e Patos. Emagrecimento, lipedema, reposição hormonal e tecnologias com Dra. Milena Jácome, CRM-PB 10744.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#3a2d26">
+<meta name="theme-color" content="#26262a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -15,17 +15,7 @@
      Uma família de cor só (café, areia, creme) e um acento (avelã), como nas clínicas
      mais elegantes da cidade. Quem dá a riqueza são as fotos, não a paleta.
      Títulos grandes em peso leve; textos de uma linha; o resto mora na página de cada assunto. */
-  :root, [data-paleta="areia"] {
-    --fundo: #f5efe8; --fundo-2: #ebe2d8; --cartao: #fffaf5;
-    --escuro: #3a2d26; --escuro-2: #4a3a31; --claro-sobre-escuro: #e9ddd1; --suave-sobre-escuro: #bfae9f;
-    --acento: #b08d72; --texto: #2a221d; --texto-2: #6f645c; --linha: rgba(42, 34, 29, .12);
-  }
-  [data-paleta="oliva"] {
-    --fundo: #f3f1ea; --fundo-2: #e3e2d4; --cartao: #fbfaf5;
-    --escuro: #2f3328; --escuro-2: #3d4234; --claro-sobre-escuro: #e6e6d8; --suave-sobre-escuro: #b3b49f;
-    --acento: #a08b60; --texto: #23251f; --texto-2: #62655a; --linha: rgba(35, 37, 31, .12);
-  }
-  [data-paleta="grafite"] {
+  :root {
     --fundo: #f4f2ef; --fundo-2: #e7e2dc; --cartao: #ffffff;
     --escuro: #26262a; --escuro-2: #34343a; --claro-sobre-escuro: #ecebe8; --suave-sobre-escuro: #aeaaa4;
     --acento: #b6977c; --texto: #1f1f22; --texto-2: #66646a; --linha: rgba(31, 31, 34, .12);
@@ -215,10 +205,11 @@
   .fixo .btn { width: 100%; color: #fff; background: linear-gradient(180deg, var(--escuro-2), var(--escuro)); border-color: color-mix(in srgb, var(--escuro) 75%, #000); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 10px 26px rgba(0,0,0,.28); }
   @media (min-width: 900px) { .fixo { left: auto; right: 24px; } .fixo .btn { width: auto; } }
 
-  /* Seletor de cores (só na prévia) */
-  .paletas { position: fixed; top: 70px; left: 50%; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 4px; padding: 5px 6px 5px 12px; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: 0 6px 20px rgba(0,0,0,.18); font-size: 13px; color: #333; backdrop-filter: blur(10px); }
-  .paletas button { font: inherit; border: 0; background: transparent; padding: 7px 12px; border-radius: 999px; cursor: pointer; color: #333; }
-  .paletas button[aria-pressed="true"] { background: #222; color: #fff; }
+  @media (min-width: 900px) { .abertura.foto-retrato > picture img { left: auto; right: 0; width: 58%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 35%); mask-image: linear-gradient(90deg, transparent, #000 35%); } }
+  /* Troca da foto da abertura (só na prévia) */
+  .variacao { position: fixed; top: 64px; left: 50%; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 4px; padding: 5px 6px 5px 12px; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: 0 6px 20px rgba(0,0,0,.18); font-size: 13px; color: #333; backdrop-filter: blur(10px); white-space: nowrap; }
+  .variacao button { font: inherit; border: 0; background: transparent; padding: 7px 11px; border-radius: 999px; cursor: pointer; color: #333; }
+  .variacao button[aria-pressed="true"] { background: #222; color: #fff; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fixo, .barra { transition: none; } }
 </style>
 </head>
@@ -227,19 +218,17 @@
 <header class="barra" id="barra">
   <div class="wrap">
     <img src="/assets/img/img-6.webp" alt="Nivva" width="600" height="133">
-    <a class="btn btn-claro" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar</a>
   </div>
 </header>
 
 <section class="abertura">
-  <picture><source media="(min-width: 900px)" srcset="/assets/img/real/recepcao-espelho.webp"><img src="/assets/img/real/recepcao-letreiro.webp" alt="Recepção da Clínica Nivva" width="900" height="1200" fetchpriority="high"></picture>
+  <picture><source id="foto-larga" media="(min-width: 900px)" srcset="/assets/img/real/recepcao-espelho.webp"><img id="foto-alta" src="/assets/img/real/recepcao-letreiro.webp" alt="Recepção da Clínica Nivva" width="900" height="1200" fetchpriority="high"></picture>
   <div class="wrap">
     <p class="local">Clínica médica · João Pessoa e Patos</p>
     <h1>Emagrecimento, lipedema <strong>e saúde hormonal.</strong></h1>
     <p class="sub">Dra. Milena Jácome e equipe multidisciplinar.</p>
     <div class="acoes">
-      <a class="btn btn-claro" id="botao-topo" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
-      <a class="btn btn-linha" href="#clinica">Conhecer a clínica</a>
+      <a class="btn btn-claro" id="botao-topo" style="min-width:220px" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
     </div>
     <a class="google-review" href="https://maps.app.goo.gl/PTkbWP9K6vD3EE2o6" target="_blank" rel="noopener">
       <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
@@ -257,56 +246,6 @@
       <a class="caso" href="#"><strong>Reposição hormonal</strong><small>Menopausa, climatério e TPM</small><span>→</span></a>
       <a class="caso" href="#tecnologias"><strong>Tecnologias</strong><small>Firmeza e gordura localizada</small><span>→</span></a>
     </nav>
-  </div>
-</section>
-
-<section class="estrutura" id="clinica">
-  <div class="wrap">
-    <h2>A clínica.</h2>
-    <p class="apoio">Avenida Amazonas, 531, 1º andar, Bairro dos Estados. Com estacionamento.</p>
-    <div class="fotos">
-      <figure class="foto"><div class="img"><div class="falta">Foto da fachada<br>(falta subir no Drive)</div></div><figcaption>Fachada</figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/real/recepcao-larga.webp" alt="Recepção" loading="lazy"></div><figcaption>Recepção</figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/real/cafe-espera.webp" alt="Sala de espera com café" loading="lazy"></div><figcaption>Sala de espera<small>Com café e chá para quem chega</small></figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/real/sala-espera.webp" alt="Sala de espera" loading="lazy"></div><figcaption>Ambientes</figcaption></figure>
-      <figure class="foto"><div class="img"><div class="falta">Foto da InBody em uso<br>(falta subir no Drive)</div></div><figcaption>Bioimpedância InBody<small>Gordura, músculo e água, em minutos</small></figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/real/kit-nivva.webp" alt="Kit Nivva" loading="lazy"></div><figcaption>Kit da paciente</figcaption></figure>
-    </div>
-    <div class="endereco">
-      <span><b style="font-weight:400;color:var(--texto)">Unidade Patos:</b> Rua Bossuet Wanderley, 361, Centro, no Labvita.</span>
-      <a class="link" href="https://maps.google.com/?q=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB" target="_blank" rel="noopener">Ver no mapa →</a>
-    </div>
-  </div>
-</section>
-
-<section class="milena">
-  <div class="wrap grade">
-    <img src="/assets/img/img-15.webp" alt="Dra. Milena Jácome" width="1120" height="1400" loading="lazy">
-    <div>
-      <h2>Dra. Milena Jácome.</h2>
-      <p class="apoio">Peso, metabolismo e hormônios.</p>
-      <ul class="cv">
-        <li>CRM-PB 10744</li>
-        <li>Primeira médica paraibana na SBEMO</li>
-        <li>Pós-graduação em nutrologia pela ABRAN</li>
-      </ul>
-      <a class="link" href="https://dramilenajacome.com.br/">Currículo completo →</a>
-    </div>
-  </div>
-</section>
-
-
-<section class="equipe" id="equipe">
-  <div class="wrap">
-    <h2>Seis áreas. Um plano.</h2>
-    <div class="areas">
-      <div class="area"><span class="num">01</span><strong>Medicina</strong><small>Dra. Milena Jácome</small></div>
-      <div class="area"><span class="num">02</span><strong>Nutrição</strong><small>Plano alimentar</small></div>
-      <div class="area"><span class="num">03</span><strong>Psicologia</strong><small>Comportamento e ansiedade</small></div>
-      <div class="area"><span class="num">04</span><strong>Educação física</strong><small>Treino e massa muscular</small></div>
-      <div class="area"><span class="num">05</span><strong>Enfermagem</strong><small>Aplicações e medidas</small></div>
-      <div class="area"><span class="num">06</span><strong>Fisioterapia</strong><small>Dor, inchaço e circulação</small></div>
-    </div>
   </div>
 </section>
 
@@ -329,7 +268,51 @@
         <li><b>Fotos</b> para acompanhar a evolução</li>
         <li><b>Exames</b> revisados na consulta</li>
       </ul>
-      <a class="btn btn-claro" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20e%20quero%20agendar%20a%20avalia%C3%A7%C3%A3o%20Nivva%20360." target="_blank" rel="noopener">Agendar a avaliação</a>
+    </div>
+  </div>
+</section>
+
+<section class="milena">
+  <div class="wrap grade">
+    <img src="/assets/img/img-15.webp" alt="Dra. Milena Jácome" width="1120" height="1400" loading="lazy">
+    <div>
+      <h2>Dra. Milena Jácome.</h2>
+      <p class="apoio">Peso, metabolismo e hormônios.</p>
+      <ul class="cv">
+        <li>CRM-PB 10744</li>
+        <li>Primeira médica paraibana na SBEMO</li>
+        <li>Pós-graduação em nutrologia pela ABRAN</li>
+      </ul>
+      <a class="link" href="https://dramilenajacome.com.br/">Currículo completo →</a>
+    </div>
+  </div>
+</section>
+
+<section class="resultados">
+  <div class="wrap">
+    <h2>Depoimentos.</h2>
+    
+    <div class="videos">
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-jaelkycapa1.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-cassiacapa2.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-eloisacapa3.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-tenilledepoimentocapa4.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-janecapa6.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+    </div>
+    <a class="link" href="/resultados" style="margin-top:22px">Ver todos os depoimentos →</a>
+  </div>
+</section>
+
+<section class="equipe" id="equipe">
+  <div class="wrap">
+    <h2>Seis áreas. Um plano.</h2>
+    <div class="areas">
+      <div class="area"><span class="num">01</span><strong>Medicina</strong><small>Dra. Milena Jácome</small></div>
+      <div class="area"><span class="num">02</span><strong>Nutrição</strong><small>Plano alimentar</small></div>
+      <div class="area"><span class="num">03</span><strong>Psicologia</strong><small>Comportamento e ansiedade</small></div>
+      <div class="area"><span class="num">04</span><strong>Educação física</strong><small>Treino e massa muscular</small></div>
+      <div class="area"><span class="num">05</span><strong>Enfermagem</strong><small>Aplicações e medidas</small></div>
+      <div class="area"><span class="num">06</span><strong>Fisioterapia</strong><small>Dor, inchaço e circulação</small></div>
     </div>
   </div>
 </section>
@@ -347,19 +330,22 @@
   </div>
 </section>
 
-
-<section class="resultados">
+<section class="estrutura" id="clinica">
   <div class="wrap">
-    <h2>Depoimentos.</h2>
-    
-    <div class="videos">
-      <a class="video" href="/resultados"><img src="/assets/img/real/res-jaelkycapa1.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
-      <a class="video" href="/resultados"><img src="/assets/img/real/res-cassiacapa2.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
-      <a class="video" href="/resultados"><img src="/assets/img/real/res-eloisacapa3.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
-      <a class="video" href="/resultados"><img src="/assets/img/real/res-tenilledepoimentocapa4.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
-      <a class="video" href="/resultados"><img src="/assets/img/real/res-janecapa6.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+    <h2>A clínica.</h2>
+    <p class="apoio">Avenida Amazonas, 531, 1º andar, Bairro dos Estados. Com estacionamento.</p>
+    <div class="fotos">
+      <figure class="foto"><div class="img"><img src="/assets/img/real/fachada-alta.webp" alt="Fachada da Clínica Nivva" loading="lazy"></div><figcaption>Fachada</figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/recepcao-larga.webp" alt="Recepção" loading="lazy"></div><figcaption>Recepção</figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/cafe-espera.webp" alt="Sala de espera com café" loading="lazy"></div><figcaption>Sala de espera<small>Com café e chá para quem chega</small></figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/sala-espera.webp" alt="Sala de espera" loading="lazy"></div><figcaption>Ambientes</figcaption></figure>
+      <figure class="foto"><div class="img"><div class="falta">Foto da InBody em uso<br>(falta subir no Drive)</div></div><figcaption>Bioimpedância InBody<small>Gordura, músculo e água, em minutos</small></figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/kit-nivva.webp" alt="Kit Nivva" loading="lazy"></div><figcaption>Kit da paciente</figcaption></figure>
     </div>
-    <a class="link" href="/resultados" style="margin-top:22px">Ver todos os depoimentos →</a>
+    <div class="endereco">
+      <span><b style="font-weight:400;color:var(--texto)">Unidade Patos:</b> Rua Bossuet Wanderley, 361, Centro, no Labvita.</span>
+      <a class="link" href="https://maps.google.com/?q=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB" target="_blank" rel="noopener">Ver no mapa →</a>
+    </div>
   </div>
 </section>
 
@@ -403,12 +389,11 @@
   </div>
 </footer>
 
-
-<div class="paletas" role="group" aria-label="Cores da prévia">
-  <span>Cores:</span>
-  <button data-p="areia" aria-pressed="true">Areia</button>
-  <button data-p="oliva">Oliva</button>
-  <button data-p="grafite">Grafite</button>
+<div class="variacao" role="group" aria-label="Foto da abertura (só na prévia)">
+  <span>Foto:</span>
+  <button data-v="recepcao" aria-pressed="true">Recepção</button>
+  <button data-v="milena">Dra. Milena</button>
+  <button data-v="fachada">Fachada</button>
 </div>
 
 <div class="fixo" id="fixo">
@@ -423,10 +408,18 @@
   const aoRolar = () => barra.classList.toggle('solida', window.scrollY > 40);
   window.addEventListener('scroll', aoRolar, { passive: true });
   aoRolar();
-  const botoes = document.querySelectorAll('.paletas button');
-  botoes.forEach((b) => b.addEventListener('click', () => {
-    document.documentElement.dataset.paleta = b.dataset.p;
-    botoes.forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+  const fotos = {
+    recepcao: ['/assets/img/real/recepcao-espelho.webp', '/assets/img/real/recepcao-letreiro.webp', '50% 30%'],
+    milena: ['/assets/img/img-15.webp', '/assets/img/img-15.webp', '50% 8%'],
+    fachada: ['/assets/img/real/fachada-larga.webp', '/assets/img/real/fachada-alta.webp', '50% 60%'],
+  };
+  const larga = document.getElementById('foto-larga'), alta = document.getElementById('foto-alta');
+  const vbotoes = document.querySelectorAll('.variacao button');
+  vbotoes.forEach((b) => b.addEventListener('click', () => {
+    const f = fotos[b.dataset.v];
+    larga.srcset = f[0]; alta.src = f[1]; alta.style.objectPosition = f[2];
+    document.querySelector('.abertura').classList.toggle('foto-retrato', b.dataset.v === 'milena');
+    vbotoes.forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
   }));
   if ('IntersectionObserver' in window && topo) {
     const vigia = new IntersectionObserver((e) => {
