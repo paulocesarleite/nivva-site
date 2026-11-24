@@ -197,8 +197,8 @@
   .tecnologias .wrap { position: relative; }
   .tecnologias .apoio { color: var(--suave-sobre-escuro); }
   .tec { display: grid; gap: 0; margin-top: 26px; }
-  .tec a { display: grid; grid-template-columns: 64px 1fr 20px; gap: 14px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.12); }
-  .tec a:last-child { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .tec .tec-item { display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.12); }
+  .tec .tec-item:last-child { border-bottom: 1px solid rgba(255,255,255,.12); }
   .tec img, .tec .mini { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; background: var(--escuro-2); }
   .tec strong { display: block; font-weight: 400; font-size: 18px; }
   .tec small { color: var(--suave-sobre-escuro); font-size: 14px; }
@@ -263,8 +263,8 @@
     <h2>O que tratamos.</h2>
     <nav class="casos" aria-label="Assuntos">
       <a class="caso" href="/emagrecimento"><strong>Emagrecimento</strong><span>→</span></a>
-      <a class="caso" href="#"><strong>Lipedema</strong><span>→</span></a>
-      <a class="caso" href="#"><strong>Reposição hormonal</strong><span>→</span></a>
+      <a class="caso" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20saber%20sobre%20lipedema." target="_blank" rel="noopener"><strong>Lipedema</strong><span>→</span></a>
+      <a class="caso" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20saber%20sobre%20reposi%C3%A7%C3%A3o%20hormonal." target="_blank" rel="noopener"><strong>Reposição hormonal</strong><span>→</span></a>
       <a class="caso" href="#tecnologias"><strong>Tecnologias</strong><span>→</span></a>
     </nav>
   </div>
@@ -294,8 +294,14 @@
     <img src="/assets/img/img-4.webp" alt="Dra. Milena Jácome" width="2400" height="1600" loading="lazy" style="object-position:68% 30%">
     <div>
       <h2>Dra. Milena Jácome.</h2>
-            <p class="apoio" style="margin-bottom:22px">CRM-PB 10744 · Primeira médica paraibana na SBEMO</p>
-      <a class="link" href="https://dramilenajacome.com.br/">Currículo completo →</a>
+      <p class="apoio">CRM-PB 10744</p>
+      <ul class="cv">
+        <li>Primeira médica paraibana na SBEMO</li>
+        <li>Pós-graduação em nutrologia</li>
+        <li>Pós-graduação em nutrição enteral e parenteral</li>
+        <li>Pós-graduação em envelhecimento saudável</li>
+      </ul>
+      <a class="link" href="/dramilena">Currículo completo →</a>
     </div>
   </div>
 </section>
@@ -355,7 +361,7 @@
       <figure class="foto"><div class="img"><img src="/assets/img/real/kit-nivva.webp" alt="Kit Nivva" loading="lazy"></div><figcaption>Kit da paciente</figcaption></figure>
     </div>
     <div class="endereco">
-      <span><b style="font-weight:400;color:var(--texto)">Unidade Patos:</b> Rua Bossuet Wanderley, 361, Centro, no Labvita.</span>
+      <span><b style="font-weight:400;color:var(--texto)">Unidade Patos:</b> Avenida Bossuet Wanderley, 361, 1º andar, no Labvita, Centro.</span>
       <a class="link" href="https://maps.google.com/?q=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB" target="_blank" rel="noopener">Ver no mapa →</a>
     </div>
   </div>
@@ -366,9 +372,9 @@
     <h2>Tecnologias.</h2>
     
     <div class="tec">
-      <a href="#"><img src="/assets/img/img-5.webp" alt="Ultrassom microfocado" loading="lazy"><span><strong>Ultrassom microfocado</strong></span><span class="seta">›</span></a>
-      <a href="#"><span class="mini"></span><span><strong>Campo magnético</strong></span><span class="seta">›</span></a>
-      <a href="#nivva360"><img src="/assets/img/real/bio-corpo-f.webp" alt="" loading="lazy" style="object-fit:contain;background:#000"><span><strong>Bioimpedância InBody</strong></span><span class="seta">›</span></a>
+      <div class="tec-item"><img src="/assets/img/img-5.webp" alt="Ultrassom microfocado" loading="lazy"><span><strong>Ultrassom microfocado</strong></span></div>
+      <div class="tec-item"><span class="mini"></span><span><strong>Campo magnético</strong></span></div>
+      <div class="tec-item"><img src="/assets/img/real/bio-corpo-f.webp" alt="" loading="lazy" style="object-fit:contain;background:#000"><span><strong>Bioimpedância InBody</strong></span></div>
     </div>
   </div>
 </section>
@@ -392,7 +398,13 @@
           <a href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=Avenida+Amazonas,+531,+Bairro+dos+Estados,+Jo%C3%A3o+Pessoa,+PB" target="_blank" rel="noopener">Uber</a>
         </div>
       </div>
-      <div><b>Patos</b>Rua Bossuet Wanderley, 361, Centro<br>1º andar, no Labvita</div>
+      <div><b>Patos</b>Avenida Bossuet Wanderley, 361, 1º andar<br>No Labvita, Centro
+        <div class="rotas">
+          <a href="https://maps.google.com/?q=Avenida+Bossuet+Wanderley+361+Centro+Patos+PB" target="_blank" rel="noopener">Maps</a>
+          <a href="https://waze.com/ul?q=Avenida+Bossuet+Wanderley+361+Centro+Patos+PB" target="_blank" rel="noopener">Waze</a>
+          <a href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=Avenida+Bossuet+Wanderley,+361,+Centro,+Patos,+PB" target="_blank" rel="noopener">Uber</a>
+        </div>
+      </div>
       <div><b>Atendimento</b>Segunda a sexta, 8h às 17h<br><a href="https://www.instagram.com/clinicanivva/" target="_blank" rel="noopener">@clinicanivva</a> · <a href="https://www.instagram.com/dramilenajacome_/" target="_blank" rel="noopener">@dramilenajacome_</a></div>
     </div>
     <p class="legal">Médica responsável: Dra. Milena Jácome, CRM-PB 10744. Conteúdo informativo; o tratamento é definido em consulta.</p>
