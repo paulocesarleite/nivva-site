@@ -47,12 +47,13 @@
   .apoio { color: var(--texto-2); margin-top: 10px; max-width: 520px; }
   section { padding: 64px 0; }
 
-  /* Botões */
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; font-weight: 400; font-size: 16px; transition: transform .15s, background .2s; }
-  .btn:active { transform: scale(.97); }
-  .btn-claro { background: var(--fundo); color: var(--texto); }
-  .btn-linha { border: 1px solid rgba(255,255,255, .45); color: #fff; }
-  .btn-cafe { background: var(--escuro); color: var(--fundo); }
+  /* Botões — mesma regra do sistema da clínica: canto de 8 px e leve relevo (luz fina no topo,
+     borda um tom abaixo da cor, sombra curta). Nem chapado, nem pílula; pílula só em selo e filtro. */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 0 24px; border-radius: 8px; font-weight: 400; font-size: 16px; text-align: center; border: 1px solid transparent; box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 1px 2px rgba(22,23,27,.12); transition: transform .12s ease, background-color .15s, box-shadow .15s; }
+  .btn:active { transform: translateY(1px); box-shadow: inset 0 1px 2px rgba(22,23,27,.16); }
+  .btn-claro { color: var(--texto); background: linear-gradient(180deg, #ffffff, var(--fundo)); border-color: color-mix(in srgb, var(--fundo) 78%, #000); box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(22,23,27,.14); }
+  .btn-linha { color: #fff; background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06)); border-color: rgba(255,255,255,.32); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+  .btn-cafe { color: #fff; background: linear-gradient(180deg, var(--escuro-2), var(--escuro)); border-color: color-mix(in srgb, var(--escuro) 75%, #000); }
   .link { display: inline-flex; align-items: center; gap: 6px; font-weight: 400; color: var(--texto); border-bottom: 1px solid var(--acento); padding-bottom: 2px; }
 
   /* Barra do topo */
@@ -64,15 +65,23 @@
 
   /* Abertura */
   .abertura { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; color: #fff; background: var(--escuro); }
-  .abertura > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; height: 62%; bottom: auto; }
+  .abertura > picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; height: 66%; bottom: auto; }
   .abertura::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, transparent 25%, var(--escuro) 60%), var(--grao); opacity: .97; }
-  @media (min-width: 900px) { .abertura > img { height: 100%; } .abertura::after { background: linear-gradient(90deg, var(--escuro) 0%, color-mix(in srgb, var(--escuro) 70%, transparent) 45%, transparent 100%); } }
+  @media (min-width: 900px) { .abertura > picture img { height: 100%; } .abertura::after { background: linear-gradient(90deg, var(--escuro) 0%, color-mix(in srgb, var(--escuro) 70%, transparent) 45%, transparent 100%); } }
   .abertura .wrap { position: relative; z-index: 2; padding-bottom: 40px; padding-top: 120px; }
   .local { font-size: 14px; color: var(--suave-sobre-escuro); margin-bottom: 14px; }
   .abertura h1 { font-size: clamp(40px, 10.5vw, 76px); font-weight: 200; max-width: 760px; }
   .abertura h1 strong { font-weight: 400; }
   .abertura p.sub { margin-top: 16px; color: var(--claro-sobre-escuro); max-width: 460px; }
   .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  /* Selo do Google — igual ao de nivva.com.br/dramilena */
+  .google-review { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; background: #fff; border: 1px solid rgba(14,39,38,.10); border-radius: 12px; padding: 9px 16px; box-shadow: 0 2px 10px rgba(0,0,0,.06); transition: transform .3s, box-shadow .3s; color: #1a1a1a; }
+  .google-review:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.1); }
+  .google-review .gicon { width: 22px; height: 22px; flex-shrink: 0; }
+  .google-review .rating { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; }
+  .google-review .rnum { font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 5px; }
+  .google-review .stars { color: #FBBC05; font-size: 13px; letter-spacing: 1px; }
+  .google-review .rlabel { font-size: 11px; color: #6a6a62; }
   .google { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; font-size: 14px; color: var(--claro-sobre-escuro); }
   .google b { color: #fff; font-weight: 500; }
   .estrelas { color: var(--acento); letter-spacing: 2px; }
@@ -101,7 +110,7 @@
   .endereco { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--texto-2); font-size: 15px; }
 
   /* Dra. Milena */
-  .milena { background: linear-gradient(180deg, var(--fundo) 0%, var(--fundo-2) 30%, var(--fundo-2) 100%); }
+  .milena { background: linear-gradient(180deg, var(--fundo) 0%, color-mix(in srgb, var(--fundo-2) 82%, transparent) 30%), url('/assets/img/real/parede-textura.webp') center / cover; }
   .milena .grade { display: grid; gap: 28px; align-items: center; }
   .milena img { border-radius: var(--raio); aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 12%; width: 100%; max-width: 460px; }
   .cv { list-style: none; margin: 22px 0 26px; }
@@ -118,6 +127,14 @@
   .passo p { color: var(--texto-2); font-size: 15px; margin-top: 6px; }
   .dica { margin-top: 12px; font-size: 13px; color: var(--texto-2); }
   @media (min-width: 900px) { .passos { margin: 28px 0 0; padding: 0; } .passo { flex: 1; width: auto; } .dica { display: none; } }
+
+  /* Depoimentos */
+  .resultados { background: var(--fundo); }
+  .videos { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 26px -22px 0; padding: 0 22px 6px; scrollbar-width: none; }
+  .videos::-webkit-scrollbar { display: none; }
+  .video { position: relative; flex: none; width: 42vw; max-width: 200px; aspect-ratio: 9 / 16; border-radius: 18px; overflow: hidden; scroll-snap-align: start; background: var(--fundo-2); }
+  .video img { width: 100%; height: 100%; object-fit: cover; }
+  .video span { position: absolute; left: 12px; bottom: 12px; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.9); color: #222; font-size: 13px; }
 
   /* Tecnologias */
   .tecnologias { background: radial-gradient(120% 80% at 100% 0%, var(--escuro-2) 0%, var(--escuro) 60%), var(--escuro); color: var(--fundo); position: relative; }
@@ -164,7 +181,7 @@
   /* Botão fixo de WhatsApp */
   .fixo { position: fixed; left: 14px; right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); z-index: 50; transform: translateY(160%); transition: transform .3s ease; }
   .fixo.visivel { transform: none; }
-  .fixo .btn { width: 100%; background: var(--escuro); color: var(--fundo); box-shadow: 0 12px 30px rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.12); }
+  .fixo .btn { width: 100%; color: #fff; background: linear-gradient(180deg, var(--escuro-2), var(--escuro)); border-color: color-mix(in srgb, var(--escuro) 75%, #000); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 10px 26px rgba(0,0,0,.28); }
   @media (min-width: 900px) { .fixo { left: auto; right: 24px; } .fixo .btn { width: auto; } }
 
   /* Seletor de cores (só na prévia) */
@@ -184,7 +201,7 @@
 </header>
 
 <section class="abertura">
-  <img src="/assets/img/estrutura.webp" alt="Recepção da Clínica Nivva" width="700" height="381" fetchpriority="high">
+  <picture><source media="(min-width: 900px)" srcset="/assets/img/real/recepcao-espelho.webp"><img src="/assets/img/real/recepcao-letreiro.webp" alt="Recepção da Clínica Nivva" width="900" height="1200" fetchpriority="high"></picture>
   <div class="wrap">
     <p class="local">Clínica médica · João Pessoa e Patos</p>
     <h1>Acompanhamento médico para <strong>emagrecer e envelhecer bem.</strong></h1>
@@ -193,7 +210,10 @@
       <a class="btn btn-claro" id="botao-topo" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
       <a class="btn btn-linha" href="#clinica">Conhecer a clínica</a>
     </div>
-    <a class="google" href="https://www.google.com/maps/place/Clinica+Nivva/@-7.114764,-34.8593596,17z/data=!4m8!3m7!1s0x7acdd1d278292f9:0xb9e302687d66f153!8m2!3d-7.114764!4d-34.8593596!9m1!1b1" target="_blank" rel="noopener"><span class="estrelas">★★★★★</span> <b>71 avaliações</b> no Google</a>
+    <a class="google-review" href="https://maps.app.goo.gl/PTkbWP9K6vD3EE2o6" target="_blank" rel="noopener">
+      <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+      <span class="rating"><span class="rnum">5,0 <span class="stars">★★★★★</span></span><span class="rlabel">Avaliações no Google</span></span>
+    </a>
   </div>
 </section>
 
@@ -214,14 +234,15 @@
     <h2>A clínica.</h2>
     <p class="apoio">Avenida Amazonas, 531, 1º andar, Bairro dos Estados. Com estacionamento.</p>
     <div class="fotos">
-      <figure class="foto"><div class="img"><div class="falta">Foto da fachada<br>(vem do Drive)</div></div><figcaption>Fachada<small>Prédio Hiperclin</small></figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/recepcao.webp" alt="Recepção" loading="lazy"></div><figcaption>Recepção</figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/consultorios.webp" alt="Consultório" loading="lazy"></div><figcaption>Consultórios<small>Medicina, nutrição e psicologia</small></figcaption></figure>
-      <figure class="foto"><div class="img"><div class="falta">Foto da InBody em uso<br>(vem do Drive)</div></div><figcaption>Bioimpedância InBody<small>Gordura, músculo e água, em minutos</small></figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/consultorios-4.webp" alt="Sala de tecnologia" loading="lazy"></div><figcaption>Sala de tecnologia</figcaption></figure>
+      <figure class="foto"><div class="img"><div class="falta">Foto da fachada<br>(falta subir no Drive)</div></div><figcaption>Fachada</figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/recepcao-larga.webp" alt="Recepção" loading="lazy"></div><figcaption>Recepção</figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/cafe-espera.webp" alt="Sala de espera com café" loading="lazy"></div><figcaption>Sala de espera<small>Com café e chá para quem chega</small></figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/sala-espera.webp" alt="Sala de espera" loading="lazy"></div><figcaption>Ambientes</figcaption></figure>
+      <figure class="foto"><div class="img"><div class="falta">Foto da InBody em uso<br>(falta subir no Drive)</div></div><figcaption>Bioimpedância InBody<small>Gordura, músculo e água, em minutos</small></figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/kit-nivva.webp" alt="Kit Nivva" loading="lazy"></div><figcaption>Kit da paciente</figcaption></figure>
     </div>
     <div class="endereco">
-      <span>Também atendemos em Patos.</span>
+      <span><b style="font-weight:400;color:var(--texto)">Unidade Patos:</b> Rua Bossuet Wanderley, 361, Centro, no Labvita.</span>
       <a class="link" href="https://maps.google.com/?q=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB" target="_blank" rel="noopener">Ver no mapa →</a>
     </div>
   </div>
@@ -253,6 +274,22 @@
       <article class="passo"><div><h3>Nova medição no retorno</h3><p>Nova bioimpedância para comparar com a primeira.</p></div></article>
     </div>
     <p class="dica">Arraste para o lado →</p>
+  </div>
+</section>
+
+
+<section class="resultados">
+  <div class="wrap">
+    <h2>Quem já passou por aqui.</h2>
+    <p class="apoio">Pacientes contando, com as palavras delas, como foi o acompanhamento.</p>
+    <div class="videos">
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-jaelkycapa1.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-cassiacapa2.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-eloisacapa3.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-tenilledepoimentocapa4.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+      <a class="video" href="/resultados"><img src="/assets/img/real/res-janecapa6.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
+    </div>
+    <a class="link" href="/resultados" style="margin-top:22px">Ver todos os depoimentos →</a>
   </div>
 </section>
 
@@ -319,7 +356,7 @@
 </div>
 
 <div class="fixo" id="fixo">
-  <a class="btn" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+  <a class="btn btn-cafe" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
 </div>
 
 <script>
