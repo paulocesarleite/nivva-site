@@ -79,11 +79,11 @@
   /* O que trouxe você — cada assunto com a situação real */
   .assuntos { background: var(--fundo); padding: 48px 0 16px; }
   .assuntos h2 { font-size: clamp(28px, 6.5vw, 44px); }
-  .casos { display: grid; gap: 10px; margin-top: 22px; }
-  .caso { display: grid; grid-template-columns: 1fr 20px; grid-template-rows: auto auto; column-gap: 12px; align-items: center; padding: 18px 18px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; }
-  .caso strong { font-weight: 400; font-size: 20px; }
+  .casos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+  .caso { display: flex; flex-direction: column; justify-content: space-between; gap: 18px; min-height: 104px; padding: 16px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; }
+  .caso strong { font-weight: 400; font-size: 18px; line-height: 1.2; }
   .caso small { grid-column: 1; color: var(--texto-2); font-size: 15px; margin-top: 2px; }
-  .caso span { grid-column: 2; grid-row: 1 / span 2; color: var(--acento); font-size: 20px; }
+  .caso span { color: var(--acento); font-size: 18px; align-self: flex-end; }
   .caso:active { background: var(--fundo-2); }
   @media (min-width: 900px) { .casos { grid-template-columns: repeat(4, 1fr); } .caso { grid-template-columns: 1fr; padding: 22px; } .caso span { grid-column: 1; grid-row: auto; margin-top: 14px; } }
 
@@ -118,7 +118,7 @@
   .linha strong { display: block; font-weight: 400; font-size: 20px; line-height: 1.25; }
   .linha small { display: block; color: var(--texto-2); font-size: 15px; margin-top: 2px; }
   @media (min-width: 900px) {
-    .linha { grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .linha { grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .linha::before { left: 0; right: 0; top: 7px; bottom: auto; width: auto; height: 1px; }
     .linha li { padding: 34px 0 0; }
     .linha li::before { top: 0; }
@@ -128,12 +128,12 @@
   .equipe { background: var(--fundo-2); }
   .pessoas { scroll-padding-left: 22px; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 26px -22px 0; padding: 0 22px 6px; scrollbar-width: none; }
   .pessoas::-webkit-scrollbar { display: none; }
-  .pessoa { flex: none; width: 58vw; max-width: 240px; scroll-snap-align: start; }
+  .pessoa { flex: none; width: 40vw; max-width: 200px; scroll-snap-align: start; }
   .pessoa img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; background: var(--fundo); }
   .pessoa figcaption { margin-top: 10px; }
-  .pessoa strong { display: block; font-weight: 400; font-size: 17px; }
-  .pessoa small { color: var(--texto-2); font-size: 14px; }
-  @media (min-width: 900px) { .pessoas { margin: 28px 0 0; padding: 0 0 6px; } .pessoa { width: 200px; } }
+  .pessoa strong { display: block; font-weight: 400; font-size: 15px; }
+  .pessoa small { color: var(--texto-2); font-size: 13px; }
+  @media (min-width: 900px) { .pessoas { margin: 28px 0 0; padding: 0 0 6px; } .pessoa { flex: 1; width: auto; max-width: none; } }
 
   /* Depoimentos */
   .resultados { background: var(--fundo); }
@@ -243,10 +243,10 @@
   <div class="wrap">
     <h2>O que tratamos.</h2>
     <nav class="casos" aria-label="Assuntos">
-      <a class="caso" href="/emagrecimento"><strong>Emagrecimento</strong><small>Perda de peso com acompanhamento médico</small><span>→</span></a>
-      <a class="caso" href="#"><strong>Lipedema</strong><small>Diagnóstico e tratamento</small><span>→</span></a>
-      <a class="caso" href="#"><strong>Reposição hormonal</strong><small>Menopausa, climatério e TPM</small><span>→</span></a>
-      <a class="caso" href="#tecnologias"><strong>Tecnologias</strong><small>Firmeza e gordura localizada</small><span>→</span></a>
+      <a class="caso" href="/emagrecimento"><strong>Emagrecimento</strong><span>→</span></a>
+      <a class="caso" href="#"><strong>Lipedema</strong><span>→</span></a>
+      <a class="caso" href="#"><strong>Reposição hormonal</strong><span>→</span></a>
+      <a class="caso" href="#tecnologias"><strong>Tecnologias</strong><span>→</span></a>
     </nav>
   </div>
 </section>
@@ -263,13 +263,8 @@
     </div>
     <div>
       <h2>Avaliação Nivva 360.</h2>
-      <p class="apoio">A primeira consulta.</p>
-      <ul class="n360-lista">
-        <li><b>60 minutos</b> com Dra. Milena</li>
-        <li><b>Bioimpedância InBody</b> por região do corpo</li>
-        <li><b>Fotos</b> para acompanhar a evolução</li>
-        <li><b>Exames</b> revisados na consulta</li>
-      </ul>
+      <p class="apoio">Primeira consulta de 60 minutos, com bioimpedância por região do corpo e fotos.</p>
+      
     </div>
   </div>
 </section>
@@ -279,12 +274,7 @@
     <img src="/assets/img/img-15.webp" alt="Dra. Milena Jácome" width="1120" height="1400" loading="lazy">
     <div>
       <h2>Dra. Milena Jácome.</h2>
-      <p class="apoio">Peso, metabolismo e hormônios.</p>
-      <ul class="cv">
-        <li>CRM-PB 10744</li>
-        <li>Primeira médica paraibana na SBEMO</li>
-        <li>Pós-graduação em nutrologia pela ABRAN</li>
-      </ul>
+            <p class="apoio" style="margin-bottom:22px">CRM-PB 10744 · Primeira médica paraibana na SBEMO</p>
       <a class="link" href="https://dramilenajacome.com.br/">Currículo completo →</a>
     </div>
   </div>
@@ -308,14 +298,12 @@
 <section class="equipe" id="equipe">
   <div class="wrap">
     <h2>Seis áreas. Um plano.</h2>
-    <p class="apoio">Medicina, nutrição, psicologia, educação física, enfermagem e fisioterapia.</p>
     <div class="pessoas">
       <figure class="pessoa"><img src="/assets/img/equipe/milena.webp" alt="Dra. Milena Jácome" loading="lazy" width="480" height="600"><figcaption><strong>Dra. Milena Jácome</strong><small>Medicina</small></figcaption></figure>
       <figure class="pessoa"><img src="/assets/img/equipe/nara.webp" alt="Nara Oliveira" loading="lazy" width="480" height="600"><figcaption><strong>Nara Oliveira</strong><small>Nutrição</small></figcaption></figure>
       <figure class="pessoa"><img src="/assets/img/equipe/maria-gabriele.webp" alt="Maria Gabriele" loading="lazy" width="480" height="600"><figcaption><strong>Maria Gabriele</strong><small>Nutrição</small></figcaption></figure>
       <figure class="pessoa"><img src="/assets/img/equipe/gabriela.webp" alt="Gabriela Leite" loading="lazy" width="480" height="600"><figcaption><strong>Gabriela Leite</strong><small>Nutrição · Patos</small></figcaption></figure>
       <figure class="pessoa"><img src="/assets/img/equipe/elayne.webp" alt="Elayne Cristine" loading="lazy" width="480" height="600"><figcaption><strong>Elayne Cristine</strong><small>Psicologia</small></figcaption></figure>
-      <figure class="pessoa"><img src="/assets/img/equipe/yasmin.webp" alt="Yasmin Brito" loading="lazy" width="480" height="600"><figcaption><strong>Yasmin Brito</strong><small>Psicologia</small></figcaption></figure>
       <figure class="pessoa"><img src="/assets/img/equipe/priscila.webp" alt="Priscila Carvalho" loading="lazy" width="480" height="600"><figcaption><strong>Priscila Carvalho</strong><small>Educação física</small></figcaption></figure>
     </div>
   </div>
@@ -325,11 +313,9 @@
   <div class="wrap">
     <h2>Programa de 24 semanas.</h2>
     <ol class="linha">
-      <li><span class="quando">Dia 1</span><strong>Avaliação Nivva 360</strong><small>Consulta, bioimpedância e fotos</small></li>
-      <li><span class="quando">Semana 1</span><strong>Plano da equipe</strong><small>Medicina, nutrição, psicologia e treino</small></li>
-      <li><span class="quando">Toda semana</span><strong>Encontro na clínica</strong><small>Medidas, bioimpedância e aplicações</small></li>
-      <li><span class="quando">Semana 13</span><strong>Revisão médica</strong><small>Comparação e ajuste</small></li>
-      <li><span class="quando">Semana 24</span><strong>Reavaliação completa</strong><small>Manutenção</small></li>
+      <li><span class="quando">Dia 1</span><strong>Avaliação Nivva 360</strong></li>
+      <li><span class="quando">Toda semana</span><strong>Encontro na clínica</strong></li>
+      <li><span class="quando">Semana 24</span><strong>Reavaliação completa</strong></li>
     </ol>
   </div>
 </section>
@@ -337,13 +323,13 @@
 <section class="estrutura" id="clinica">
   <div class="wrap">
     <h2>A clínica.</h2>
-    <p class="apoio">Avenida Amazonas, 531, 1º andar, Bairro dos Estados. Com estacionamento.</p>
+    <p class="apoio">Bairro dos Estados, João Pessoa. Com estacionamento.</p>
     <div class="fotos">
       <figure class="foto"><div class="img"><img src="/assets/img/real/fachada-alta.webp" alt="Fachada da Clínica Nivva" loading="lazy"></div><figcaption>Fachada</figcaption></figure>
       <figure class="foto"><div class="img"><img src="/assets/img/real/recepcao-larga.webp" alt="Recepção" loading="lazy"></div><figcaption>Recepção</figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/real/cafe-espera.webp" alt="Sala de espera com café" loading="lazy"></div><figcaption>Sala de espera<small>Com café e chá para quem chega</small></figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/cafe-espera.webp" alt="Sala de espera com café" loading="lazy"></div><figcaption>Sala de espera</figcaption></figure>
       <figure class="foto"><div class="img"><img src="/assets/img/real/sala-espera.webp" alt="Sala de espera" loading="lazy"></div><figcaption>Ambientes</figcaption></figure>
-      <figure class="foto"><div class="img"><div class="falta">Foto da InBody em uso<br>(falta subir no Drive)</div></div><figcaption>Bioimpedância InBody<small>Gordura, músculo e água, em minutos</small></figcaption></figure>
+      <figure class="foto"><div class="img"><div class="falta">Foto da InBody em uso<br>(falta subir no Drive)</div></div><figcaption>Bioimpedância InBody</figcaption></figure>
       <figure class="foto"><div class="img"><img src="/assets/img/real/kit-nivva.webp" alt="Kit Nivva" loading="lazy"></div><figcaption>Kit da paciente</figcaption></figure>
     </div>
     <div class="endereco">
@@ -356,11 +342,11 @@
 <section class="tecnologias" id="tecnologias">
   <div class="wrap">
     <h2>Tecnologias.</h2>
-    <p class="apoio">Com indicação médica.</p>
+    
     <div class="tec">
-      <a href="#"><img src="/assets/img/img-5.webp" alt="Linear Z" loading="lazy"><span><strong>Linear Z</strong><small>Firmeza no rosto e no corpo</small></span><span class="seta">›</span></a>
-      <a href="#"><span class="mini"></span><span><strong>Campo magnético</strong><small>Tonificação muscular</small></span><span class="seta">›</span></a>
-      <a href="#"><span class="mini"></span><span><strong>Bioimpedância InBody</strong><small>Composição corporal</small></span><span class="seta">›</span></a>
+      <a href="#"><img src="/assets/img/img-5.webp" alt="Linear Z" loading="lazy"><span><strong>Linear Z</strong></span><span class="seta">›</span></a>
+      <a href="#"><span class="mini"></span><span><strong>Campo magnético</strong></span><span class="seta">›</span></a>
+      <a href="#"><span class="mini"></span><span><strong>Bioimpedância InBody</strong></span><span class="seta">›</span></a>
     </div>
   </div>
 </section>
@@ -370,8 +356,6 @@
     <details><summary>Atende plano de saúde?</summary><p>É particular. Damos nota fiscal, recibo e descritivo para você pedir reembolso.</p></details>
     <details><summary>Quanto tempo dura o tratamento?</summary><p>O programa completo tem 24 semanas. Dra. Milena define o seu na primeira consulta.</p></details>
     <details><summary>Atende quem mora fora de João Pessoa?</summary><p>Sim. Também atendemos em Patos, e muita paciente vem do interior.</p></details>
-    <details><summary>Preciso fazer as tecnologias?</summary><p>Não. Muita gente faz só o acompanhamento médico e nutricional.</p></details>
-    <details><summary>Os equipamentos são seguros?</summary><p>São registrados na ANVISA e só usados com indicação médica.</p></details>
   </div>
 </section>
 
