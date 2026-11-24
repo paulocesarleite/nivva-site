@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Clínica Nivva · Dra. Milena Jácome · João Pessoa</title>
+<meta name="description" content="Clínica médica em João Pessoa e Patos. Emagrecimento, lipedema, reposição hormonal e tecnologias com Dra. Milena Jácome, CRM-PB 10744.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2f2520">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* Nova home da Nivva — prévia, pensada primeiro para o celular.
+     Uma família de cor só (café, areia, creme) e um acento (avelã), como nas clínicas
+     mais elegantes da cidade. Quem dá a riqueza são as fotos, não a paleta.
+     Títulos grandes em peso leve; textos de uma linha; o resto mora na página de cada assunto. */
+  :root {
+    --cafe: #2f2520;
+    --cafe-2: #3d3029;
+    --areia: #e9e1d7;
+    --creme: #f6f1eb;
+    --avela: #b08d72;
+    --texto: #2a221d;
+    --texto-2: #6f645c;
+    --linha: rgba(47, 37, 32, .12);
+    --fonte: "Outfit", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --raio: 22px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; min-width: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--creme); color: var(--texto); font-family: var(--fonte); font-weight: 300; font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 22px; }
+  h1, h2, h3 { font-weight: 300; letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance; }
+  h2 { font-size: clamp(32px, 7vw, 52px); }
+  .apoio { color: var(--texto-2); margin-top: 10px; max-width: 520px; }
+  section { padding: 64px 0; }
+
+  /* Botões */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; font-weight: 400; font-size: 16px; transition: transform .15s, background .2s; }
+  .btn:active { transform: scale(.97); }
+  .btn-claro { background: var(--creme); color: var(--cafe); }
+  .btn-linha { border: 1px solid rgba(246, 241, 235, .45); color: var(--creme); }
+  .btn-cafe { background: var(--cafe); color: var(--creme); }
+  .link { display: inline-flex; align-items: center; gap: 6px; font-weight: 400; color: var(--cafe); border-bottom: 1px solid var(--avela); padding-bottom: 2px; }
+
+  /* Barra do topo */
+  .barra { position: fixed; top: 0; left: 0; right: 0; z-index: 40; padding: 14px 0; padding-top: max(14px, env(safe-area-inset-top)); transition: background .3s; }
+  .barra.solida { background: rgba(47, 37, 32, .92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .barra .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .barra img { height: 18px; width: auto; }
+  .barra .btn { min-height: 38px; padding: 0 18px; font-size: 14px; }
+
+  /* Abertura */
+  .abertura { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; color: var(--creme); background: var(--cafe); }
+  .abertura > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; height: 62%; bottom: auto; }
+  .abertura::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(47,37,32,.25) 0%, rgba(47,37,32,.15) 28%, rgba(47,37,32,.85) 52%, var(--cafe) 80%); }
+  @media (min-width: 900px) { .abertura > img { height: 100%; } .abertura::after { background: linear-gradient(90deg, rgba(47,37,32,.92) 0%, rgba(47,37,32,.7) 45%, rgba(47,37,32,.15) 100%); } }
+  .abertura .wrap { position: relative; z-index: 2; padding-bottom: 40px; padding-top: 120px; }
+  .local { font-size: 14px; color: #d9cbbd; margin-bottom: 14px; }
+  .abertura h1 { font-size: clamp(40px, 10.5vw, 76px); font-weight: 200; max-width: 760px; }
+  .abertura h1 strong { font-weight: 400; }
+  .abertura p.sub { margin-top: 16px; color: #e5d9cd; max-width: 460px; }
+  .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .google { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; font-size: 14px; color: #e5d9cd; }
+  .google b { color: var(--creme); font-weight: 500; }
+  .estrelas { color: var(--avela); letter-spacing: 2px; }
+
+  /* Assuntos */
+  .assuntos { background: var(--cafe); padding: 8px 0 48px; }
+  .assuntos p { color: #bfb0a2; font-size: 15px; margin-bottom: 14px; }
+  .trilho { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; scrollbar-width: none; margin: 0 -22px; padding-left: 22px; padding-right: 22px; }
+  .trilho::-webkit-scrollbar { display: none; }
+  .assunto { flex: none; scroll-snap-align: start; display: flex; flex-direction: column; gap: 14px; justify-content: space-between; width: 42vw; max-width: 220px; aspect-ratio: auto; min-height: 96px; border-radius: var(--raio); padding: 18px; background: var(--cafe-2); color: var(--creme); border: 1px solid rgba(246,241,235,.08); }
+  .assunto span { font-size: 18px; color: var(--avela); align-self: flex-end; }
+  .assunto strong { font-weight: 300; font-size: 22px; line-height: 1.15; }
+  .assunto:active { background: #4a3a31; }
+  @media (min-width: 900px) { .trilho { margin: 0; padding: 0; } .assunto { width: auto; flex: 1; max-width: none; } }
+
+  /* Estrutura */
+  .estrutura { background: var(--creme); }
+  .fotos { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 28px -22px 0; padding: 0 22px 6px; scrollbar-width: none; }
+  .fotos::-webkit-scrollbar { display: none; }
+  .foto { flex: none; width: 78vw; max-width: 420px; scroll-snap-align: start; }
+  .foto .img { position: relative; border-radius: var(--raio); overflow: hidden; aspect-ratio: 4 / 5; background: var(--areia); }
+  .foto img { width: 100%; height: 100%; object-fit: cover; }
+  .foto figcaption { margin-top: 10px; font-size: 15px; }
+  .foto figcaption small { display: block; color: var(--texto-2); font-size: 14px; }
+  .falta { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--texto-2); font-size: 14px; border: 1px dashed rgba(47,37,32,.25); border-radius: var(--raio); }
+  .endereco { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--texto-2); font-size: 15px; }
+
+  /* Dra. Milena */
+  .milena { background: var(--areia); }
+  .milena .grade { display: grid; gap: 28px; align-items: center; }
+  .milena img { border-radius: var(--raio); aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 12%; width: 100%; max-width: 460px; }
+  .cv { list-style: none; margin: 22px 0 26px; }
+  .cv li { padding: 12px 0; border-top: 1px solid var(--linha); font-size: 16px; }
+  .cv li:last-child { border-bottom: 1px solid var(--linha); }
+  @media (min-width: 860px) { .milena .grade { grid-template-columns: 1fr 1fr; gap: 64px; } }
+
+  /* Como funciona */
+  .passos { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 28px -22px 0; padding: 0 22px 6px; scrollbar-width: none; counter-reset: passo; }
+  .passos::-webkit-scrollbar { display: none; }
+  .passo { flex: none; width: 72vw; max-width: 320px; scroll-snap-align: start; background: #fff; border-radius: var(--raio); padding: 24px 22px; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; }
+  .passo::before { counter-increment: passo; content: counter(passo); font-size: 44px; font-weight: 200; color: var(--avela); line-height: 1; }
+  .passo h3 { font-size: 21px; font-weight: 400; margin-top: 24px; }
+  .passo p { color: var(--texto-2); font-size: 15px; margin-top: 6px; }
+  .dica { margin-top: 12px; font-size: 13px; color: var(--texto-2); }
+  @media (min-width: 900px) { .passos { margin: 28px 0 0; padding: 0; } .passo { flex: 1; width: auto; } .dica { display: none; } }
+
+  /* Tecnologias */
+  .tecnologias { background: var(--cafe); color: var(--creme); }
+  .tecnologias .apoio { color: #bfb0a2; }
+  .tec { display: grid; gap: 0; margin-top: 26px; }
+  .tec a { display: grid; grid-template-columns: 64px 1fr 20px; gap: 14px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(246,241,235,.12); }
+  .tec a:last-child { border-bottom: 1px solid rgba(246,241,235,.12); }
+  .tec img, .tec .mini { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; background: var(--cafe-2); }
+  .tec strong { display: block; font-weight: 400; font-size: 18px; }
+  .tec small { color: #bfb0a2; font-size: 14px; }
+  .tec .seta { color: var(--avela); font-size: 20px; }
+
+  /* Valor */
+  .valor { background: var(--creme); }
+  .cartao-valor { background: #fff; border-radius: var(--raio); padding: 28px 24px; display: grid; gap: 18px; }
+  .cartao-valor .preco { font-size: clamp(48px, 13vw, 72px); font-weight: 200; letter-spacing: -0.03em; line-height: 1; }
+  .cartao-valor ul { list-style: none; color: var(--texto-2); font-size: 15px; }
+  .cartao-valor li { padding: 4px 0; }
+  .cartao-valor li::before { content: '·'; color: var(--avela); margin-right: 8px; }
+  @media (min-width: 760px) { .cartao-valor { grid-template-columns: 1fr 1fr auto; align-items: center; } }
+
+  /* Perguntas */
+  .perguntas { background: var(--creme); padding-top: 0; }
+  details { border-top: 1px solid var(--linha); }
+  details:last-of-type { border-bottom: 1px solid var(--linha); }
+  summary { list-style: none; cursor: pointer; padding: 18px 34px 18px 0; position: relative; font-weight: 400; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; position: absolute; right: 0; top: 12px; font-size: 26px; font-weight: 200; color: var(--avela); transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--texto-2); padding-bottom: 18px; font-size: 15px; }
+
+  /* Rodapé */
+  footer { background: var(--cafe); color: #d9cbbd; padding: 48px 0 120px; font-size: 15px; }
+  footer img { height: 20px; width: auto; margin-bottom: 22px; }
+  footer .colunas { display: grid; gap: 22px; }
+  footer b { display: block; color: var(--creme); font-weight: 400; margin-bottom: 4px; }
+  footer .rotas { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  footer .rotas a { border: 1px solid rgba(246,241,235,.25); border-radius: 999px; padding: 8px 14px; font-size: 14px; }
+  footer .legal { margin-top: 32px; font-size: 12px; color: #9c8d80; }
+  @media (min-width: 760px) { footer .colunas { grid-template-columns: repeat(3, 1fr); } footer { padding-bottom: 48px; } }
+
+  /* Botão fixo de WhatsApp */
+  .fixo { position: fixed; left: 14px; right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); z-index: 50; transform: translateY(160%); transition: transform .3s ease; }
+  .fixo.visivel { transform: none; }
+  .fixo .btn { width: 100%; background: var(--cafe); color: var(--creme); box-shadow: 0 12px 30px rgba(47,37,32,.35); border: 1px solid rgba(246,241,235,.12); }
+  @media (min-width: 900px) { .fixo { left: auto; right: 24px; } .fixo .btn { width: auto; } }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fixo, .barra { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="barra" id="barra">
+  <div class="wrap">
+    <img src="/assets/img/img-6.webp" alt="Nivva" width="600" height="133">
+    <a class="btn btn-claro" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar</a>
+  </div>
+</header>
+
+<section class="abertura">
+  <img src="/assets/img/estrutura.webp" alt="Recepção da Clínica Nivva" width="700" height="381" fetchpriority="high">
+  <div class="wrap">
+    <p class="local">Clínica médica · João Pessoa e Patos</p>
+    <h1>Acompanhamento médico para <strong>emagrecer e envelhecer bem.</strong></h1>
+    <p class="sub">Dra. Milena Jácome, nutrição, psicologia e educação física no mesmo lugar.</p>
+    <div class="acoes">
+      <a class="btn btn-claro" id="botao-topo" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
+      <a class="btn btn-linha" href="#clinica">Conhecer a clínica</a>
+    </div>
+    <a class="google" href="https://www.google.com/maps/place/Clinica+Nivva/@-7.114764,-34.8593596,17z/data=!4m8!3m7!1s0x7acdd1d278292f9:0xb9e302687d66f153!8m2!3d-7.114764!4d-34.8593596!9m1!1b1" target="_blank" rel="noopener"><span class="estrelas">★★★★★</span> <b>5,0</b> no Google</a>
+  </div>
+</section>
+
+<section class="assuntos">
+  <div class="wrap">
+    <p>O que você procura?</p>
+    <nav class="trilho" aria-label="Assuntos">
+      <a class="assunto" href="/emagrecimento"><strong>Emagrecimento</strong><span>→</span></a>
+      <a class="assunto" href="#"><strong>Lipedema</strong><span>→</span></a>
+      <a class="assunto" href="#"><strong>Reposição hormonal</strong><span>→</span></a>
+      <a class="assunto" href="#tecnologias"><strong>Tecnologias</strong><span>→</span></a>
+    </nav>
+  </div>
+</section>
+
+<section class="estrutura" id="clinica">
+  <div class="wrap">
+    <h2>A clínica.</h2>
+    <p class="apoio">Avenida Amazonas, 531, 1º andar, Bairro dos Estados. Com estacionamento.</p>
+    <div class="fotos">
+      <figure class="foto"><div class="img"><div class="falta">Foto da fachada<br>(vem do Drive)</div></div><figcaption>Fachada<small>Prédio Hiperclin</small></figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/recepcao.webp" alt="Recepção" loading="lazy"></div><figcaption>Recepção</figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/consultorios.webp" alt="Consultório" loading="lazy"></div><figcaption>Consultórios<small>Medicina, nutrição e psicologia</small></figcaption></figure>
+      <figure class="foto"><div class="img"><div class="falta">Foto da InBody em uso<br>(vem do Drive)</div></div><figcaption>Bioimpedância InBody<small>Gordura, músculo e água, em minutos</small></figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/consultorios-4.webp" alt="Sala de tecnologia" loading="lazy"></div><figcaption>Sala de tecnologia</figcaption></figure>
+    </div>
+    <div class="endereco">
+      <span>Também atendemos em Patos.</span>
+      <a class="link" href="https://maps.google.com/?q=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB" target="_blank" rel="noopener">Ver no mapa →</a>
+    </div>
+  </div>
+</section>
+
+<section class="milena">
+  <div class="wrap grade">
+    <img src="/assets/img/img-15.webp" alt="Dra. Milena Jácome" width="1120" height="1400" loading="lazy">
+    <div>
+      <h2>Dra. Milena Jácome.</h2>
+      <p class="apoio">Médica há quase 10 anos. Cuida de metabolismo, peso e envelhecimento saudável.</p>
+      <ul class="cv">
+        <li>CRM-PB 10744</li>
+        <li>Primeira médica paraibana na SBEMO</li>
+        <li>Pós-graduação em nutrologia pela ABRAN</li>
+      </ul>
+      <a class="link" href="https://dramilenajacome.com.br/">Currículo completo →</a>
+    </div>
+  </div>
+</section>
+
+<section class="como">
+  <div class="wrap">
+    <h2>Como funciona.</h2>
+    <div class="passos">
+      <article class="passo"><div><h3>Avaliação com Dra. Milena</h3><p>Uma hora de consulta, com bioimpedância e seus exames.</p></div></article>
+      <article class="passo"><div><h3>Plano com a equipe</h3><p>Médica, nutricionista e psicóloga montam juntas.</p></div></article>
+      <article class="passo"><div><h3>Acompanhamento semanal</h3><p>Você não fica sozinha entre uma consulta e outra.</p></div></article>
+      <article class="passo"><div><h3>Nova medição no retorno</h3><p>Nova bioimpedância para comparar com a primeira.</p></div></article>
+    </div>
+    <p class="dica">Arraste para o lado →</p>
+  </div>
+</section>
+
+<section class="tecnologias" id="tecnologias">
+  <div class="wrap">
+    <h2>Tecnologias.</h2>
+    <p class="apoio">Indicadas na consulta, quando fazem sentido para o seu caso.</p>
+    <div class="tec">
+      <a href="#"><img src="/assets/img/img-5.webp" alt="Linear Z" loading="lazy"><span><strong>Linear Z</strong><small>Firmeza no rosto e no corpo, sem corte</small></span><span class="seta">›</span></a>
+      <a href="#"><span class="mini"></span><span><strong>Campo magnético</strong><small>Contração muscular para tonificar</small></span><span class="seta">›</span></a>
+      <a href="#"><span class="mini"></span><span><strong>Bioimpedância InBody</strong><small>Composição do corpo a cada retorno</small></span><span class="seta">›</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="valor">
+  <div class="wrap">
+    <div class="cartao-valor">
+      <div><p class="apoio" style="margin:0 0 6px">Primeira consulta</p><div class="preco">R$ 700</div></div>
+      <ul>
+        <li>60 minutos com Dra. Milena</li>
+        <li>Bioimpedância inclusa</li>
+        <li>Retorno em até 60 dias</li>
+        <li>Até 3x sem juros</li>
+      </ul>
+      <a class="btn btn-cafe" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar</a>
+    </div>
+  </div>
+</section>
+
+<section class="perguntas">
+  <div class="wrap">
+    <details><summary>Atende plano de saúde?</summary><p>É particular. Damos nota fiscal, recibo e descritivo para você pedir reembolso.</p></details>
+    <details><summary>Quanto tempo dura o tratamento?</summary><p>Depende do caso. A maioria fica de 3 a 12 meses. O prazo é conversado já na primeira consulta.</p></details>
+    <details><summary>Preciso fazer as tecnologias?</summary><p>Não. Muita gente faz só o acompanhamento médico e nutricional.</p></details>
+    <details><summary>Os equipamentos são seguros?</summary><p>São registrados na ANVISA e só usados com indicação médica.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="/assets/img/img-6.webp" alt="Nivva" width="600" height="133" loading="lazy">
+    <div class="colunas">
+      <div><b>João Pessoa</b>Avenida Amazonas, 531, 1º andar<br>Bairro dos Estados
+        <div class="rotas">
+          <a href="https://maps.google.com/?q=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB" target="_blank" rel="noopener">Maps</a>
+          <a href="https://waze.com/ul?q=Avenida+Amazonas+531+Bairro+dos+Estados+Jo%C3%A3o+Pessoa+PB" target="_blank" rel="noopener">Waze</a>
+          <a href="https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=Avenida+Amazonas,+531,+Bairro+dos+Estados,+Jo%C3%A3o+Pessoa,+PB" target="_blank" rel="noopener">Uber</a>
+        </div>
+      </div>
+      <div><b>Patos</b>Rua Bossuet Wanderley, 361, Centro<br>1º andar, no Labvita</div>
+      <div><b>Atendimento</b>Segunda a sexta, 8h às 17h<br><a href="https://www.instagram.com/clinicanivva/" target="_blank" rel="noopener">@clinicanivva</a> · <a href="https://www.instagram.com/dramilenajacome_/" target="_blank" rel="noopener">@dramilenajacome_</a></div>
+    </div>
+    <p class="legal">Médica responsável: Dra. Milena Jácome, CRM-PB 10744. Conteúdo informativo; o tratamento é definido em consulta.</p>
+  </div>
+</footer>
+
+<div class="fixo" id="fixo">
+  <a class="btn" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
+</div>
+
+<script>
+{
+  const barra = document.getElementById('barra');
+  const fixo = document.getElementById('fixo');
+  const topo = document.getElementById('botao-topo');
+  const aoRolar = () => barra.classList.toggle('solida', window.scrollY > 40);
+  window.addEventListener('scroll', aoRolar, { passive: true });
+  aoRolar();
+  if ('IntersectionObserver' in window && topo) {
+    const vigia = new IntersectionObserver((e) => {
+      fixo.classList.toggle('visivel', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
+    });
+    vigia.observe(topo);
+  }
+}
+</script>
+</body>
+</html>
