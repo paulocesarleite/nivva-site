@@ -126,12 +126,14 @@
 
   /* Equipe */
   .equipe { background: var(--fundo-2); }
-  .areas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
-  .area { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 18px 16px 20px; display: flex; flex-direction: column; gap: 6px; }
-  .area .num { font-size: 13px; color: var(--acento); }
-  .area strong { font-weight: 400; font-size: 19px; line-height: 1.2; margin-top: 18px; }
-  .area small { color: var(--texto-2); font-size: 14px; line-height: 1.4; }
-  @media (min-width: 900px) { .areas { grid-template-columns: repeat(3, 1fr); gap: 14px; } .area { padding: 24px 22px; } }
+  .pessoas { scroll-padding-left: 22px; display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 26px -22px 0; padding: 0 22px 6px; scrollbar-width: none; }
+  .pessoas::-webkit-scrollbar { display: none; }
+  .pessoa { flex: none; width: 58vw; max-width: 240px; scroll-snap-align: start; }
+  .pessoa img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; background: var(--fundo); }
+  .pessoa figcaption { margin-top: 10px; }
+  .pessoa strong { display: block; font-weight: 400; font-size: 17px; }
+  .pessoa small { color: var(--texto-2); font-size: 14px; }
+  @media (min-width: 900px) { .pessoas { margin: 28px 0 0; padding: 0 0 6px; } .pessoa { width: 200px; } }
 
   /* Depoimentos */
   .resultados { background: var(--fundo); }
@@ -306,13 +308,15 @@
 <section class="equipe" id="equipe">
   <div class="wrap">
     <h2>Seis áreas. Um plano.</h2>
-    <div class="areas">
-      <div class="area"><span class="num">01</span><strong>Medicina</strong><small>Dra. Milena Jácome</small></div>
-      <div class="area"><span class="num">02</span><strong>Nutrição</strong><small>Plano alimentar</small></div>
-      <div class="area"><span class="num">03</span><strong>Psicologia</strong><small>Comportamento e ansiedade</small></div>
-      <div class="area"><span class="num">04</span><strong>Educação física</strong><small>Treino e massa muscular</small></div>
-      <div class="area"><span class="num">05</span><strong>Enfermagem</strong><small>Aplicações e medidas</small></div>
-      <div class="area"><span class="num">06</span><strong>Fisioterapia</strong><small>Dor, inchaço e circulação</small></div>
+    <p class="apoio">Medicina, nutrição, psicologia, educação física, enfermagem e fisioterapia.</p>
+    <div class="pessoas">
+      <figure class="pessoa"><img src="/assets/img/equipe/milena.webp" alt="Dra. Milena Jácome" loading="lazy" width="480" height="600"><figcaption><strong>Dra. Milena Jácome</strong><small>Medicina</small></figcaption></figure>
+      <figure class="pessoa"><img src="/assets/img/equipe/nara.webp" alt="Nara Oliveira" loading="lazy" width="480" height="600"><figcaption><strong>Nara Oliveira</strong><small>Nutrição</small></figcaption></figure>
+      <figure class="pessoa"><img src="/assets/img/equipe/maria-gabriele.webp" alt="Maria Gabriele" loading="lazy" width="480" height="600"><figcaption><strong>Maria Gabriele</strong><small>Nutrição</small></figcaption></figure>
+      <figure class="pessoa"><img src="/assets/img/equipe/gabriela.webp" alt="Gabriela Leite" loading="lazy" width="480" height="600"><figcaption><strong>Gabriela Leite</strong><small>Nutrição · Patos</small></figcaption></figure>
+      <figure class="pessoa"><img src="/assets/img/equipe/elayne.webp" alt="Elayne Cristine" loading="lazy" width="480" height="600"><figcaption><strong>Elayne Cristine</strong><small>Psicologia</small></figcaption></figure>
+      <figure class="pessoa"><img src="/assets/img/equipe/yasmin.webp" alt="Yasmin Brito" loading="lazy" width="480" height="600"><figcaption><strong>Yasmin Brito</strong><small>Psicologia</small></figcaption></figure>
+      <figure class="pessoa"><img src="/assets/img/equipe/priscila.webp" alt="Priscila Carvalho" loading="lazy" width="480" height="600"><figcaption><strong>Priscila Carvalho</strong><small>Educação física</small></figcaption></figure>
     </div>
   </div>
 </section>
