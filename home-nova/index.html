@@ -136,6 +136,31 @@
   .video img { width: 100%; height: 100%; object-fit: cover; }
   .video span { position: absolute; left: 12px; bottom: 12px; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.9); color: #222; font-size: 13px; }
 
+  /* Avaliação Nivva 360 — mesma imagem da apresentação da bioimpedância na TV da clínica */
+  .n360 { background: radial-gradient(120% 80% at 0% 0%, var(--escuro-2) 0%, var(--escuro) 60%), var(--escuro); color: var(--fundo); position: relative; }
+  .n360::before { content: ''; position: absolute; inset: 0; background: var(--grao); pointer-events: none; }
+  .n360 .wrap { position: relative; }
+  .n360 .apoio { color: var(--suave-sobre-escuro); }
+  .n360-grade { display: grid; gap: 32px; align-items: center; }
+  @media (min-width: 860px) { .n360-grade { grid-template-columns: 0.8fr 1fr; gap: 64px; } }
+  .n360-tela { position: relative; background: #000; border-radius: var(--raio); overflow: hidden; aspect-ratio: 3 / 4; max-width: 420px; width: 100%; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+  .n360-tela img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: .35; animation: acende 4.5s ease-in-out infinite; }
+  .n360-tela .feixe { position: absolute; left: 8%; right: 8%; height: 2px; top: 4%; background: linear-gradient(90deg, transparent, #ffb15c, transparent); box-shadow: 0 0 18px #ffb15c; animation: feixe 4.5s ease-in-out infinite; }
+  @keyframes feixe { 0% { top: 4%; opacity: 0; } 8% { opacity: 1; } 70% { top: 94%; opacity: 1; } 78%, 100% { top: 94%; opacity: 0; } }
+  @keyframes acende { 0% { opacity: .25; } 70%, 92% { opacity: 1; } 100% { opacity: .25; } }
+  .n360-tela .rotulo { position: absolute; font-size: 13px; color: #fff; background: rgba(255,255,255,.1); border: 1px solid rgba(255,177,92,.55); padding: 5px 10px; border-radius: 999px; backdrop-filter: blur(4px); opacity: 0; animation: rotulo 4.5s ease-in-out infinite; }
+  .n360-tela .rotulo::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #ffb15c; margin-right: 6px; vertical-align: middle; }
+  .r1 { top: 30%; left: 6%; animation-delay: .9s !important; }
+  .r2 { top: 44%; right: 6%; animation-delay: 1.5s !important; }
+  .r3 { top: 60%; left: 6%; animation-delay: 2.1s !important; }
+  .r4 { top: 74%; right: 6%; animation-delay: 2.7s !important; }
+  @keyframes rotulo { 0% { opacity: 0; transform: translateY(6px); } 10%, 60% { opacity: 1; transform: none; } 75%, 100% { opacity: 0; } }
+  .n360-lista { list-style: none; margin: 22px 0 26px; }
+  .n360-lista li { padding: 12px 0; border-top: 1px solid rgba(255,255,255,.12); color: var(--suave-sobre-escuro); }
+  .n360-lista li:last-child { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .n360-lista b { color: #fff; font-weight: 400; }
+  @media (prefers-reduced-motion: reduce) { .n360-tela img { animation: none; opacity: 1; } .n360-tela .feixe { display: none; } .n360-tela .rotulo { animation: none; opacity: 1; } }
+
   /* Tecnologias */
   .tecnologias { background: radial-gradient(120% 80% at 100% 0%, var(--escuro-2) 0%, var(--escuro) 60%), var(--escuro); color: var(--fundo); position: relative; }
   .tecnologias::before { content: ''; position: absolute; inset: 0; background: var(--grao); pointer-events: none; }
@@ -260,6 +285,31 @@
         <li>Pós-graduação em nutrologia pela ABRAN</li>
       </ul>
       <a class="link" href="https://dramilenajacome.com.br/">Currículo completo →</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="n360" id="nivva360">
+  <div class="wrap n360-grade">
+    <div class="n360-tela" aria-hidden="true">
+      <img src="/assets/img/real/bio-corpo-f.webp" alt="" loading="lazy" width="600" height="1190">
+      <span class="feixe"></span>
+      <span class="rotulo r1">Gordura</span>
+      <span class="rotulo r2">Músculo</span>
+      <span class="rotulo r3">Água</span>
+      <span class="rotulo r4">Gordura visceral</span>
+    </div>
+    <div>
+      <h2>Avaliação Nivva 360.</h2>
+      <p class="apoio">A primeira consulta. Você vê o resultado na tela da sala, na hora, junto com Dra. Milena.</p>
+      <ul class="n360-lista">
+        <li><b>60 minutos</b> com Dra. Milena</li>
+        <li><b>Bioimpedância InBody</b> por região do corpo</li>
+        <li><b>Fotos</b> para acompanhar a evolução</li>
+        <li><b>Retorno</b> em até 60 dias incluído</li>
+      </ul>
+      <a class="btn btn-claro" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20e%20quero%20agendar%20a%20avalia%C3%A7%C3%A3o%20Nivva%20360." target="_blank" rel="noopener">Agendar a avaliação</a>
     </div>
   </div>
 </section>
