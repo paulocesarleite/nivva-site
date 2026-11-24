@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-paleta="areia">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Clínica Nivva · Dra. Milena Jácome · João Pessoa</title>
 <meta name="description" content="Clínica médica em João Pessoa e Patos. Emagrecimento, lipedema, reposição hormonal e tecnologias com Dra. Milena Jácome, CRM-PB 10744.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#2f2520">
+<meta name="theme-color" content="#3a2d26">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -15,21 +15,30 @@
      Uma família de cor só (café, areia, creme) e um acento (avelã), como nas clínicas
      mais elegantes da cidade. Quem dá a riqueza são as fotos, não a paleta.
      Títulos grandes em peso leve; textos de uma linha; o resto mora na página de cada assunto. */
+  :root, [data-paleta="areia"] {
+    --fundo: #f5efe8; --fundo-2: #ebe2d8; --cartao: #fffaf5;
+    --escuro: #3a2d26; --escuro-2: #4a3a31; --claro-sobre-escuro: #e9ddd1; --suave-sobre-escuro: #bfae9f;
+    --acento: #b08d72; --texto: #2a221d; --texto-2: #6f645c; --linha: rgba(42, 34, 29, .12);
+  }
+  [data-paleta="oliva"] {
+    --fundo: #f3f1ea; --fundo-2: #e3e2d4; --cartao: #fbfaf5;
+    --escuro: #2f3328; --escuro-2: #3d4234; --claro-sobre-escuro: #e6e6d8; --suave-sobre-escuro: #b3b49f;
+    --acento: #a08b60; --texto: #23251f; --texto-2: #62655a; --linha: rgba(35, 37, 31, .12);
+  }
+  [data-paleta="grafite"] {
+    --fundo: #f4f2ef; --fundo-2: #e7e2dc; --cartao: #ffffff;
+    --escuro: #26262a; --escuro-2: #34343a; --claro-sobre-escuro: #ecebe8; --suave-sobre-escuro: #aeaaa4;
+    --acento: #b6977c; --texto: #1f1f22; --texto-2: #66646a; --linha: rgba(31, 31, 34, .12);
+  }
   :root {
-    --cafe: #2f2520;
-    --cafe-2: #3d3029;
-    --areia: #e9e1d7;
-    --creme: #f6f1eb;
-    --avela: #b08d72;
-    --texto: #2a221d;
-    --texto-2: #6f645c;
-    --linha: rgba(47, 37, 32, .12);
     --fonte: "Outfit", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     --raio: 22px;
+    /* granulado leve para os blocos escuros não ficarem chapados */
+    --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
   * { box-sizing: border-box; margin: 0; padding: 0; min-width: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--creme); color: var(--texto); font-family: var(--fonte); font-weight: 300; font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+  body { background: var(--fundo); color: var(--texto); font-family: var(--fonte); font-weight: 300; font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: clip; }
   img { display: block; max-width: 100%; height: auto; }
   a { color: inherit; text-decoration: none; }
   .wrap { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 22px; }
@@ -41,50 +50,50 @@
   /* Botões */
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 999px; font-weight: 400; font-size: 16px; transition: transform .15s, background .2s; }
   .btn:active { transform: scale(.97); }
-  .btn-claro { background: var(--creme); color: var(--cafe); }
-  .btn-linha { border: 1px solid rgba(246, 241, 235, .45); color: var(--creme); }
-  .btn-cafe { background: var(--cafe); color: var(--creme); }
-  .link { display: inline-flex; align-items: center; gap: 6px; font-weight: 400; color: var(--cafe); border-bottom: 1px solid var(--avela); padding-bottom: 2px; }
+  .btn-claro { background: var(--fundo); color: var(--texto); }
+  .btn-linha { border: 1px solid rgba(255,255,255, .45); color: #fff; }
+  .btn-cafe { background: var(--escuro); color: var(--fundo); }
+  .link { display: inline-flex; align-items: center; gap: 6px; font-weight: 400; color: var(--texto); border-bottom: 1px solid var(--acento); padding-bottom: 2px; }
 
   /* Barra do topo */
   .barra { position: fixed; top: 0; left: 0; right: 0; z-index: 40; padding: 14px 0; padding-top: max(14px, env(safe-area-inset-top)); transition: background .3s; }
-  .barra.solida { background: rgba(47, 37, 32, .92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+  .barra.solida { background: var(--escuro); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
   .barra .wrap { display: flex; justify-content: space-between; align-items: center; }
   .barra img { height: 18px; width: auto; }
   .barra .btn { min-height: 38px; padding: 0 18px; font-size: 14px; }
 
   /* Abertura */
-  .abertura { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; color: var(--creme); background: var(--cafe); }
+  .abertura { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; color: #fff; background: var(--escuro); }
   .abertura > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 50%; height: 62%; bottom: auto; }
-  .abertura::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(47,37,32,.25) 0%, rgba(47,37,32,.15) 28%, rgba(47,37,32,.85) 52%, var(--cafe) 80%); }
-  @media (min-width: 900px) { .abertura > img { height: 100%; } .abertura::after { background: linear-gradient(90deg, rgba(47,37,32,.92) 0%, rgba(47,37,32,.7) 45%, rgba(47,37,32,.15) 100%); } }
+  .abertura::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, transparent 25%, var(--escuro) 60%), var(--grao); opacity: .97; }
+  @media (min-width: 900px) { .abertura > img { height: 100%; } .abertura::after { background: linear-gradient(90deg, var(--escuro) 0%, color-mix(in srgb, var(--escuro) 70%, transparent) 45%, transparent 100%); } }
   .abertura .wrap { position: relative; z-index: 2; padding-bottom: 40px; padding-top: 120px; }
-  .local { font-size: 14px; color: #d9cbbd; margin-bottom: 14px; }
+  .local { font-size: 14px; color: var(--suave-sobre-escuro); margin-bottom: 14px; }
   .abertura h1 { font-size: clamp(40px, 10.5vw, 76px); font-weight: 200; max-width: 760px; }
   .abertura h1 strong { font-weight: 400; }
-  .abertura p.sub { margin-top: 16px; color: #e5d9cd; max-width: 460px; }
+  .abertura p.sub { margin-top: 16px; color: var(--claro-sobre-escuro); max-width: 460px; }
   .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-  .google { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; font-size: 14px; color: #e5d9cd; }
-  .google b { color: var(--creme); font-weight: 500; }
-  .estrelas { color: var(--avela); letter-spacing: 2px; }
+  .google { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; font-size: 14px; color: var(--claro-sobre-escuro); }
+  .google b { color: #fff; font-weight: 500; }
+  .estrelas { color: var(--acento); letter-spacing: 2px; }
 
   /* Assuntos */
-  .assuntos { background: var(--cafe); padding: 8px 0 48px; }
-  .assuntos p { color: #bfb0a2; font-size: 15px; margin-bottom: 14px; }
+  .assuntos { background: var(--fundo); padding: 36px 0 8px; }
+  .assuntos p { color: var(--texto-2); font-size: 15px; margin-bottom: 14px; }
   .trilho { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; scrollbar-width: none; margin: 0 -22px; padding-left: 22px; padding-right: 22px; }
   .trilho::-webkit-scrollbar { display: none; }
-  .assunto { flex: none; scroll-snap-align: start; display: flex; flex-direction: column; gap: 14px; justify-content: space-between; width: 42vw; max-width: 220px; aspect-ratio: auto; min-height: 96px; border-radius: var(--raio); padding: 18px; background: var(--cafe-2); color: var(--creme); border: 1px solid rgba(246,241,235,.08); }
-  .assunto span { font-size: 18px; color: var(--avela); align-self: flex-end; }
+  .assunto { flex: none; scroll-snap-align: start; display: flex; flex-direction: column; gap: 14px; justify-content: space-between; width: 42vw; max-width: 220px; aspect-ratio: auto; min-height: 96px; border-radius: var(--raio); padding: 18px; background: var(--cartao); color: var(--texto); border: 1px solid var(--linha); }
+  .assunto span { font-size: 18px; color: var(--acento); align-self: flex-end; }
   .assunto strong { font-weight: 300; font-size: 22px; line-height: 1.15; }
-  .assunto:active { background: #4a3a31; }
+  .assunto:active { background: var(--fundo-2); }
   @media (min-width: 900px) { .trilho { margin: 0; padding: 0; } .assunto { width: auto; flex: 1; max-width: none; } }
 
   /* Estrutura */
-  .estrutura { background: var(--creme); }
+  .estrutura { background: var(--fundo); }
   .fotos { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 28px -22px 0; padding: 0 22px 6px; scrollbar-width: none; }
   .fotos::-webkit-scrollbar { display: none; }
   .foto { flex: none; width: 78vw; max-width: 420px; scroll-snap-align: start; }
-  .foto .img { position: relative; border-radius: var(--raio); overflow: hidden; aspect-ratio: 4 / 5; background: var(--areia); }
+  .foto .img { position: relative; border-radius: var(--raio); overflow: hidden; aspect-ratio: 4 / 5; background: var(--fundo-2); }
   .foto img { width: 100%; height: 100%; object-fit: cover; }
   .foto figcaption { margin-top: 10px; font-size: 15px; }
   .foto figcaption small { display: block; color: var(--texto-2); font-size: 14px; }
@@ -92,7 +101,7 @@
   .endereco { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--texto-2); font-size: 15px; }
 
   /* Dra. Milena */
-  .milena { background: var(--areia); }
+  .milena { background: linear-gradient(180deg, var(--fundo) 0%, var(--fundo-2) 30%, var(--fundo-2) 100%); }
   .milena .grade { display: grid; gap: 28px; align-items: center; }
   .milena img { border-radius: var(--raio); aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 12%; width: 100%; max-width: 460px; }
   .cv { list-style: none; margin: 22px 0 26px; }
@@ -103,59 +112,65 @@
   /* Como funciona */
   .passos { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 28px -22px 0; padding: 0 22px 6px; scrollbar-width: none; counter-reset: passo; }
   .passos::-webkit-scrollbar { display: none; }
-  .passo { flex: none; width: 72vw; max-width: 320px; scroll-snap-align: start; background: #fff; border-radius: var(--raio); padding: 24px 22px; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; }
-  .passo::before { counter-increment: passo; content: counter(passo); font-size: 44px; font-weight: 200; color: var(--avela); line-height: 1; }
+  .passo { flex: none; width: 72vw; max-width: 320px; scroll-snap-align: start; background: var(--cartao); border-radius: var(--raio); padding: 24px 22px; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; }
+  .passo::before { counter-increment: passo; content: counter(passo); font-size: 44px; font-weight: 200; color: var(--acento); line-height: 1; }
   .passo h3 { font-size: 21px; font-weight: 400; margin-top: 24px; }
   .passo p { color: var(--texto-2); font-size: 15px; margin-top: 6px; }
   .dica { margin-top: 12px; font-size: 13px; color: var(--texto-2); }
   @media (min-width: 900px) { .passos { margin: 28px 0 0; padding: 0; } .passo { flex: 1; width: auto; } .dica { display: none; } }
 
   /* Tecnologias */
-  .tecnologias { background: var(--cafe); color: var(--creme); }
-  .tecnologias .apoio { color: #bfb0a2; }
+  .tecnologias { background: radial-gradient(120% 80% at 100% 0%, var(--escuro-2) 0%, var(--escuro) 60%), var(--escuro); color: var(--fundo); position: relative; }
+  .tecnologias::before { content: ''; position: absolute; inset: 0; background: var(--grao); pointer-events: none; }
+  .tecnologias .wrap { position: relative; }
+  .tecnologias .apoio { color: var(--suave-sobre-escuro); }
   .tec { display: grid; gap: 0; margin-top: 26px; }
-  .tec a { display: grid; grid-template-columns: 64px 1fr 20px; gap: 14px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(246,241,235,.12); }
-  .tec a:last-child { border-bottom: 1px solid rgba(246,241,235,.12); }
-  .tec img, .tec .mini { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; background: var(--cafe-2); }
+  .tec a { display: grid; grid-template-columns: 64px 1fr 20px; gap: 14px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.12); }
+  .tec a:last-child { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .tec img, .tec .mini { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; background: var(--escuro-2); }
   .tec strong { display: block; font-weight: 400; font-size: 18px; }
-  .tec small { color: #bfb0a2; font-size: 14px; }
-  .tec .seta { color: var(--avela); font-size: 20px; }
+  .tec small { color: var(--suave-sobre-escuro); font-size: 14px; }
+  .tec .seta { color: var(--acento); font-size: 20px; }
 
   /* Valor */
-  .valor { background: var(--creme); }
-  .cartao-valor { background: #fff; border-radius: var(--raio); padding: 28px 24px; display: grid; gap: 18px; }
+  .valor { background: var(--fundo); }
+  .cartao-valor { background: var(--cartao); border-radius: var(--raio); padding: 28px 24px; display: grid; gap: 18px; }
   .cartao-valor .preco { font-size: clamp(48px, 13vw, 72px); font-weight: 200; letter-spacing: -0.03em; line-height: 1; }
   .cartao-valor ul { list-style: none; color: var(--texto-2); font-size: 15px; }
   .cartao-valor li { padding: 4px 0; }
-  .cartao-valor li::before { content: '·'; color: var(--avela); margin-right: 8px; }
+  .cartao-valor li::before { content: '·'; color: var(--acento); margin-right: 8px; }
   @media (min-width: 760px) { .cartao-valor { grid-template-columns: 1fr 1fr auto; align-items: center; } }
 
   /* Perguntas */
-  .perguntas { background: var(--creme); padding-top: 0; }
+  .perguntas { background: var(--fundo); padding-top: 0; }
   details { border-top: 1px solid var(--linha); }
   details:last-of-type { border-bottom: 1px solid var(--linha); }
   summary { list-style: none; cursor: pointer; padding: 18px 34px 18px 0; position: relative; font-weight: 400; }
   summary::-webkit-details-marker { display: none; }
-  summary::after { content: '+'; position: absolute; right: 0; top: 12px; font-size: 26px; font-weight: 200; color: var(--avela); transition: transform .2s; }
+  summary::after { content: '+'; position: absolute; right: 0; top: 12px; font-size: 26px; font-weight: 200; color: var(--acento); transition: transform .2s; }
   details[open] summary::after { transform: rotate(45deg); }
   details p { color: var(--texto-2); padding-bottom: 18px; font-size: 15px; }
 
   /* Rodapé */
-  footer { background: var(--cafe); color: #d9cbbd; padding: 48px 0 120px; font-size: 15px; }
+  footer { background: var(--escuro); color: var(--suave-sobre-escuro); padding: 48px 0 120px; font-size: 15px; }
   footer img { height: 20px; width: auto; margin-bottom: 22px; }
   footer .colunas { display: grid; gap: 22px; }
-  footer b { display: block; color: var(--creme); font-weight: 400; margin-bottom: 4px; }
+  footer b { display: block; color: var(--claro-sobre-escuro); font-weight: 400; margin-bottom: 4px; }
   footer .rotas { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
-  footer .rotas a { border: 1px solid rgba(246,241,235,.25); border-radius: 999px; padding: 8px 14px; font-size: 14px; }
-  footer .legal { margin-top: 32px; font-size: 12px; color: #9c8d80; }
+  footer .rotas a { border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 8px 14px; font-size: 14px; }
+  footer .legal { margin-top: 32px; font-size: 12px; opacity: .7; }
   @media (min-width: 760px) { footer .colunas { grid-template-columns: repeat(3, 1fr); } footer { padding-bottom: 48px; } }
 
   /* Botão fixo de WhatsApp */
   .fixo { position: fixed; left: 14px; right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); z-index: 50; transform: translateY(160%); transition: transform .3s ease; }
   .fixo.visivel { transform: none; }
-  .fixo .btn { width: 100%; background: var(--cafe); color: var(--creme); box-shadow: 0 12px 30px rgba(47,37,32,.35); border: 1px solid rgba(246,241,235,.12); }
+  .fixo .btn { width: 100%; background: var(--escuro); color: var(--fundo); box-shadow: 0 12px 30px rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.12); }
   @media (min-width: 900px) { .fixo { left: auto; right: 24px; } .fixo .btn { width: auto; } }
 
+  /* Seletor de cores (só na prévia) */
+  .paletas { position: fixed; top: 70px; left: 50%; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 4px; padding: 5px 6px 5px 12px; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: 0 6px 20px rgba(0,0,0,.18); font-size: 13px; color: #333; backdrop-filter: blur(10px); }
+  .paletas button { font: inherit; border: 0; background: transparent; padding: 7px 12px; border-radius: 999px; cursor: pointer; color: #333; }
+  .paletas button[aria-pressed="true"] { background: #222; color: #fff; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fixo, .barra { transition: none; } }
 </style>
 </head>
@@ -178,7 +193,7 @@
       <a class="btn btn-claro" id="botao-topo" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
       <a class="btn btn-linha" href="#clinica">Conhecer a clínica</a>
     </div>
-    <a class="google" href="https://www.google.com/maps/place/Clinica+Nivva/@-7.114764,-34.8593596,17z/data=!4m8!3m7!1s0x7acdd1d278292f9:0xb9e302687d66f153!8m2!3d-7.114764!4d-34.8593596!9m1!1b1" target="_blank" rel="noopener"><span class="estrelas">★★★★★</span> <b>5,0</b> no Google</a>
+    <a class="google" href="https://www.google.com/maps/place/Clinica+Nivva/@-7.114764,-34.8593596,17z/data=!4m8!3m7!1s0x7acdd1d278292f9:0xb9e302687d66f153!8m2!3d-7.114764!4d-34.8593596!9m1!1b1" target="_blank" rel="noopener"><span class="estrelas">★★★★★</span> <b>71 avaliações</b> no Google</a>
   </div>
 </section>
 
@@ -295,6 +310,14 @@
   </div>
 </footer>
 
+
+<div class="paletas" role="group" aria-label="Cores da prévia">
+  <span>Cores:</span>
+  <button data-p="areia" aria-pressed="true">Areia</button>
+  <button data-p="oliva">Oliva</button>
+  <button data-p="grafite">Grafite</button>
+</div>
+
 <div class="fixo" id="fixo">
   <a class="btn" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
 </div>
@@ -307,6 +330,11 @@
   const aoRolar = () => barra.classList.toggle('solida', window.scrollY > 40);
   window.addEventListener('scroll', aoRolar, { passive: true });
   aoRolar();
+  const botoes = document.querySelectorAll('.paletas button');
+  botoes.forEach((b) => b.addEventListener('click', () => {
+    document.documentElement.dataset.paleta = b.dataset.p;
+    botoes.forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+  }));
   if ('IntersectionObserver' in window && topo) {
     const vigia = new IntersectionObserver((e) => {
       fixo.classList.toggle('visivel', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
