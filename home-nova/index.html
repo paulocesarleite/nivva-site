@@ -124,7 +124,8 @@
   .sem.medica { background: var(--escuro); border-color: var(--escuro); }
   .sem.medica i { color: #fff; }
   .n360 .inclui { margin: 24px 0 24px; }
-  .n360 .inclui div { display: grid; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .n360 .inclui, .n360 .inclui div { grid-template-columns: 1fr !important; }
+  .n360 .inclui div { display: grid; gap: 2px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
   .n360 .inclui b { grid-row: span 2; font-size: 40px; font-weight: 200; line-height: 1; color: #fff; letter-spacing: -.03em; }
   .n360 .inclui span { font-size: 17px; color: #fff; }
   .n360 .inclui small { font-size: 14px; color: var(--suave-sobre-escuro); }
@@ -170,8 +171,9 @@
   .n360 .wrap { position: relative; }
   .n360 .apoio { color: var(--suave-sobre-escuro); }
   .n360-grade { display: grid; gap: 32px; align-items: center; }
-  @media (min-width: 860px) { .n360-grade { grid-template-columns: 0.8fr 1fr; gap: 64px; } }
-  .n360-tela { position: relative; background: #000; border-radius: var(--raio); overflow: hidden; aspect-ratio: 3 / 4; max-width: 420px; width: 100%; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+  @media (min-width: 860px) { .n360-grade { grid-template-columns: 1.25fr 1fr; gap: 56px; } }
+  .n360-tela { position: relative; background: #000; border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 9; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.08); }
+  .n360-tela video { display: block; width: 100%; height: 100%; object-fit: cover; }
   .n360-tela img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: .35; animation: acende 4.5s ease-in-out infinite; }
   .n360-tela .feixe { position: absolute; left: 8%; right: 8%; height: 2px; top: 4%; background: linear-gradient(90deg, transparent, #ffb15c, transparent); box-shadow: 0 0 18px #ffb15c; animation: feixe 4.5s ease-in-out infinite; }
   @keyframes feixe { 0% { top: 4%; opacity: 0; } 8% { opacity: 1; } 70% { top: 94%; opacity: 1; } 78%, 100% { top: 94%; opacity: 0; } }
@@ -270,13 +272,8 @@
 
 <section class="n360" id="nivva360">
   <div class="wrap n360-grade">
-    <div class="n360-tela" aria-hidden="true">
-      <img src="/assets/img/real/bio-corpo-f.webp" alt="" loading="lazy" width="600" height="1190">
-      <span class="feixe"></span>
-      <span class="rotulo r1">Gordura</span>
-      <span class="rotulo r2">Músculo</span>
-      <span class="rotulo r3">Água</span>
-      <span class="rotulo r4">Gordura visceral</span>
+    <div class="n360-tela">
+      <video src="/assets/img/real/avaliacao-360.mp4" poster="/assets/img/real/avaliacao-360-capa.webp" autoplay muted loop playsinline preload="metadata" aria-label="Apresentação da Avaliação Nivva 360 na tela da sala, com paciente fictícia"></video>
     </div>
     <div>
       <p class="rotulo-mono">Avaliação Nivva 360 · Primeira consulta</p>
