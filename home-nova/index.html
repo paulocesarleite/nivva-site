@@ -86,16 +86,16 @@
   .google b { color: #fff; font-weight: 500; }
   .estrelas { color: var(--acento); letter-spacing: 2px; }
 
-  /* Assuntos */
-  .assuntos { background: var(--fundo); padding: 36px 0 8px; }
-  .assuntos p { color: var(--texto-2); font-size: 15px; margin-bottom: 14px; }
-  .trilho { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; scrollbar-width: none; margin: 0 -22px; padding-left: 22px; padding-right: 22px; }
-  .trilho::-webkit-scrollbar { display: none; }
-  .assunto { flex: none; scroll-snap-align: start; display: flex; flex-direction: column; gap: 14px; justify-content: space-between; width: 42vw; max-width: 220px; aspect-ratio: auto; min-height: 96px; border-radius: var(--raio); padding: 18px; background: var(--cartao); color: var(--texto); border: 1px solid var(--linha); }
-  .assunto span { font-size: 18px; color: var(--acento); align-self: flex-end; }
-  .assunto strong { font-weight: 300; font-size: 22px; line-height: 1.15; }
-  .assunto:active { background: var(--fundo-2); }
-  @media (min-width: 900px) { .trilho { margin: 0; padding: 0; } .assunto { width: auto; flex: 1; max-width: none; } }
+  /* O que trouxe você — cada assunto com a situação real */
+  .assuntos { background: var(--fundo); padding: 48px 0 16px; }
+  .assuntos h2 { font-size: clamp(28px, 6.5vw, 44px); }
+  .casos { display: grid; gap: 10px; margin-top: 22px; }
+  .caso { display: grid; grid-template-columns: 1fr 20px; grid-template-rows: auto auto; column-gap: 12px; align-items: center; padding: 18px 18px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; }
+  .caso strong { font-weight: 400; font-size: 20px; }
+  .caso small { grid-column: 1; color: var(--texto-2); font-size: 15px; margin-top: 2px; }
+  .caso span { grid-column: 2; grid-row: 1 / span 2; color: var(--acento); font-size: 20px; }
+  .caso:active { background: var(--fundo-2); }
+  @media (min-width: 900px) { .casos { grid-template-columns: repeat(4, 1fr); } .caso { grid-template-columns: 1fr; padding: 22px; } .caso span { grid-column: 1; grid-row: auto; margin-top: 14px; } }
 
   /* Estrutura */
   .estrutura { background: var(--fundo); }
@@ -118,15 +118,30 @@
   .cv li:last-child { border-bottom: 1px solid var(--linha); }
   @media (min-width: 860px) { .milena .grade { grid-template-columns: 1fr 1fr; gap: 64px; } }
 
-  /* Como funciona */
-  .passos { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 28px -22px 0; padding: 0 22px 6px; scrollbar-width: none; counter-reset: passo; }
-  .passos::-webkit-scrollbar { display: none; }
-  .passo { flex: none; width: 72vw; max-width: 320px; scroll-snap-align: start; background: var(--cartao); border-radius: var(--raio); padding: 24px 22px; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; }
-  .passo::before { counter-increment: passo; content: counter(passo); font-size: 44px; font-weight: 200; color: var(--acento); line-height: 1; }
-  .passo h3 { font-size: 21px; font-weight: 400; margin-top: 24px; }
-  .passo p { color: var(--texto-2); font-size: 15px; margin-top: 6px; }
-  .dica { margin-top: 12px; font-size: 13px; color: var(--texto-2); }
-  @media (min-width: 900px) { .passos { margin: 28px 0 0; padding: 0; } .passo { flex: 1; width: auto; } .dica { display: none; } }
+  /* Como é o acompanhamento — linha do tempo */
+  .linha { list-style: none; margin-top: 30px; position: relative; display: grid; gap: 0; }
+  .linha::before { content: ''; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 1px; background: color-mix(in srgb, var(--acento) 55%, transparent); }
+  .linha li { position: relative; padding: 0 0 26px 34px; }
+  .linha li:last-child { padding-bottom: 0; }
+  .linha li::before { content: ''; position: absolute; left: 0; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: var(--fundo); border: 1px solid var(--acento); box-shadow: inset 0 0 0 3px var(--fundo), inset 0 0 0 8px var(--acento); }
+  .linha .quando { display: block; font-size: 13px; color: var(--acento); font-weight: 400; letter-spacing: .02em; margin-bottom: 2px; }
+  .linha strong { display: block; font-weight: 400; font-size: 20px; line-height: 1.25; }
+  .linha small { display: block; color: var(--texto-2); font-size: 15px; margin-top: 2px; }
+  @media (min-width: 900px) {
+    .linha { grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .linha::before { left: 0; right: 0; top: 7px; bottom: auto; width: auto; height: 1px; }
+    .linha li { padding: 34px 0 0; }
+    .linha li::before { top: 0; }
+  }
+
+  /* Equipe */
+  .equipe { background: var(--fundo-2); }
+  .areas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px; }
+  .area { background: var(--cartao); border: 1px solid var(--linha); border-radius: 16px; padding: 18px 16px 20px; display: flex; flex-direction: column; gap: 6px; }
+  .area .num { font-size: 13px; color: var(--acento); }
+  .area strong { font-weight: 400; font-size: 19px; line-height: 1.2; margin-top: 18px; }
+  .area small { color: var(--texto-2); font-size: 14px; line-height: 1.4; }
+  @media (min-width: 900px) { .areas { grid-template-columns: repeat(3, 1fr); gap: 14px; } .area { padding: 24px 22px; } }
 
   /* Depoimentos */
   .resultados { background: var(--fundo); }
@@ -174,15 +189,6 @@
   .tec small { color: var(--suave-sobre-escuro); font-size: 14px; }
   .tec .seta { color: var(--acento); font-size: 20px; }
 
-  /* Valor */
-  .valor { background: var(--fundo); }
-  .cartao-valor { background: var(--cartao); border-radius: var(--raio); padding: 28px 24px; display: grid; gap: 18px; }
-  .cartao-valor .preco { font-size: clamp(48px, 13vw, 72px); font-weight: 200; letter-spacing: -0.03em; line-height: 1; }
-  .cartao-valor ul { list-style: none; color: var(--texto-2); font-size: 15px; }
-  .cartao-valor li { padding: 4px 0; }
-  .cartao-valor li::before { content: '·'; color: var(--acento); margin-right: 8px; }
-  @media (min-width: 760px) { .cartao-valor { grid-template-columns: 1fr 1fr auto; align-items: center; } }
-
   /* Perguntas */
   .perguntas { background: var(--fundo); padding-top: 0; }
   details { border-top: 1px solid var(--linha); }
@@ -229,8 +235,8 @@
   <picture><source media="(min-width: 900px)" srcset="/assets/img/real/recepcao-espelho.webp"><img src="/assets/img/real/recepcao-letreiro.webp" alt="Recepção da Clínica Nivva" width="900" height="1200" fetchpriority="high"></picture>
   <div class="wrap">
     <p class="local">Clínica médica · João Pessoa e Patos</p>
-    <h1>Acompanhamento médico para <strong>emagrecer e envelhecer bem.</strong></h1>
-    <p class="sub">Dra. Milena Jácome, nutrição, psicologia e educação física no mesmo lugar.</p>
+    <h1>Emagrecer e cuidar dos hormônios <strong>com quem acompanha de perto.</strong></h1>
+    <p class="sub">Você fala com Dra. Milena e com a equipe dela durante todo o tratamento, não só no dia da consulta.</p>
     <div class="acoes">
       <a class="btn btn-claro" id="botao-topo" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
       <a class="btn btn-linha" href="#clinica">Conhecer a clínica</a>
@@ -244,12 +250,12 @@
 
 <section class="assuntos">
   <div class="wrap">
-    <p>O que você procura?</p>
-    <nav class="trilho" aria-label="Assuntos">
-      <a class="assunto" href="/emagrecimento"><strong>Emagrecimento</strong><span>→</span></a>
-      <a class="assunto" href="#"><strong>Lipedema</strong><span>→</span></a>
-      <a class="assunto" href="#"><strong>Reposição hormonal</strong><span>→</span></a>
-      <a class="assunto" href="#tecnologias"><strong>Tecnologias</strong><span>→</span></a>
+    <h2>O que trouxe você até aqui?</h2>
+    <nav class="casos" aria-label="Assuntos">
+      <a class="caso" href="/emagrecimento"><strong>Emagrecimento</strong><small>Já fez dieta, perdeu peso e ele voltou.</small><span>→</span></a>
+      <a class="caso" href="#"><strong>Lipedema</strong><small>As pernas pesam, doem e não respondem à dieta.</small><span>→</span></a>
+      <a class="caso" href="#"><strong>Reposição hormonal</strong><small>Calor, sono ruim e cansaço depois dos 40.</small><span>→</span></a>
+      <a class="caso" href="#tecnologias"><strong>Tecnologias</strong><small>Flacidez e gordura localizada que ficaram.</small><span>→</span></a>
     </nav>
   </div>
 </section>
@@ -278,7 +284,7 @@
     <img src="/assets/img/img-15.webp" alt="Dra. Milena Jácome" width="1120" height="1400" loading="lazy">
     <div>
       <h2>Dra. Milena Jácome.</h2>
-      <p class="apoio">Médica há quase 10 anos. Cuida de metabolismo, peso e envelhecimento saudável.</p>
+      <p class="apoio">Médica há quase 10 anos, cuida de peso, metabolismo e hormônios. Ela mesma atende você do começo ao fim do tratamento.</p>
       <ul class="cv">
         <li>CRM-PB 10744</li>
         <li>Primeira médica paraibana na SBEMO</li>
@@ -289,6 +295,21 @@
   </div>
 </section>
 
+
+<section class="equipe" id="equipe">
+  <div class="wrap">
+    <h2>Uma equipe inteira no seu plano.</h2>
+    <p class="apoio">Cada área cuida de uma parte. Todas olham o mesmo prontuário.</p>
+    <div class="areas">
+      <div class="area"><span class="num">01</span><strong>Medicina</strong><small>Dra. Milena define o tratamento e acompanha os exames.</small></div>
+      <div class="area"><span class="num">02</span><strong>Nutrição</strong><small>Cardápio que cabe na sua rotina, ajustado a cada semana.</small></div>
+      <div class="area"><span class="num">03</span><strong>Psicologia</strong><small>Para a fome emocional e a ansiedade não sabotarem o plano.</small></div>
+      <div class="area"><span class="num">04</span><strong>Educação física</strong><small>Treino para perder gordura sem perder músculo.</small></div>
+      <div class="area"><span class="num">05</span><strong>Enfermagem</strong><small>Aplicações, medidas e bioimpedância na clínica.</small></div>
+      <div class="area"><span class="num">06</span><strong>Fisioterapia</strong><small>Cuidado com dor, inchaço e circulação.</small></div>
+    </div>
+  </div>
+</section>
 
 <section class="n360" id="nivva360">
   <div class="wrap n360-grade">
@@ -307,7 +328,7 @@
         <li><b>60 minutos</b> com Dra. Milena</li>
         <li><b>Bioimpedância InBody</b> por região do corpo</li>
         <li><b>Fotos</b> para acompanhar a evolução</li>
-        <li><b>Retorno</b> em até 60 dias incluído</li>
+        <li><b>Exames</b> revisados na consulta</li>
       </ul>
       <a class="btn btn-claro" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20e%20quero%20agendar%20a%20avalia%C3%A7%C3%A3o%20Nivva%20360." target="_blank" rel="noopener">Agendar a avaliação</a>
     </div>
@@ -316,14 +337,15 @@
 
 <section class="como">
   <div class="wrap">
-    <h2>Como funciona.</h2>
-    <div class="passos">
-      <article class="passo"><div><h3>Avaliação com Dra. Milena</h3><p>Uma hora de consulta, com bioimpedância e seus exames.</p></div></article>
-      <article class="passo"><div><h3>Plano com a equipe</h3><p>Médica, nutricionista e psicóloga montam juntas.</p></div></article>
-      <article class="passo"><div><h3>Acompanhamento semanal</h3><p>Você não fica sozinha entre uma consulta e outra.</p></div></article>
-      <article class="passo"><div><h3>Nova medição no retorno</h3><p>Nova bioimpedância para comparar com a primeira.</p></div></article>
-    </div>
-    <p class="dica">Arraste para o lado →</p>
+    <h2>Como é o acompanhamento.</h2>
+    <p class="apoio">Um programa de 24 semanas. Você vem à clínica toda semana.</p>
+    <ol class="linha">
+      <li><span class="quando">Dia 1</span><strong>Avaliação Nivva 360</strong><small>Consulta longa com Dra. Milena, bioimpedância e fotos.</small></li>
+      <li><span class="quando">Semana 1</span><strong>Plano montado pela equipe</strong><small>Médica, nutricionista, psicóloga e educadora física.</small></li>
+      <li><span class="quando">Toda semana</span><strong>Encontro na clínica</strong><small>Peso, medidas, bioimpedância e aplicação, quando houver.</small></li>
+      <li><span class="quando">Semana 13</span><strong>Revisão com Dra. Milena</strong><small>Comparação com o primeiro dia e ajuste do plano.</small></li>
+      <li><span class="quando">Semana 24</span><strong>Fechamento</strong><small>Nova avaliação completa e o que fazer daqui para frente.</small></li>
+    </ol>
   </div>
 </section>
 
@@ -355,25 +377,11 @@
   </div>
 </section>
 
-<section class="valor">
-  <div class="wrap">
-    <div class="cartao-valor">
-      <div><p class="apoio" style="margin:0 0 6px">Primeira consulta</p><div class="preco">R$ 700</div></div>
-      <ul>
-        <li>60 minutos com Dra. Milena</li>
-        <li>Bioimpedância inclusa</li>
-        <li>Retorno em até 60 dias</li>
-        <li>Até 3x sem juros</li>
-      </ul>
-      <a class="btn btn-cafe" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar</a>
-    </div>
-  </div>
-</section>
-
 <section class="perguntas">
   <div class="wrap">
     <details><summary>Atende plano de saúde?</summary><p>É particular. Damos nota fiscal, recibo e descritivo para você pedir reembolso.</p></details>
-    <details><summary>Quanto tempo dura o tratamento?</summary><p>Depende do caso. A maioria fica de 3 a 12 meses. O prazo é conversado já na primeira consulta.</p></details>
+    <details><summary>Quanto tempo dura o tratamento?</summary><p>O programa completo tem 24 semanas. Dra. Milena define o seu na primeira consulta.</p></details>
+    <details><summary>Atende quem mora fora de João Pessoa?</summary><p>Sim. Também atendemos em Patos, e muita paciente vem do interior.</p></details>
     <details><summary>Preciso fazer as tecnologias?</summary><p>Não. Muita gente faz só o acompanhamento médico e nutricional.</p></details>
     <details><summary>Os equipamentos são seguros?</summary><p>São registrados na ANVISA e só usados com indicação médica.</p></details>
   </div>
