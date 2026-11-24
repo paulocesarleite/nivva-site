@@ -2,9 +2,36 @@
 // O iPhone/Safari só toca vídeo se o servidor responder pedaços (status 206);
 // sem isso o vídeo fica parado em 0:00. Os demais arquivos seguem direto para os ativos estáticos.
 
+// Site de Dra. Milena (dramilenajacome.com.br): os arquivos ficam em /_dramilenajacome/
+// neste mesmo projeto. Nesse domínio, "/" mostra essa pasta; em nivva.com.br a pasta
+// não aparece (redireciona para o domínio dela, para não duplicar conteúdo no Google).
+const PASTA_MILENA = '/_dramilenajacome';
+const DOMINIO_MILENA = 'dramilenajacome.com.br';
+const ARQUIVOS_COMPARTILHADOS = ['/favicon-32.png', '/apple-touch-icon.png', '/favicon.ico'];
+
+async function siteMilena(request, env, url) {
+  if (url.hostname !== DOMINIO_MILENA) {
+    return Response.redirect(`https://${DOMINIO_MILENA}${url.pathname}${url.search}`, 301);
+  }
+  if (ARQUIVOS_COMPARTILHADOS.includes(url.pathname)) {
+    return env.ASSETS.fetch(request);
+  }
+  const caminho = url.pathname === '/' ? PASTA_MILENA : PASTA_MILENA + url.pathname;
+  const resposta = await env.ASSETS.fetch(new Request(new URL(caminho, url.origin), request));
+  if (resposta.status === 404) return Response.redirect(`https://${DOMINIO_MILENA}/`, 302);
+  return resposta;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.hostname.endsWith(DOMINIO_MILENA)) {
+      return siteMilena(request, env, url);
+    }
+    if (url.pathname === PASTA_MILENA || url.pathname.startsWith(PASTA_MILENA + '/')) {
+      const resto = url.pathname.slice(PASTA_MILENA.length) || '/';
+      return Response.redirect(`https://${DOMINIO_MILENA}${resto}`, 301);
+    }
     if (!url.pathname.endsWith('.mp4')) {
       return env.ASSETS.fetch(request);
     }

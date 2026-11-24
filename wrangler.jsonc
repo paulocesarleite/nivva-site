@@ -8,7 +8,7 @@
   "assets": {
     "directory": "./",
     "binding": "ASSETS",
-    "run_worker_first": ["/resultados/*.mp4"],
+    "run_worker_first": true,
     // Endereços sem barra no final (/blog/artigo), iguais ao sitemap e às tags canonical.
     // Sem isso o Cloudflare redirecionava /artigo para /artigo/ e o Google marcava as páginas como "com redirecionamento".
     "html_handling": "drop-trailing-slash"
