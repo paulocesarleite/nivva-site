@@ -123,6 +123,13 @@
   .sem i { font-style: normal; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--texto-2); }
   .sem.medica { background: var(--escuro); border-color: var(--escuro); }
   .sem.medica i { color: #fff; }
+  .n360 .inclui { margin: 24px 0 24px; }
+  .n360 .inclui div { display: grid; grid-template-columns: 64px 1fr; column-gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .n360 .inclui b { grid-row: span 2; font-size: 40px; font-weight: 200; line-height: 1; color: #fff; letter-spacing: -.03em; }
+  .n360 .inclui span { font-size: 17px; color: #fff; }
+  .n360 .inclui small { font-size: 14px; color: var(--suave-sobre-escuro); }
+  .n360 .rotulo-mono, .como .rotulo-mono { color: var(--acento); }
+  .link-claro { color: #fff; }
   .como { background: radial-gradient(120% 80% at 100% 0%, var(--escuro-2) 0%, var(--escuro) 60%), var(--escuro); color: #fff; }
   .como h2 { max-width: 620px; }
   .como .apoio { color: var(--suave-sobre-escuro); }
@@ -222,10 +229,6 @@
   @media (min-width: 900px) { .fixo { left: auto; right: 24px; } .fixo .btn { width: auto; } }
 
   @media (min-width: 900px) { .abertura.foto-retrato > picture img { left: auto; right: 0; width: 58%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 35%); mask-image: linear-gradient(90deg, transparent, #000 35%); } }
-  /* Troca da foto da abertura (só na prévia) */
-  .variacao { position: fixed; top: 64px; left: 50%; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 4px; padding: 5px 6px 5px 12px; border-radius: 999px; background: rgba(255,255,255,.92); box-shadow: 0 6px 20px rgba(0,0,0,.18); font-size: 13px; color: #333; backdrop-filter: blur(10px); white-space: nowrap; }
-  .variacao button { font: inherit; border: 0; background: transparent; padding: 7px 11px; border-radius: 999px; cursor: pointer; color: #333; }
-  .variacao button[aria-pressed="true"] { background: #222; color: #fff; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .fixo, .barra { transition: none; } }
 </style>
 </head>
@@ -237,8 +240,8 @@
   </div>
 </header>
 
-<section class="abertura">
-  <picture><source id="foto-larga" media="(min-width: 900px)" srcset="/assets/img/real/recepcao-espelho.webp"><img id="foto-alta" src="/assets/img/real/recepcao-letreiro.webp" alt="Recepção da Clínica Nivva" width="900" height="1200" fetchpriority="high"></picture>
+<section class="abertura foto-retrato">
+  <picture><source id="foto-larga" media="(min-width: 900px)" srcset="/assets/img/img-15.webp"><img id="foto-alta" src="/assets/img/img-15.webp" alt="Dra. Milena Jácome" style="object-position:50% 8%" width="900" height="1200" fetchpriority="high"></picture>
   <div class="wrap">
     <p class="local"><span class="ponto"></span>Clínica médica · João Pessoa e Patos</p>
     <h1>Emagrecimento, lipedema <strong>e saúde hormonal.</strong></h1>
@@ -276,16 +279,22 @@
       <span class="rotulo r4">Gordura visceral</span>
     </div>
     <div>
-      <h2>Avaliação Nivva 360.</h2>
-      <p class="apoio">Primeira consulta de 60 minutos, com bioimpedância por região do corpo e fotos.</p>
-      
+      <p class="rotulo-mono">Avaliação Nivva 360 · Primeira consulta</p>
+      <h2>Seu corpo medido por dentro, já na primeira consulta.</h2>
+      <p class="apoio">A balança comum mostra só o peso. Aqui você vê, na tela da sala, onde está a gordura, quanto é músculo e quanto é água.</p>
+      <div class="inclui inclui-360">
+        <div><b>60</b><span>minutos com Dra. Milena</span><small>Histórico, exames e hormônios</small></div>
+        <div><b>8</b><span>pontos de medição</span><small>Braços, pernas e tronco, um por um</small></div>
+        <div><b>1</b><span>relatório para levar</span><small>Com os números para comparar nos retornos</small></div>
+      </div>
+      <a class="link link-claro" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20e%20quero%20agendar%20a%20Avalia%C3%A7%C3%A3o%20Nivva%20360." target="_blank" rel="noopener">Agendar a avaliação →</a>
     </div>
   </div>
 </section>
 
 <section class="milena">
   <div class="wrap grade">
-    <img src="/assets/img/img-15.webp" alt="Dra. Milena Jácome" width="1120" height="1400" loading="lazy">
+    <img src="/assets/img/img-4.webp" alt="Dra. Milena Jácome" width="2400" height="1600" loading="lazy" style="object-position:68% 30%">
     <div>
       <h2>Dra. Milena Jácome.</h2>
             <p class="apoio" style="margin-bottom:22px">CRM-PB 10744 · Primeira médica paraibana na SBEMO</p>
@@ -345,7 +354,7 @@
       <figure class="foto"><div class="img"><img src="/assets/img/real/recepcao-larga.webp" alt="Recepção" loading="lazy"></div><figcaption>Recepção</figcaption></figure>
       <figure class="foto"><div class="img"><img src="/assets/img/real/cafe-espera.webp" alt="Sala de espera com café" loading="lazy"></div><figcaption>Sala de espera</figcaption></figure>
       <figure class="foto"><div class="img"><img src="/assets/img/real/sala-espera.webp" alt="Sala de espera" loading="lazy"></div><figcaption>Ambientes</figcaption></figure>
-      <figure class="foto"><div class="img"><div class="falta">Foto da InBody em uso<br>(falta subir no Drive)</div></div><figcaption>Bioimpedância InBody</figcaption></figure>
+      <figure class="foto"><div class="img" style="background:#000"><img src="/assets/img/real/bio-corpo-f.webp" alt="Avaliação Nivva 360" loading="lazy" style="object-fit:contain"></div><figcaption>Avaliação Nivva 360</figcaption></figure>
       <figure class="foto"><div class="img"><img src="/assets/img/real/kit-nivva.webp" alt="Kit Nivva" loading="lazy"></div><figcaption>Kit da paciente</figcaption></figure>
     </div>
     <div class="endereco">
@@ -362,7 +371,7 @@
     <div class="tec">
       <a href="#"><img src="/assets/img/img-5.webp" alt="Linear Z" loading="lazy"><span><strong>Linear Z</strong></span><span class="seta">›</span></a>
       <a href="#"><span class="mini"></span><span><strong>Campo magnético</strong></span><span class="seta">›</span></a>
-      <a href="#"><span class="mini"></span><span><strong>Bioimpedância InBody</strong></span><span class="seta">›</span></a>
+      <a href="#nivva360"><img src="/assets/img/real/bio-corpo-f.webp" alt="" loading="lazy" style="object-fit:contain;background:#000"><span><strong>Bioimpedância InBody</strong></span><span class="seta">›</span></a>
     </div>
   </div>
 </section>
@@ -393,12 +402,6 @@
   </div>
 </footer>
 
-<div class="variacao" role="group" aria-label="Foto da abertura (só na prévia)">
-  <span>Foto:</span>
-  <button data-v="recepcao" aria-pressed="true">Recepção</button>
-  <button data-v="milena">Dra. Milena</button>
-  <button data-v="fachada">Fachada</button>
-</div>
 
 <div class="fixo" id="fixo">
   <a class="btn btn-cafe" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
@@ -412,19 +415,6 @@
   const aoRolar = () => barra.classList.toggle('solida', window.scrollY > 40);
   window.addEventListener('scroll', aoRolar, { passive: true });
   aoRolar();
-  const fotos = {
-    recepcao: ['/assets/img/real/recepcao-espelho.webp', '/assets/img/real/recepcao-letreiro.webp', '50% 30%'],
-    milena: ['/assets/img/img-15.webp', '/assets/img/img-15.webp', '50% 8%'],
-    fachada: ['/assets/img/real/fachada-larga.webp', '/assets/img/real/fachada-alta.webp', '50% 60%'],
-  };
-  const larga = document.getElementById('foto-larga'), alta = document.getElementById('foto-alta');
-  const vbotoes = document.querySelectorAll('.variacao button');
-  vbotoes.forEach((b) => b.addEventListener('click', () => {
-    const f = fotos[b.dataset.v];
-    larga.srcset = f[0]; alta.src = f[1]; alta.style.objectPosition = f[2];
-    document.querySelector('.abertura').classList.toggle('foto-retrato', b.dataset.v === 'milena');
-    vbotoes.forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
-  }));
   if ('IntersectionObserver' in window && topo) {
     const vigia = new IntersectionObserver((e) => {
       fixo.classList.toggle('visivel', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
