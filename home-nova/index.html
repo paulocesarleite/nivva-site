@@ -123,10 +123,20 @@
   .sem i { font-style: normal; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--texto-2); }
   .sem.medica { background: var(--escuro); border-color: var(--escuro); }
   .sem.medica i { color: #fff; }
-  .legenda { list-style: none; margin-top: 20px; display: grid; gap: 10px; font-size: 15px; color: var(--texto-2); }
-  .legenda li { display: flex; align-items: center; gap: 12px; }
-  .legenda .sem { width: 18px; flex: none; border-radius: 5px; }
-  @media (min-width: 900px) { .semanas { grid-template-columns: repeat(12, 1fr); } }
+  .como { background: radial-gradient(120% 80% at 100% 0%, var(--escuro-2) 0%, var(--escuro) 60%), var(--escuro); color: #fff; }
+  .como h2 { max-width: 620px; }
+  .como .apoio { color: var(--suave-sobre-escuro); }
+  .inclui { display: grid; gap: 0; margin-top: 28px; border-top: 1px solid rgba(255,255,255,.14); }
+  .inclui div { display: grid; grid-template-columns: 64px 1fr; column-gap: 14px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .inclui b { grid-row: span 2; font-size: 44px; font-weight: 200; line-height: 1; color: #fff; letter-spacing: -.03em; }
+  .inclui span { font-size: 18px; color: #fff; }
+  .inclui small { font-size: 14px; color: var(--suave-sobre-escuro); }
+  .como .sem { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.12); }
+  .como .sem i { color: var(--suave-sobre-escuro); }
+  .como .sem.medica { background: var(--acento); border-color: var(--acento); }
+  .como .sem.medica i { color: #fff; }
+  @media (min-width: 900px) { .inclui { grid-template-columns: repeat(3, 1fr); column-gap: 28px; border-bottom: 0; } .inclui div { border-bottom: 1px solid rgba(255,255,255,.14); } }
+  @media (min-width: 900px) { .semanas { grid-template-columns: repeat(24, 1fr); gap: 5px; } .sem i { font-size: 10px; } }
 
   /* Equipe */
   .equipe { background: var(--fundo-2); }
@@ -315,13 +325,15 @@
 
 <section class="como" id="programa">
   <div class="wrap">
-    <p class="rotulo-mono">Programa Nivva</p>
-    <h2>24 semanas. Um encontro por semana.</h2>
+    <p class="rotulo-mono">Programa Nivva · 24 semanas</p>
+    <h2>Toda semana na clínica, durante seis meses.</h2>
+    <p class="apoio">O comum é um retorno a cada 30 ou 60 dias. Na Nivva, o encontro é semanal.</p>
+    <div class="inclui">
+      <div><b>24</b><span>encontros semanais</span><small>Medidas, bioimpedância e ajustes</small></div>
+      <div><b>3</b><span>consultas com Dra. Milena</span><small>No início, na metade e no fim</small></div>
+      <div><b>5</b><span>áreas acompanhando</span><small>Nutrição, psicologia, treino, enfermagem e fisioterapia</small></div>
+    </div>
     <div class="semanas" aria-hidden="true"><span class="sem medica"><i>1</i></span><span class="sem"><i>2</i></span><span class="sem"><i>3</i></span><span class="sem"><i>4</i></span><span class="sem"><i>5</i></span><span class="sem"><i>6</i></span><span class="sem"><i>7</i></span><span class="sem"><i>8</i></span><span class="sem"><i>9</i></span><span class="sem"><i>10</i></span><span class="sem"><i>11</i></span><span class="sem"><i>12</i></span><span class="sem medica"><i>13</i></span><span class="sem"><i>14</i></span><span class="sem"><i>15</i></span><span class="sem"><i>16</i></span><span class="sem"><i>17</i></span><span class="sem"><i>18</i></span><span class="sem"><i>19</i></span><span class="sem"><i>20</i></span><span class="sem"><i>21</i></span><span class="sem"><i>22</i></span><span class="sem"><i>23</i></span><span class="sem medica"><i>24</i></span></div>
-    <ul class="legenda">
-      <li><span class="sem medica"></span>Consulta com Dra. Milena: início, metade e fim</li>
-      <li><span class="sem"></span>Encontro com a equipe: medidas, bioimpedância e ajuste do plano</li>
-    </ul>
   </div>
 </section>
 
