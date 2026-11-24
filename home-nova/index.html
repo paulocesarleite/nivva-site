@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#26262a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
   /* Nova home da Nivva — prévia, pensada primeiro para o celular.
      Uma família de cor só (café, areia, creme) e um acento (avelã), como nas clínicas
@@ -59,11 +59,19 @@
   .abertura::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, transparent 25%, var(--escuro) 60%), var(--grao); opacity: .97; }
   @media (min-width: 900px) { .abertura > picture img { height: 100%; } .abertura::after { background: linear-gradient(90deg, var(--escuro) 0%, color-mix(in srgb, var(--escuro) 70%, transparent) 45%, transparent 100%); } }
   .abertura .wrap { position: relative; z-index: 2; padding-bottom: 40px; padding-top: 120px; }
-  .local { font-size: 14px; color: var(--suave-sobre-escuro); margin-bottom: 14px; }
-  .abertura h1 { font-size: clamp(40px, 10.5vw, 76px); font-weight: 200; max-width: 760px; }
+  .local { display: inline-flex; align-items: center; gap: 8px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--claro-sobre-escuro); margin-bottom: 18px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; background: rgba(255,255,255,.06); backdrop-filter: blur(6px); }
+  .ponto { width: 6px; height: 6px; border-radius: 50%; background: #7fd1a4; box-shadow: 0 0 0 0 rgba(127,209,164,.6); animation: pulso 2.4s infinite; }
+  @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(127,209,164,.55); } 70% { box-shadow: 0 0 0 8px rgba(127,209,164,0); } 100% { box-shadow: 0 0 0 0 rgba(127,209,164,0); } }
+  .dados { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 30px; border-top: 1px solid rgba(255,255,255,.14); max-width: 520px; }
+  .dados div { padding: 14px 10px 0 0; }
+  .dados div + div { padding-left: 12px; border-left: 1px solid rgba(255,255,255,.14); }
+  .dados dt { font-size: 22px; font-weight: 300; color: #fff; letter-spacing: -.01em; }
+  .dados dd { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--suave-sobre-escuro); margin-top: 2px; }
+  .abertura h1 { font-size: clamp(42px, 11vw, 80px); font-weight: 200; max-width: 760px; letter-spacing: -.035em; line-height: 1.02; }
   .abertura h1 strong { font-weight: 400; }
   .abertura p.sub { margin-top: 16px; color: var(--claro-sobre-escuro); max-width: 460px; }
-  .acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 28px; }
+  .acoes .google-review { margin-top: 0; min-height: 50px; }
   /* Selo do Google — igual ao de nivva.com.br/dramilena */
   .google-review { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; background: #fff; border: 1px solid rgba(14,39,38,.10); border-radius: 12px; padding: 9px 16px; box-shadow: 0 2px 10px rgba(0,0,0,.06); transition: transform .3s, box-shadow .3s; color: #1a1a1a; }
   .google-review:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.1); }
@@ -108,21 +116,17 @@
   .cv li:last-child { border-bottom: 1px solid var(--linha); }
   @media (min-width: 860px) { .milena .grade { grid-template-columns: 1fr 1fr; gap: 64px; } }
 
-  /* Como é o acompanhamento — linha do tempo */
-  .linha { list-style: none; margin-top: 30px; position: relative; display: grid; gap: 0; }
-  .linha::before { content: ''; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 1px; background: color-mix(in srgb, var(--acento) 55%, transparent); }
-  .linha li { position: relative; padding: 0 0 26px 34px; }
-  .linha li:last-child { padding-bottom: 0; }
-  .linha li::before { content: ''; position: absolute; left: 0; top: 6px; width: 15px; height: 15px; border-radius: 50%; background: var(--fundo); border: 1px solid var(--acento); box-shadow: inset 0 0 0 3px var(--fundo), inset 0 0 0 8px var(--acento); }
-  .linha .quando { display: block; font-size: 13px; color: var(--acento); font-weight: 400; letter-spacing: .02em; margin-bottom: 2px; }
-  .linha strong { display: block; font-weight: 400; font-size: 20px; line-height: 1.25; }
-  .linha small { display: block; color: var(--texto-2); font-size: 15px; margin-top: 2px; }
-  @media (min-width: 900px) {
-    .linha { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .linha::before { left: 0; right: 0; top: 7px; bottom: auto; width: auto; height: 1px; }
-    .linha li { padding: 34px 0 0; }
-    .linha li::before { top: 0; }
-  }
+  /* Programa de 24 semanas — uma marca por semana */
+  .rotulo-mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--acento); margin-bottom: 12px; }
+  .semanas { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; margin-top: 30px; }
+  .sem { position: relative; aspect-ratio: 1; border-radius: 8px; border: 1px solid var(--linha); background: var(--cartao); display: grid; place-items: center; }
+  .sem i { font-style: normal; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--texto-2); }
+  .sem.medica { background: var(--escuro); border-color: var(--escuro); }
+  .sem.medica i { color: #fff; }
+  .legenda { list-style: none; margin-top: 20px; display: grid; gap: 10px; font-size: 15px; color: var(--texto-2); }
+  .legenda li { display: flex; align-items: center; gap: 12px; }
+  .legenda .sem { width: 18px; flex: none; border-radius: 5px; }
+  @media (min-width: 900px) { .semanas { grid-template-columns: repeat(12, 1fr); } }
 
   /* Equipe */
   .equipe { background: var(--fundo-2); }
@@ -226,16 +230,21 @@
 <section class="abertura">
   <picture><source id="foto-larga" media="(min-width: 900px)" srcset="/assets/img/real/recepcao-espelho.webp"><img id="foto-alta" src="/assets/img/real/recepcao-letreiro.webp" alt="Recepção da Clínica Nivva" width="900" height="1200" fetchpriority="high"></picture>
   <div class="wrap">
-    <p class="local">Clínica médica · João Pessoa e Patos</p>
-    <h1>Emagrecimento, lipedema <strong>e saúde hormonal.</strong></h1>
-    <p class="sub">Dra. Milena Jácome e equipe multidisciplinar.</p>
+    <p class="local"><span class="ponto"></span>Clínica médica · João Pessoa e Patos</p>
+    <h1>Medicina do peso <strong>e dos hormônios.</strong></h1>
+    <p class="sub">Emagrecimento, lipedema e reposição hormonal com Dra. Milena Jácome e equipe.</p>
     <div class="acoes">
-      <a class="btn btn-claro" id="botao-topo" style="min-width:220px" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
-    </div>
-    <a class="google-review" href="https://maps.app.goo.gl/PTkbWP9K6vD3EE2o6" target="_blank" rel="noopener">
+      <a class="btn btn-claro" id="botao-topo" href="https://wa.me/5583999975033?text=Oi%21%20Vim%20pelo%20site%20da%20Nivva%20e%20quero%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">Agendar avaliação</a>
+      <a class="google-review" href="https://maps.app.goo.gl/PTkbWP9K6vD3EE2o6" target="_blank" rel="noopener">
       <svg class="gicon" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
       <span class="rating"><span class="rnum">5,0 <span class="stars">★★★★★</span></span><span class="rlabel">Avaliações no Google</span></span>
     </a>
+    </div>
+    <dl class="dados">
+      <div><dt>60 min</dt><dd>Primeira consulta</dd></div>
+      <div><dt>24 sem.</dt><dd>De acompanhamento</dd></div>
+      <div><dt>6 áreas</dt><dd>Na mesma equipe</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -309,14 +318,15 @@
   </div>
 </section>
 
-<section class="como">
+<section class="como" id="programa">
   <div class="wrap">
-    <h2>Programa de 24 semanas.</h2>
-    <ol class="linha">
-      <li><span class="quando">Dia 1</span><strong>Avaliação Nivva 360</strong></li>
-      <li><span class="quando">Toda semana</span><strong>Encontro na clínica</strong></li>
-      <li><span class="quando">Semana 24</span><strong>Reavaliação completa</strong></li>
-    </ol>
+    <p class="rotulo-mono">Programa Nivva</p>
+    <h2>24 semanas. Um encontro por semana.</h2>
+    <div class="semanas" aria-hidden="true"><span class="sem medica"><i>1</i></span><span class="sem"><i>2</i></span><span class="sem"><i>3</i></span><span class="sem"><i>4</i></span><span class="sem"><i>5</i></span><span class="sem"><i>6</i></span><span class="sem"><i>7</i></span><span class="sem"><i>8</i></span><span class="sem"><i>9</i></span><span class="sem"><i>10</i></span><span class="sem"><i>11</i></span><span class="sem"><i>12</i></span><span class="sem medica"><i>13</i></span><span class="sem"><i>14</i></span><span class="sem"><i>15</i></span><span class="sem"><i>16</i></span><span class="sem"><i>17</i></span><span class="sem"><i>18</i></span><span class="sem"><i>19</i></span><span class="sem"><i>20</i></span><span class="sem"><i>21</i></span><span class="sem"><i>22</i></span><span class="sem"><i>23</i></span><span class="sem medica"><i>24</i></span></div>
+    <ul class="legenda">
+      <li><span class="sem medica"></span>Consulta com Dra. Milena: início, metade e fim</li>
+      <li><span class="sem"></span>Encontro com a equipe: medidas, bioimpedância e ajuste do plano</li>
+    </ul>
   </div>
 </section>
 
