@@ -56,7 +56,7 @@
   /* Abertura */
   .abertura { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 0; color: #fff; background: var(--escuro); }
   .abertura > picture img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; height: 66%; bottom: auto; }
-  .abertura::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, transparent 25%, var(--escuro) 60%), var(--grao); opacity: .97; }
+  .abertura::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, transparent 25%, var(--escuro) 60%); opacity: .97; }
   @media (min-width: 900px) { .abertura > picture img { height: 100%; } .abertura::after { background: linear-gradient(90deg, var(--escuro) 0%, color-mix(in srgb, var(--escuro) 70%, transparent) 45%, transparent 100%); } }
   .abertura .wrap { position: relative; z-index: 2; padding-bottom: 40px; padding-top: 120px; }
   .local { display: inline-flex; align-items: center; gap: 8px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--claro-sobre-escuro); margin-bottom: 18px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; background: rgba(255,255,255,.06); backdrop-filter: blur(6px); }
@@ -117,7 +117,7 @@
   @media (min-width: 860px) { .milena .grade { grid-template-columns: 1fr 1fr; gap: 64px; } }
 
   /* Programa de 24 semanas — uma marca por semana */
-  .rotulo-mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--acento); margin-bottom: 12px; }
+  .rotulo-mono { font-size: 15px; color: var(--acento); margin-bottom: 10px; }
   .semanas { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; margin-top: 30px; }
   .sem { position: relative; aspect-ratio: 1; border-radius: 8px; border: 1px solid var(--linha); background: var(--cartao); display: grid; place-items: center; }
   .sem i { font-style: normal; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; color: var(--texto-2); }
@@ -131,7 +131,7 @@
   .n360 .inclui small { font-size: 14px; color: var(--suave-sobre-escuro); }
   .n360 .rotulo-mono, .como .rotulo-mono { color: var(--acento); }
   .link-claro { color: #fff; }
-  .como { background: radial-gradient(120% 80% at 100% 0%, var(--escuro-2) 0%, var(--escuro) 60%), var(--escuro); color: #fff; }
+  .como { background: var(--escuro); color: #fff; }
   .como h2 { max-width: 620px; }
   .como .apoio { color: var(--suave-sobre-escuro); }
   .inclui { display: grid; gap: 0; margin-top: 28px; border-top: 1px solid rgba(255,255,255,.14); }
@@ -166,8 +166,7 @@
   .video span { position: absolute; left: 12px; bottom: 12px; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.9); color: #222; font-size: 13px; }
 
   /* Avaliação Nivva 360 — mesma imagem da apresentação da bioimpedância na TV da clínica */
-  .n360 { background: radial-gradient(120% 80% at 0% 0%, var(--escuro-2) 0%, var(--escuro) 60%), var(--escuro); color: var(--fundo); position: relative; }
-  .n360::before { content: ''; position: absolute; inset: 0; background: var(--grao); pointer-events: none; }
+  .n360 { background: var(--escuro); color: var(--fundo); position: relative; }
   .n360 .wrap { position: relative; }
   .n360 .apoio { color: var(--suave-sobre-escuro); }
   .n360-grade { display: grid; gap: 32px; align-items: center; }
@@ -192,8 +191,7 @@
   @media (prefers-reduced-motion: reduce) { .n360-tela img { animation: none; opacity: 1; } .n360-tela .feixe { display: none; } .n360-tela .rotulo { animation: none; opacity: 1; } }
 
   /* Tecnologias */
-  .tecnologias { background: radial-gradient(120% 80% at 100% 0%, var(--escuro-2) 0%, var(--escuro) 60%), var(--escuro); color: var(--fundo); position: relative; }
-  .tecnologias::before { content: ''; position: absolute; inset: 0; background: var(--grao); pointer-events: none; }
+  .tecnologias { background: var(--escuro); color: var(--fundo); position: relative; }
   .tecnologias .wrap { position: relative; }
   .tecnologias .apoio { color: var(--suave-sobre-escuro); }
   .tec { display: grid; gap: 0; margin-top: 26px; }
@@ -203,6 +201,14 @@
   .tec strong { display: block; font-weight: 400; font-size: 18px; }
   .tec small { color: var(--suave-sobre-escuro); font-size: 14px; }
   .tec .seta { color: var(--acento); font-size: 20px; }
+
+  h2 em { font-style: italic; color: var(--acento); }
+  .fala { margin: 0 0 56px; padding-left: 20px; border-left: 2px solid var(--acento); max-width: 760px; }
+  .fala blockquote { font-size: clamp(24px, 5.6vw, 38px); font-weight: 300; line-height: 1.25; letter-spacing: -.015em; }
+  .fala figcaption { margin-top: 14px; font-size: 14px; color: var(--texto-2); }
+  .surge { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .surge.visto { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .surge { opacity: 1; transform: none; transition: none; } }
 
   /* Perguntas */
   .perguntas { background: var(--fundo); padding-top: 0; }
@@ -245,7 +251,6 @@
 <section class="abertura foto-retrato">
   <picture><source id="foto-larga" media="(min-width: 900px)" srcset="/assets/img/img-4.webp"><img id="foto-alta" src="/assets/img/img-4.webp" alt="Dra. Milena Jácome" style="object-position:60% 20%" width="900" height="1200" fetchpriority="high"></picture>
   <div class="wrap">
-    <p class="local"><span class="ponto"></span>Emagrecimento · João Pessoa e Patos</p>
     <h1>Emagrecer com médica <strong>que acompanha de perto.</strong></h1>
     <p class="sub">Dra. Milena Jácome · CRM-PB 10744</p>
     <div class="acoes">
@@ -260,7 +265,7 @@
 
 <section class="assuntos">
   <div class="wrap">
-    <h2>Quando a dieta sozinha não resolve.</h2>
+    <h2>Quando a dieta <em>sozinha</em> não resolve.</h2>
     <div class="casos">
       <div class="caso"><strong>O peso volta depois da dieta</strong></div>
       <div class="caso"><strong>A balança desce, o corpo não muda</strong></div>
@@ -277,7 +282,7 @@
     </div>
     <div>
       <p class="rotulo-mono">Avaliação Nivva 360 · Primeira consulta</p>
-      <h2>Seu corpo medido por dentro, já na primeira consulta.</h2>
+      <h2>Seu corpo <em>medido por dentro</em>, já na primeira consulta.</h2>
       <p class="apoio">A balança comum mostra só o peso. Aqui você vê, na tela da sala, onde está a gordura, quanto é músculo e quanto é água.</p>
       <div class="inclui inclui-360">
         <div><span>Gordura, músculo e água</span><small>Em cada braço, perna e no tronco</small></div>
@@ -292,13 +297,12 @@
 <section class="como" id="programa">
   <div class="wrap">
     <p class="rotulo-mono">Programa Nivva · 24 semanas</p>
-    <h2>Toda semana na clínica, durante seis meses.</h2>
+    <h2><em>Toda semana</em> na clínica, durante seis meses.</h2>
     <p class="apoio">O comum é um retorno a cada 30 ou 60 dias. Na Nivva, o encontro é semanal.</p>
     <div class="inclui">
       <div><b>24</b><span>encontros semanais</span><small>Medidas, bioimpedância e ajustes</small></div>
       <div><b>5</b><span>áreas acompanhando</span><small>Nutrição, psicologia, treino, enfermagem e fisioterapia</small></div>
     </div>
-    <div class="semanas" aria-hidden="true"><span class="sem"><i>1</i></span><span class="sem"><i>2</i></span><span class="sem"><i>3</i></span><span class="sem"><i>4</i></span><span class="sem"><i>5</i></span><span class="sem"><i>6</i></span><span class="sem"><i>7</i></span><span class="sem"><i>8</i></span><span class="sem"><i>9</i></span><span class="sem"><i>10</i></span><span class="sem"><i>11</i></span><span class="sem"><i>12</i></span><span class="sem"><i>13</i></span><span class="sem"><i>14</i></span><span class="sem"><i>15</i></span><span class="sem"><i>16</i></span><span class="sem"><i>17</i></span><span class="sem"><i>18</i></span><span class="sem"><i>19</i></span><span class="sem"><i>20</i></span><span class="sem"><i>21</i></span><span class="sem"><i>22</i></span><span class="sem"><i>23</i></span><span class="sem"><i>24</i></span></div>
   </div>
 </section>
 
@@ -306,7 +310,7 @@
   <div class="wrap grade">
     <img src="/assets/img/img-15.webp" alt="Dra. Milena Jácome" width="2400" height="1600" loading="lazy" style="object-position:50% 10%">
     <div>
-      <h2>Dra. Milena Jácome.</h2>
+      <h2>Dra. Milena Jácome</h2>
       <p class="apoio">CRM-PB 10744</p>
       <ul class="cv">
         <li>Primeira médica paraibana na SBEMO</li>
@@ -321,7 +325,11 @@
 
 <section class="resultados">
   <div class="wrap">
-    <h2>Depoimentos.</h2>
+    <figure class="fala">
+      <blockquote>“Dra. Milena cuida de mim, do meu esposo, das minhas filhas e da minha mãe. Não me vejo em outro lugar.”</blockquote>
+      <figcaption>Simone Gomes · avaliação no Google</figcaption>
+    </figure>
+    <h2>Depoimentos</h2>
     
     <div class="videos">
       <a class="video" href="/resultados"><img src="/assets/img/real/res-jaelkycapa1.webp" alt="Depoimento de paciente" loading="lazy"><span>▶</span></a>
@@ -336,7 +344,7 @@
 
 <section class="equipe" id="equipe">
   <div class="wrap">
-    <h2>Equipe completa.</h2>
+    <h2>Equipe completa</h2>
     <div class="pessoas">
       <figure class="pessoa"><img src="/assets/img/equipe/milena.webp" alt="Dra. Milena Jácome" loading="lazy" width="480" height="600"><figcaption><strong>Dra. Milena Jácome</strong><small>Medicina</small></figcaption></figure>
       <figure class="pessoa"><img src="/assets/img/equipe/nara.webp" alt="Nara Oliveira" loading="lazy" width="480" height="600"><figcaption><strong>Nara Oliveira</strong><small>Nutrição</small></figcaption></figure>
@@ -350,7 +358,7 @@
 
 <section class="perguntas" style="padding-top:64px">
   <div class="wrap">
-    <h2 style="margin-bottom:22px">Perguntas.</h2>
+    <h2 style="margin-bottom:22px">Perguntas</h2>
     <details><summary>Vou precisar de remédio para emagrecer?</summary><p>Só quando há indicação médica. Isso é decidido na consulta, depois da avaliação e dos exames.</p></details>
     <details><summary>Quanto tempo leva?</summary><p>O programa tem 24 semanas, com encontro na clínica toda semana.</p></details>
     <details><summary>Atende plano de saúde?</summary><p>É particular. Damos nota fiscal, recibo e descritivo para você pedir reembolso.</p></details>
@@ -395,6 +403,11 @@
   const aoRolar = () => barra.classList.toggle('solida', window.scrollY > 40);
   window.addEventListener('scroll', aoRolar, { passive: true });
   aoRolar();
+  if ('IntersectionObserver' in window) {
+    const partes = document.querySelectorAll('section:not(.abertura) .wrap');
+    const olho = new IntersectionObserver((itens) => itens.forEach((i) => { if (i.isIntersecting) { i.target.classList.add('visto'); olho.unobserve(i.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    partes.forEach((p) => { p.classList.add('surge'); olho.observe(p); });
+  }
   if ('IntersectionObserver' in window && topo) {
     const vigia = new IntersectionObserver((e) => {
       fixo.classList.toggle('visivel', !e[0].isIntersecting && e[0].boundingClientRect.top < 0);
