@@ -194,18 +194,15 @@
   .tecnologias { background: var(--escuro); color: var(--fundo); position: relative; }
   .tecnologias .wrap { position: relative; }
   .tecnologias .apoio { color: var(--suave-sobre-escuro); }
-  .tec { display: grid; gap: 0; margin-top: 26px; }
-  .tec .tec-item { display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: center; padding: 16px 0; border-top: 1px solid rgba(255,255,255,.12); }
-  .tec .tec-item:last-child { border-bottom: 1px solid rgba(255,255,255,.12); }
-  .tec img, .tec .mini { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; background: var(--escuro-2); }
-  .tec strong { display: block; font-weight: 400; font-size: 18px; }
-  .tec small { color: var(--suave-sobre-escuro); font-size: 14px; }
-  .tec .seta { color: var(--acento); font-size: 20px; }
+  .tec { list-style: none; margin-top: 26px; }
+  .tec li { padding: 16px 0; border-top: 1px solid rgba(255,255,255,.12); font-size: 18px; }
+  .tec li:last-child { border-bottom: 1px solid rgba(255,255,255,.12); }
 
   h2 em { font-style: italic; color: var(--acento); }
   .fala { margin: 0 0 56px; padding-left: 20px; border-left: 2px solid var(--acento); max-width: 760px; }
   .fala blockquote { font-size: clamp(24px, 5.6vw, 38px); font-weight: 300; line-height: 1.25; letter-spacing: -.015em; }
   .fala figcaption { margin-top: 14px; font-size: 14px; color: var(--texto-2); }
+  .fala figcaption a { color: var(--texto); border-bottom: 1px solid var(--acento); }
   .surge { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
   .surge.visto { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .surge { opacity: 1; transform: none; transition: none; } }
@@ -315,7 +312,7 @@
   <div class="wrap">
     <figure class="fala">
       <blockquote>“Dra. Milena cuida de mim, do meu esposo, das minhas filhas e da minha mãe. Não me vejo em outro lugar.”</blockquote>
-      <figcaption>Simone Gomes · avaliação no Google</figcaption>
+      <figcaption>Simone Gomes · <a href="https://maps.app.goo.gl/PTkbWP9K6vD3EE2o6" target="_blank" rel="noopener">ver no Google →</a></figcaption>
     </figure>
     <h2>Depoimentos</h2>
     
@@ -351,7 +348,7 @@
     <p class="apoio">O comum é um retorno a cada 30 ou 60 dias. Na Nivva, o encontro é semanal.</p>
     <div class="inclui">
       <div><b>24</b><span>encontros semanais</span><small>Medidas, bioimpedância e ajustes</small></div>
-      <div><b>5</b><span>áreas acompanhando</span><small>Nutrição, psicologia, treino, enfermagem e fisioterapia</small></div>
+      <div><b>4</b><span>áreas acompanhando</span><small>Nutrição, psicologia, treino e enfermagem</small></div>
     </div>
   </div>
 </section>
@@ -379,11 +376,13 @@
   <div class="wrap">
     <h2>Tecnologias</h2>
     
-    <div class="tec">
-      <div class="tec-item"><img src="/assets/img/img-5.webp" alt="Ultrassom microfocado" loading="lazy"><span><strong>Ultrassom microfocado</strong></span></div>
-      <div class="tec-item"><span class="mini"></span><span><strong>Campo magnético</strong></span></div>
-      <div class="tec-item"><img src="/assets/img/real/bio-corpo-f.webp" alt="" loading="lazy" style="object-fit:contain;background:#000"><span><strong>Bioimpedância InBody</strong></span></div>
-    </div>
+    <ul class="tec">
+      <li>Ultrassom micro e macrofocado</li>
+      <li>Campo magnético</li>
+      <li>Laserterapia corporal</li>
+      <li>Micro-ondas corporal</li>
+      <li>Bioimpedância</li>
+    </ul>
   </div>
 </section>
 
