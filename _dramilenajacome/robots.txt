@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dramilenajacome.com.br/sitemap.xml
