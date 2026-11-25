@@ -194,9 +194,14 @@
   .tecnologias { background: var(--escuro); color: var(--fundo); position: relative; }
   .tecnologias .wrap { position: relative; }
   .tecnologias .apoio { color: var(--suave-sobre-escuro); }
-  .tec { list-style: none; margin-top: 26px; }
-  .tec li { padding: 16px 0; border-top: 1px solid rgba(255,255,255,.12); font-size: 18px; }
-  .tec li:last-child { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .tec { margin-top: 26px; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .tec details { border-top: 1px solid rgba(255,255,255,.12); }
+  .tec summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0; font-size: 18px; }
+  .tec summary::-webkit-details-marker { display: none; }
+  .tec summary::after { content: '+'; color: var(--acento); font-size: 22px; font-weight: 300; transition: transform .25s ease; }
+  .tec details[open] summary::after { transform: rotate(45deg); }
+  .tec details p { padding: 0 0 18px; color: var(--suave-sobre-escuro); font-size: 15px; line-height: 1.55; max-width: 620px; }
+  .tec-nota { margin-top: 16px; font-size: 14px; color: var(--suave-sobre-escuro); }
 
   h2 em { font-style: italic; color: var(--acento); }
   .fala { margin: 0 0 56px; padding-left: 20px; border-left: 2px solid var(--acento); max-width: 760px; }
@@ -376,13 +381,14 @@
   <div class="wrap">
     <h2>Tecnologias</h2>
     
-    <ul class="tec">
-      <li>Ultrassom micro e macrofocado</li>
-      <li>Campo magnético</li>
-      <li>Laserterapia corporal</li>
-      <li>Micro-ondas corporal</li>
-      <li>Bioimpedância</li>
-    </ul>
+    <div class="tec">
+      <details><summary>Ultrassom micro e macrofocado</summary><p>Ondas de ultrassom concentradas nas camadas mais profundas da pele e da gordura, sem corte. Usado para dar firmeza ao rosto e ao corpo e tratar gordura localizada.</p></details>
+      <details><summary>Campo magnético</summary><p>Pulsos magnéticos que fazem o músculo contrair milhares de vezes numa sessão, sem esforço da paciente. Usado para fortalecer e tonificar abdômen, glúteos e coxas.</p></details>
+      <details><summary>Laserterapia corporal</summary><p>Laser de baixa potência aplicado em várias áreas do corpo ao mesmo tempo. Usado como apoio no tratamento do lipedema, da celulite e da gordura localizada, e para ajudar a circulação.</p></details>
+      <details><summary>Micro-ondas para gordura localizada</summary><p>Micro-ondas que agem nas células de gordura logo abaixo da pele, preservando a superfície. Indicado para gordura localizada, celulite e flacidez.</p></details>
+      <details><summary>Bioimpedância</summary><p>Exame que mostra quanto do seu peso é gordura, músculo e água, em cada parte do corpo. Feito na primeira consulta e repetido nos retornos para comparar.</p></details>
+    </div>
+    <p class="tec-nota">A indicação de cada tecnologia é feita na consulta.</p>
   </div>
 </section>
 
