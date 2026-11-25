@@ -119,6 +119,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .foto .img { position: relative; border-radius: var(--raio); overflow: hidden; aspect-ratio: 4 / 5; background: var(--fundo-2); }
   .foto img { width: 100%; height: 100%; object-fit: cover; }
   .foto figcaption { margin-top: 10px; font-size: 15px; }
+  .alterna img { position: absolute; inset: 0; }
+  .alterna img + img { animation: troca 10s ease-in-out infinite; }
+  @keyframes troca { 0%, 40% { opacity: 0; } 50%, 90% { opacity: 1; } 100% { opacity: 0; } }
+  .scan img { animation: acende 4.5s ease-in-out infinite; }
+  .feixe-mini { position: absolute; left: 10%; right: 10%; height: 2px; background: linear-gradient(90deg, transparent, #ffd9a8, transparent); box-shadow: 0 0 18px 4px rgba(255,190,120,.55); animation: feixe 4.5s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .alterna img + img, .scan img, .feixe-mini { animation: none; } .feixe-mini { display: none; } }
   .foto figcaption small { display: block; color: var(--texto-2); font-size: 14px; }
   .falta { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--texto-2); font-size: 14px; border: 1px dashed rgba(47,37,32,.25); border-radius: var(--raio); }
   .endereco { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; color: var(--texto-2); font-size: 15px; }
@@ -380,12 +386,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2>A clínica</h2>
     <p class="apoio">Bairro dos Estados, João Pessoa. Com estacionamento.</p>
     <div class="fotos">
-      <figure class="foto"><div class="img"><img src="/assets/img/real/fachada-alta.webp" alt="Fachada da Clínica Nivva" loading="lazy"></div><figcaption>Fachada</figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/real/recepcao-larga.webp" alt="Recepção" loading="lazy"></div><figcaption>Recepção</figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/fachada-real.webp" alt="Fachada da Clínica Nivva" loading="lazy"></div><figcaption>Fachada</figcaption></figure>
+      <figure class="foto"><div class="img"><img src="/assets/img/real/recepcao-nivva.webp" alt="Recepção" loading="lazy"></div><figcaption>Recepção</figcaption></figure>
       <figure class="foto"><div class="img"><img src="/assets/img/real/cafe-espera.webp" alt="Sala de espera com café" loading="lazy"></div><figcaption>Sala de espera</figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/real/sala-espera.webp" alt="Sala de espera" loading="lazy"></div><figcaption>Ambientes</figcaption></figure>
-      <figure class="foto"><div class="img" style="background:#000"><img src="/assets/img/real/bio-corpo-f.webp" alt="Avaliação Nivva 360" loading="lazy" style="object-fit:contain"></div><figcaption>Avaliação Nivva 360</figcaption></figure>
-      <figure class="foto"><div class="img"><img src="/assets/img/real/kit-nivva.webp" alt="Kit Nivva" loading="lazy"></div><figcaption>Kit da paciente</figcaption></figure>
+      <figure class="foto"><div class="img alterna"><img src="/assets/img/real/sala-espera.webp" alt="Sala de espera" loading="lazy"><img src="/assets/img/real/poltronas-jardim.webp" alt="Poltronas voltadas para o jardim" loading="lazy"></div><figcaption>Ambientes</figcaption></figure>
+      <figure class="foto"><div class="img scan" style="background:#000"><img src="/assets/img/real/bio-corpo-f.webp" alt="Avaliação Nivva 360" loading="lazy" style="object-fit:contain"><span class="feixe-mini" aria-hidden="true"></span></div><figcaption>Avaliação Nivva 360</figcaption></figure>
+      <figure class="foto"><div class="img alterna"><img src="/assets/img/real/lanche.webp" alt="Lanche servido às pacientes" loading="lazy"><img src="/assets/img/real/kit-pantufa.webp" alt="Kit com pantufa" loading="lazy"></div><figcaption>Experiência</figcaption></figure>
     </div>
     <div class="endereco">
       <span><b style="font-weight:400;color:var(--texto)">Unidade Patos:</b> Avenida Bossuet Wanderley, 361, 1º andar, no Labvita, Centro.</span>
