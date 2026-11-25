@@ -8,12 +8,13 @@
 const PASTA_MILENA = '/_dramilenajacome';
 const DOMINIO_MILENA = 'dramilenajacome.com.br';
 const ARQUIVOS_COMPARTILHADOS = ['/favicon-32.png', '/apple-touch-icon.png', '/favicon.ico'];
+const PASTAS_COMPARTILHADAS = ['/assets/'];
 
 async function siteMilena(request, env, url) {
   if (url.hostname !== DOMINIO_MILENA) {
     return Response.redirect(`https://${DOMINIO_MILENA}${url.pathname}${url.search}`, 301);
   }
-  if (ARQUIVOS_COMPARTILHADOS.includes(url.pathname)) {
+  if (ARQUIVOS_COMPARTILHADOS.includes(url.pathname) || PASTAS_COMPARTILHADAS.some((p) => url.pathname.startsWith(p))) {
     return env.ASSETS.fetch(request);
   }
   const caminho = url.pathname === '/' ? PASTA_MILENA : PASTA_MILENA + url.pathname;
