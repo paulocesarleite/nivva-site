@@ -26,6 +26,10 @@ async function siteMilena(request, env, url) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // Um endereço só para a Nivva: www e http vão para https://nivva.com.br (evita cópia no Google).
+    if (url.hostname === 'www.nivva.com.br' || (url.hostname === 'nivva.com.br' && url.protocol === 'http:')) {
+      return Response.redirect(`https://nivva.com.br${url.pathname}${url.search}`, 301);
+    }
     if (url.hostname.endsWith(DOMINIO_MILENA)) {
       return siteMilena(request, env, url);
     }
